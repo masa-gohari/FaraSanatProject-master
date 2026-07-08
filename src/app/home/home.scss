@@ -1,0 +1,66 @@
+
+$primary-color: #f26522;
+$primary-hover: #f26522;
+$dark-bg: #1b1b1b;
+$text-light: #ffffff;
+
+.hero {
+    position: relative;
+    height: 80vh;
+    background-image: url("/img/copper-alloy-rods.jpg");
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.75) 100%);
+    z-index: 1;
+}
+
+.content {
+    position: relative;
+    z-index: 5;
+    text-align: center;
+    margin-top: -40px;
+    padding: 0 20px;
+}
+
+.content h1 {
+    color: $text-light;
+    font-size: clamp(36px, 5vw, 68px);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 40px;
+    letter-spacing: -1px;
+    text-transform: capitalize;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+.p-title{
+    color: $text-light;
+     font-weight: 900;
+    font-size: clamp(36px, 5vw, 50px);
+}
+/* ================= WAVE / SHAPE 7 ================= */
+.wave {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    line-height: 0;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.wave svg {
+    display: block;
+    width: 100%;
+    height: clamp(100px, 14vw, 266px);
+}

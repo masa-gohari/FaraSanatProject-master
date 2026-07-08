@@ -1,0 +1,72 @@
+.navbar {
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+
+    .navbar-nav {
+        gap: 25px;
+
+        @media (max-width: 991px) {
+            gap: 10px;
+            padding: 15px 0;
+            background-color: rgba(0, 0, 0, 0.9);
+            border-radius: 8px;
+            padding-right: 15px;
+        }
+    }
+}
+
+:host {
+    display: block;
+    background: transparent !important;
+}
+
+.nav-item a {
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    transition: color 0.3s ease;
+
+    &:hover,
+    &.active {
+        color: #f26522 !important;
+    }
+}
+
+.logo {
+    width: 300px;
+    height: 95px;
+    background-image: url("/img/farasanaat-logo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    margin-top: 14px;
+}
+
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.5) !important;
+
+    .navbar-toggler-icon {
+        filter: invert(1);
+    }
+}
+
+
+.dropdown-menu {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.dropdown-item {
+    color: white;
+
+    &:hover {
+        background-color: transparent !important;
+    }
+}

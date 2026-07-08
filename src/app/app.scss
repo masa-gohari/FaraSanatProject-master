@@ -1,0 +1,129 @@
+
+
+// /* ================= NEWS SECTION ================= */
+// .news-section {
+//   background-color: $pure-black; // هم‌رنگ با بیس پایینی موج
+//   padding: 100px 0;
+//   position: relative;
+//   z-index: 20;
+// }
+
+// .container {
+//   max-width: 1200px;
+//   margin: 0 auto;
+//   padding: 0 20px;
+// }
+
+// .section-title {
+//   font-size: 32px;
+//   font-weight: 800;
+//   color: $text-light;
+//   margin-bottom: 50px;
+//   text-transform: uppercase;
+//   position: relative;
+//   display: inline-block;
+
+//   &::after {
+//     content: '';
+//     position: absolute;
+//     bottom: -10px;
+//     left: 0;
+//     width: 60px;
+//     height: 4px;
+//     background-color: $primary-yellow;
+//   }
+// }
+
+// .news-grid {
+//   display: grid;
+//   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+//   gap: 30px;
+// }
+
+// .news-card {
+//   background: #0f0f0f;
+//   border: 1px solid #222;
+//   border-radius: 4px;
+//   overflow: hidden;
+//   transition: transform 0.3s ease, border-color 0.3s ease;
+
+//   &:hover {
+//     transform: translateY(-5px);
+//     border-color: $primary-yellow;
+//   }
+// }
+
+// .card-image {
+//   height: 200px;
+//   background-size: cover;
+//   background-position: center;
+//   background-color: #333; // لودینگ پلیس‌هولدر
+// }
+
+// .card-content {
+//   padding: 25px;
+
+//   .date {
+//     display: block;
+//     color: $primary-yellow;
+//     font-size: 12px;
+//     font-weight: 700;
+//     text-transform: uppercase;
+//     margin-bottom: 12px;
+//   }
+
+//   h3 {
+//     font-size: 18px;
+//     font-weight: 700;
+//     color: $text-light;
+//     margin-bottom: 15px;
+//     line-height: 1.4;
+//   }
+
+//   p {
+//     color: $text-muted;
+//     font-size: 14px;
+//     line-height: 1.6;
+//     margin-bottom: 20px;
+//   }
+
+//   .read-more {
+//     color: $text-light;
+//     text-decoration: none;
+//     font-size: 13px;
+//     font-weight: 700;
+//     transition: color 0.2s ease;
+
+//     &:hover {
+//       color: $primary-yellow;
+//     }
+//   }
+// }
+
+// /* ================= RESPONSIVE ================= */
+// @media (max-width: 992px) {
+//   header {
+//     padding: 0 40px;
+//   }
+// }
+
+// @media (max-width: 768px) {
+//   header {
+//     padding: 0 20px;
+//     flex-direction: column;
+//     justify-content: center;
+//     gap: 15px;
+//     height: auto;
+//     padding-top: 20px;
+//   }
+
+//   nav ul {
+//     gap: 15px;
+//     flex-wrap: wrap;
+//     justify-content: center;
+//   }
+
+//   .news-grid {
+//     grid-template-columns: 1fr;
+//   }
+// }
