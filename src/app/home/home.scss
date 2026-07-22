@@ -135,8 +135,10 @@ $text-light: #ffffff;
   font-weight: 600;
   color: #777;
   
-  &.up { color: #2ecc71; }
-  &.down { color: #e74c3c; }
+  &.up { color: #2ecc71;font-size: 14px;}
+
+  &.down { color: #e74c3c; font-size: 14px;}
+
 }
 
 .change-icon {
