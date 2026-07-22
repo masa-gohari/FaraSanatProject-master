@@ -1,6 +1,6 @@
 $primary-color: #f26522;
 $primary-hover: #f26522;
-$dark-bg: #1b1b1b;
+$dark-bg: #2C2C2C;
 $text-light: #ffffff;
 
 .hero {
@@ -63,3 +63,97 @@ $text-light: #ffffff;
     width: 100%;
     height: clamp(100px, 14vw, 266px);
 }
+
+.ticker-wrapper {
+  width: 100%;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.95); // پس‌زمینه روشن و شیک
+  backdrop-filter: blur(5px);
+  border-bottom: 2px solid #eee;
+  padding: 12px 0;
+  direction: rtl;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.ticker-content {
+  display: flex;
+  white-space: nowrap;
+  animation: ticker-animation 40s linear infinite; // کمی آرام‌تر برای خوانایی بیشتر
+  width: max-content;
+}
+
+.ticker-content:hover {
+  animation-play-state: paused; // توقف با نگه داشتن موس
+}
+
+.ticker-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center; // تراز وسط برای هر آیتم
+  padding: 0 110px;
+  border-left: 1px solid $primary-color ;
+  transition: transform 0.2s;
+
+  &:hover {
+    background: #fcfcfc;
+  }
+}
+
+.price-value {
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: #222;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.price-details {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+}
+
+.title {
+  font-weight: bold;
+  color: #555;
+  margin-right: 5px;
+}
+
+.dot {
+  display: inline-block; /* اضافه کردن این خط ضروری است */
+  width: 8px;
+  height: 8px;
+  background-color: #ff9800;
+  border-radius: 50%;
+  margin-right: 5px; /* یا margin-left بسته به جهت متن */
+  vertical-align: middle; /* برای تراز شدن عمقی با متن کنارش */
+}
+
+.percentage {
+  direction: ltr; // نمایش صحیح درصد (مثلا %5+)
+  font-weight: 600;
+  color: #777;
+  
+  &.up { color: #2ecc71; }
+  &.down { color: #e74c3c; }
+}
+
+.change-icon {
+  font-size: 0.7rem;
+  &.up { color: #2ecc71; }
+  &.down { color: #e74c3c; }
+}
+
+.change-icon.up { color: #4caf50; }   /* سبز برای صعود */
+.change-icon.down { color: #f44336; } /* قرمز برای نزول */
+
+/* انیمیشن حرکت نوار */
+@keyframes ticker-animation {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(100%); } /* چون راست‌چین است به سمت مثبت حرکت می‌کند */
+}@keyframes ticker-animation {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(50%, 0, 0); } // چون RTL است به سمت راست حرکت کند
+}
+

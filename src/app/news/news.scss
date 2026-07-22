@@ -1,0 +1,68 @@
+/* price-ticker.component.css */
+.ticker-wrapper {
+  width: 100%;
+  overflow: hidden;
+  background: #f8f9fa; /* رنگ پس‌زمینه ملایم */
+  border-bottom: 1px solid #e0e0e0;
+  padding: 10px 0;
+  direction: rtl;
+}
+
+.ticker-content {
+  display: flex;
+  white-space: nowrap;
+  animation: ticker-animation 40s linear infinite;
+}
+
+/* توقف حرکت هنگام نگه داشتن موس روی نوار */
+.ticker-content:hover {
+  animation-play-state: paused;
+}
+
+.ticker-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 0 40px;
+  border-left: 1px solid #ddd;
+}
+
+.price-value {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.price-info {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background-color: #ff9800; /* دایره نارنجی رنگ در تصویر */
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.title {
+  font-weight: 500;
+  color: #555;
+}
+
+.change-icon {
+  font-size: 0.7rem;
+}
+
+.change-icon.up { color: #4caf50; }   /* سبز برای صعود */
+.change-icon.down { color: #f44336; } /* قرمز برای نزول */
+
+/* انیمیشن حرکت نوار */
+@keyframes ticker-animation {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(100%); } /* چون راست‌چین است به سمت مثبت حرکت می‌کند */
+}
