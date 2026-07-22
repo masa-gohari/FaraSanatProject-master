@@ -1,12 +1,47 @@
+@font-face {
+    font-family: 'Vazir';
+    src: url('/font/vazir-font-v16.1.0/Vazir-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Vazir';
+    src: url('/font/vazir-font-v16.1.0/Vazir-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+}
+
+
 * {
-   font-family: 'Vazir' !important;
-   box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 html,
 body {
+    font-family: 'Vazir', sans-serif;
     margin: 0;
     padding: 0;
     width: 100%;
     overflow-x: hidden;
+    background-color: black;
+}
+
+.dropdown-toggle::after {
+    display: inline-block;
+    margin-left: 0.255em;
+    vertical-align: middle;
+    transform: translateY(1px);
+    content: "";
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+}
+
+.dropdown-menu[data-bs-popper] {
+    top: 100%;
+    left: 0;
+    transform: translate(-16px, -2px);
+    margin-top: var(--bs-dropdown-spacer);
 }

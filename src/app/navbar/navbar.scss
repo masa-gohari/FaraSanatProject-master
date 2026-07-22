@@ -42,7 +42,6 @@
 .logo {
     width: 300px;
     height: 95px;
-    background-image: url("/img/farasanaat-logo.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -69,4 +68,9 @@
     &:hover {
         background-color: transparent !important;
     }
+}
+
+.nav-link.active {
+  color: #f26522 !important;
+  font-weight: 700;
 }
