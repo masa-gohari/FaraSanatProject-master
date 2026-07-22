@@ -29,50 +29,36 @@
     </svg>
   </div>
 </div>
-<div style="height: 200vh;">
-
-
-<!-- home.html -->
-<!-- price-ticker.component.html -->
-<div class="ticker-wrapper mt-5">
-  <div class="ticker-content">
-    <!-- لیست اصلی -->
-    @for (item of indicators(); track item.id) {
-      <div class="ticker-item">
-        <span class="price-value">{{ item.p | number}}</span>
-        <div class="price-info">
-          <span class="percentage">(%{{ item.dp || 0 }})</span>
-          <span class="change-icon" [class.up]="+item.d >= 0" [class.down]="+item.d < 0">
-             {{ +item.d >= 0 ? '▲' : '▼' }}
-          </span>
-          <span class="dot"></span>
-          <span class="title">{{ item.title }}</span>
+<div style="height: 200vh">
+  <div class="ticker-wrapper mt-5">
+    <div class="ticker-content">
+      @for (item of indicators(); track item.id) {
+        <div class="ticker-item">
+          <span class="price-value">{{ item.p | number }}</span>
+          <div class="price-info">
+            <span class="percentage">(%{{ item.dp || 0 }})</span>
+            <span class="change-icon" [class.up]="+item.d >= 0" [class.down]="+item.d < 0">
+              {{ +item.d >= 0 ? '▲' : '▼' }}
+            </span>
+            <span class="dot"></span>
+            <span class="title">{{ item.title }}</span>
+          </div>
         </div>
-      </div>
-    }
-    
-    <!-- تکرار لیست برای حرکت بی‌وقفه (Infinite Scroll) -->
-    @for (item of indicators(); track 'copy-' + item.id) {
-      <div class="ticker-item">
-        <span class="price-value">{{ item.p | number}}</span>
-        <div class="price-info">
-          <span class="percentage">(%{{ item.dp || 0 }})</span>
-          <span class="change-icon" [class.up]="+item.d >= 0" [class.down]="+item.d < 0">
-             {{ +item.d >= 0 ? '▲' : '▼' }}
-          </span>
-          <span class="dot"></span>
-          <span class="title">{{ item.title }}</span>
+      }
+
+      @for (item of indicators(); track 'copy-' + item.id) {
+        <div class="ticker-item">
+          <span class="price-value">{{ item.p | number }}</span>
+          <div class="price-info">
+            <span class="percentage">(%{{ item.dp || 0 }})</span>
+            <span class="change-icon" [class.up]="+item.d >= 0" [class.down]="+item.d < 0">
+              {{ +item.d >= 0 ? '▲' : '▼' }}
+            </span>
+            <span class="dot"></span>
+            <span class="title">{{ item.title }}</span>
+          </div>
         </div>
-      </div>
-    }
+      }
+    </div>
   </div>
-</div>
-
-
-
-
-
-
-
-
 </div>

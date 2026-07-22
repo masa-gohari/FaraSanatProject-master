@@ -1,13 +1,13 @@
 @font-face {
     font-family: 'Vazir';
-    src: url('/font/vazir-font-v16.1.0/Vazir-Medium.woff2') format('woff2');
+    src: url('font/vazir-font-v16.1.0/Vazir-Medium.woff2') format('woff2');
     font-weight: 500;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Vazir';
-    src: url('/font/vazir-font-v16.1.0/Vazir-Bold.woff2') format('woff2');
+    src: url('font/vazir-font-v16.1.0/Vazir-Bold.woff2') format('woff2');
     font-weight: bold;
     font-style: normal;
 }
@@ -23,7 +23,7 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
-    overflow-x: hidden;
+    // overflow-x: hidden;
     background-color: #222831;
 }
 

@@ -4,92 +4,90 @@ $dark-bg: #2C2C2C;
 $text-light: #ffffff;
 
 .hero {
-    position: relative;
-    height: 80vh;
-    background-size: cover;
-    background-position: center;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: relative;
+  height: 80vh;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-
 .overlay {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.75) 100%);
-    z-index: 1;
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.75) 100%);
+  z-index: 1;
 }
 
 .content {
-    position: relative;
-    z-index: 5;
-    text-align: center;
-    margin-top: -40px;
-    padding: 0 20px;
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  margin-top: -40px;
+  padding: 0 20px;
 }
 
 .content h1 {
-    color: $text-light;
-    font-size: clamp(36px, 5vw, 68px);
-    font-weight: 900;
-    line-height: 1.1;
-    margin-bottom: 40px;
-    letter-spacing: -1px;
-    text-transform: capitalize;
-    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+  color: $text-light;
+  font-size: clamp(36px, 5vw, 68px);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 40px;
+  letter-spacing: -1px;
+  text-transform: capitalize;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
 }
 
 .p-title {
-    color: $text-light;
-    font-weight: 900;
-    font-size: clamp(36px, 5vw, 50px);
+  color: $text-light;
+  font-weight: 900;
+  font-size: clamp(36px, 5vw, 50px);
 }
 
-/* ================= WAVE / SHAPE 7 ================= */
 .wave {
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 100%;
-    line-height: 0;
-    z-index: 10;
-    pointer-events: none;
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  line-height: 0;
+  z-index: 10;
+  pointer-events: none;
 }
 
 .wave svg {
-    display: block;
-    width: 100%;
-    height: clamp(100px, 14vw, 266px);
+  display: block;
+  width: 100%;
+  height: clamp(100px, 14vw, 266px);
 }
 
 .ticker-wrapper {
   width: 100%;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.95); // پس‌زمینه روشن و شیک
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(5px);
   border-bottom: 2px solid #eee;
   padding: 12px 0;
   direction: rtl;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .ticker-content {
   display: flex;
   white-space: nowrap;
-  animation: ticker-animation 40s linear infinite; // کمی آرام‌تر برای خوانایی بیشتر
+  animation: ticker-animation 40s linear infinite;
   width: max-content;
 }
 
 .ticker-content:hover {
-  animation-play-state: paused; // توقف با نگه داشتن موس
+  animation-play-state: paused; 
 }
 
 .ticker-item {
   display: flex;
   flex-direction: column;
-  align-items: center; // تراز وسط برای هر آیتم
+  align-items: center; 
   padding: 0 110px;
   border-left: 1px solid $primary-color ;
   transition: transform 0.2s;
@@ -121,41 +119,68 @@ $text-light: #ffffff;
 }
 
 .dot {
-  display: inline-block; /* اضافه کردن این خط ضروری است */
+  display: inline-block;
   width: 8px;
   height: 8px;
   background-color: #ff9800;
   border-radius: 50%;
-  margin-right: 5px; /* یا margin-left بسته به جهت متن */
-  vertical-align: middle; /* برای تراز شدن عمقی با متن کنارش */
+  margin-right: 5px;
+  vertical-align: middle;
 }
 
 .percentage {
-  direction: ltr; // نمایش صحیح درصد (مثلا %5+)
+  direction: ltr;
   font-weight: 600;
   color: #777;
-  
-  &.up { color: #2ecc71;font-size: 14px;}
 
-  &.down { color: #e74c3c; font-size: 14px;}
+  &.up {
+    color: #2ecc71;
+    font-size: 14px;
+  }
+
+  &.down {
+    color: #e74c3c;
+    font-size: 14px;
+  }
 
 }
 
 .change-icon {
   font-size: 0.7rem;
-  &.up { color: #2ecc71; }
-  &.down { color: #e74c3c; }
+
+  &.up {
+    color: #2ecc71;
+  }
+
+  &.down {
+    color: #e74c3c;
+  }
 }
 
-.change-icon.up { color: #4caf50; }   /* سبز برای صعود */
-.change-icon.down { color: #f44336; } /* قرمز برای نزول */
+.change-icon.up {
+  color: #4caf50;
+}
 
-/* انیمیشن حرکت نوار */
+.change-icon.down {
+  color: #f44336;
+}
+
 @keyframes ticker-animation {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(100%); } /* چون راست‌چین است به سمت مثبت حرکت می‌کند */
-}@keyframes ticker-animation {
-  0% { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(50%, 0, 0); } // چون RTL است به سمت راست حرکت کند
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
 }
 
+@keyframes ticker-animation {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(50%, 0, 0);
+  }
+}

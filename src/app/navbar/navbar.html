@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg sticky-top">
   <div class="container-fluid">
     <button
       class="navbar-toggler"
@@ -23,21 +23,17 @@
           >
         </li>
 
-<li
-  class="nav-item dropdown"
-  routerLinkActive
-  #productsRla="routerLinkActive"
->
-  <a
-    class="nav-link dropdown-toggle"
-    [class.active]="productsRla.isActive"
-    id="navbarDropdown"
-    role="button"
-    data-bs-toggle="dropdown"
-    aria-expanded="false"
-  >
-    محصولات
-  </a>
+        <li class="nav-item dropdown" routerLinkActive #productsRla="routerLinkActive">
+          <a
+            class="nav-link dropdown-toggle"
+            [class.active]="productsRla.isActive"
+            id="navbarDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            محصولات
+          </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li>
               <a class="dropdown-item" routerLink="/products/brass" routerLinkActive="active"

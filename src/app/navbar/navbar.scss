@@ -62,15 +62,24 @@
     background-color: rgba(255, 255, 255, 0.5);
 }
 
-.dropdown-item {
-    color: white;
+.dropdown-menu {
+    .dropdown-item {
+        color: white;
+        transition: all 0.3s ease;
 
-    &:hover {
-        background-color: transparent !important;
+        &:hover, &:focus {
+            background-color: #f26522 !important;
+            color: white !important;
+        }
+
+        &.active {
+            background-color: #f26522 !important;
+            color: white !important;
+        }
     }
 }
 
 .nav-link.active {
-  color: #f26522 !important;
-  font-weight: 700;
+    color: #f26522 !important;
+    font-weight: 700;
 }
