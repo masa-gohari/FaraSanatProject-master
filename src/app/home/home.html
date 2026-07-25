@@ -1,64 +1,119 @@
-<app-navbar></app-navbar>
 <div class="hero" style="background-image: url('img/copper-alloy-rods.jpg')">
   <div class="overlay"></div>
-
   <div class="content">
     <h1>گروه صنعتی فراصنعت ایران</h1>
     <p class="p-title">تولید قطعات و مقاطع برنجی</p>
   </div>
+</div>
 
-  <div class="wave">
-    <svg viewBox="0 0 1920 220" preserveAspectRatio="none">
-      <path
-        fill="#222831"
-        d="M0,110 
-         C250,150 450,215 650,220 
-         C900,225 1300,140 1920,40 
-         L1920,220 
-         L0,220 
-         Z"
-      />
-      <path
-        d="M580,217 
-         C820,214 1300,125 1920,25 
-         L1920,55 
-         C1300,148 820,225 580,217 
-         Z"
-        fill="#f26522"
-      />
-    </svg>
+<div class="ticker-wrapper mt-3">
+  <div class="ticker-content">
+    @for (item of indicators(); track item.id) {
+      <div class="ticker-item">
+        <span class="dot"></span>
+        <span class="title">{{ item.title }}</span>
+        <span class="price-value">{{ item.p | number }}</span>
+        <div class="price-info">
+          <span class="change-icon" [class.up]="+item.d >= 0" [class.down]="+item.d < 0">
+            {{ +item.d >= 0 ? '▲' : '▼' }}
+          </span>
+          <span class="percentage">(%{{ item.dp || 0 }})</span>
+        </div>
+      </div>
+    }
+
+    @for (item of indicators(); track 'copy-' + item.id) {
+      <div class="ticker-item">
+        <span class="dot"></span>
+        <span class="title">{{ item.title }}</span>
+        <span class="price-value">{{ item.p | number }}</span>
+        <div class="price-info">
+          <span class="change-icon" [class.up]="+item.d >= 0" [class.down]="+item.d < 0">
+            {{ +item.d >= 0 ? '▲' : '▼' }}
+          </span>
+          <span class="percentage">(%{{ item.dp || 0 }})</span>
+        </div>
+      </div>
+    }
+  </div>
+  <div
+    class="floating-widget"
+    [class.expanded]="isExpanded()"
+    (mouseenter)="expand()"
+    (mouseleave)="collapse()"
+    (click)="toggle()"
+  >
+    <div class="icon-wrapper">
+      <img src="img/touch-icon-ipad.png" alt="tgju" class="icon-image" />
+    </div>
+
+    <a [href]="linkUrl" class="content-wrapper" target="_blank">
+      <span>TGJU.ORG</span>
+    </a>
   </div>
 </div>
-<div style="height: 200vh">
-  <div class="ticker-wrapper mt-5">
-    <div class="ticker-content">
-      @for (item of indicators(); track item.id) {
-        <div class="ticker-item">
-          <span class="price-value">{{ item.p | number }}</span>
-          <div class="price-info">
-            <span class="percentage">(%{{ item.dp || 0 }})</span>
-            <span class="change-icon" [class.up]="+item.d >= 0" [class.down]="+item.d < 0">
-              {{ +item.d >= 0 ? '▲' : '▼' }}
-            </span>
-            <span class="dot"></span>
-            <span class="title">{{ item.title }}</span>
-          </div>
-        </div>
-      }
 
-      @for (item of indicators(); track 'copy-' + item.id) {
-        <div class="ticker-item">
-          <span class="price-value">{{ item.p | number }}</span>
-          <div class="price-info">
-            <span class="percentage">(%{{ item.dp || 0 }})</span>
-            <span class="change-icon" [class.up]="+item.d >= 0" [class.down]="+item.d < 0">
-              {{ +item.d >= 0 ? '▲' : '▼' }}
-            </span>
-            <span class="dot"></span>
-            <span class="title">{{ item.title }}</span>
-          </div>
+<section class="products-section py-5">
+  <div class="container mt-3">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold text-white mb-1">محصولات</h2>
+      <div class="title-divider"></div>
+    </div>
+    <div class="row g-4 justify-content-center">
+      @for (product of products(); track product.id) {
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <a [routerLink]="['/products', product.id]" class="text-decoration-none text-dark">
+            <div class="product-card">
+              <div class="product-image">
+                <img [src]="product.image" [alt]="product.nameFa" class="img-fluid" />
+              </div>
+              <div class="product-info text-end">
+                <p class="mb-1">{{ product.nameFa }}</p>
+                <div class="card-accent-line" [style.background-color]="product.accentColor"></div>
+              </div>
+            </div>
+          </a>
         </div>
       }
+    </div>
+  </div>
+</section>
+
+<div class="cooperation-section">
+  <div class="glass-container">
+    <div class="row align-items-center g-4">
+      <div class="col-lg-5">
+        <div class="info-wrapper d-flex align-items-center justify-content-end gap-3 text-end">
+          <div class="icon-circle">
+            <i class="bi bi-handshake"></i>
+            <img src="img/handshake.png" alt="">
+          </div>
+          <div class="text-content">
+            <h4 class="m-0 fw-bold gold-text">همکاری با ما</h4>
+            <p class="m-0 text-light opacity-75 small">
+              فرصت‌های همکاری در بازار فلزات؛ برای پیوستن به شبکه تأمین‌کنندگان و خریداران ما،
+              اطلاعات خود را ثبت کنید تا در کوتاه‌ترین زمان با شما تماس بگیریم.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- بخش دکمه و اینپوت‌ها -->
+      <div class="col-lg-7">
+        <form class="row g-3 mt-2">
+          <div class="col-md-5">
+            <input type="text" class="form-control glass-input" placeholder="نام و نام خانوادگی" />
+          </div>
+          <div class="col-md-4">
+            <input type="text" class="form-control glass-input" placeholder="شماره تماس" />
+          </div>
+          <div class="col-md-3">
+            <button type="submit" class="btn btn-send w-100">ارسال</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- بخش متن و آیکون -->
     </div>
   </div>
 </div>

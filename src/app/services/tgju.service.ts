@@ -34,10 +34,9 @@ export interface TgjuResponse {
   providedIn: 'root'
 })
 export class TgjuService {
-  // استفاده از متد مدرن inject به جای constructor
   private http = inject(HttpClient);
   
-  private apiUrl = 'https://api.tgju.org/v1/widget/tmp?keys=137203,239617,239614,239615';
+  private apiUrl = 'https://api.tgju.org/v1/widget/tmp?keys=137203,239617,131419,239616,239614,239615,131427';
 
   getIndicators(): Observable<TgjuIndicator[]> {
     return this.http.get<TgjuResponse>(this.apiUrl).pipe(
