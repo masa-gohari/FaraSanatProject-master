@@ -1,13 +1,20 @@
 import {
   AfterViewInit,
   Component,
-  DestroyRef,
-  PLATFORM_ID,
-  inject,
+  Inject,
+  PLATFORM_ID
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
-declare const L: any;
+import Map from '@neshan-maps-platform/ol/Map';
+import View from '@neshan-maps-platform/ol/View';
+import { fromLonLat } from '@neshan-maps-platform/ol/proj';
+import Feature from '@neshan-maps-platform/ol/Feature';
+import Point from '@neshan-maps-platform/ol/geom/Point';
+import { Style, Icon } from '@neshan-maps-platform/ol/style';
+import { Vector as VectorSource } from '@neshan-maps-platform/ol/source';
+import { Vector as VectorLayer } from '@neshan-maps-platform/ol/layer';
+import { defaults as defaultControls } from '@neshan-maps-platform/ol/control';
 
 @Component({
   selector: 'app-map',
@@ -15,70 +22,84 @@ declare const L: any;
   templateUrl: './map.html',
   styleUrl: './map.scss',
 })
-export class Map implements AfterViewInit {
-  private platformId = inject(PLATFORM_ID);
-  private destroyRef = inject(DestroyRef);
+export class MapNeshan implements AfterViewInit {
+  map!: Map;
 
-  private map: any;
-
-  // مختصات دقیق از روی لینک نشان شما (گلشید شهرقدس)
-  readonly lat = 35.696;
-  readonly lng = 51.133;
-  readonly zoom = 15;
-
-  readonly neshanLink =
-    'https://neshan.org/maps/places/_bvgT0Vxx1WS#c35.696-51.133-15z-0p';
+  constructor(@Inject(PLATFORM_ID) private platformId: object) { }
 
   ngAfterViewInit(): void {
     if (!isPlatformBrowser(this.platformId)) return;
-
-    // زمان‌بندی برای اطمینان از قرارگیری کامل HTML در صفحه
     setTimeout(() => {
       this.initMap();
-    }, 200);
-
-    this.destroyRef.onDestroy(() => {
-      if (this.map) {
-        this.map.remove();
-      }
-    });
+    }, 100);
   }
 
   private initMap(): void {
-    const mapContainer = document.getElementById('map');
-    if (!mapContainer) return;
+    const longitude = 51.1272;
+    const latitude = 35.6956;
+    const coordinates = fromLonLat([longitude, latitude]);
 
-    if (this.map) {
-      this.map.remove();
-    }
-
-    // ساخت نقشه با تنظیمات استاندارد نشان
-    this.map = new L.Map('map', {
-      key: 'service.db1282032ae54a68b91504ddae46749c', // کلید API شما
-      maptype: 'neshan-default', // استاندارد نقشه نشان
-      poi: true,
-      traffic: false,
-      center: [this.lat, this.lng],
-      zoom: this.zoom,
+    this.map = new Map({
+      target: 'map',
+      key: 'web.ad57ecce78694ea6aa953905352cbc05',
+      mapType: 'dreamy',
+      controls: defaultControls({
+        attribution: false
+      }),
+      view: new View({
+        center: coordinates,
+        zoom: 17
+      })
     });
 
-    // افزودن مارکر
-    const marker = L.marker([this.lat, this.lng]).addTo(this.map);
+    const marker = new Feature({
+      geometry: new Point(coordinates)
+    });
 
-    marker
-      .bindPopup(
-        `
-        <div style="direction: rtl; text-align: right; font-family: Vazir, sans-serif; padding: 4px;">
-          <strong style="color: #f26522; font-size: 14px;">گروه صنعتی فراصنعت</strong><br>
-        </div>
-        `
-      )
-      .openPopup();
-    setTimeout(() => {
-      if (this.map) {
-        this.map.invalidateSize();
-        this.map.setView([this.lat, this.lng], this.zoom);
+    marker.setStyle(
+      new Style({
+        image: new Icon({
+          anchor: [0.5, 1],
+          src: 'img/marker.png',
+          scale: 0.9
+        })
+      })
+    );
+
+    const vectorLayer = new VectorLayer({
+      source: new VectorSource({
+        features: [marker]
+      })
+    });
+
+    this.map.addLayer(vectorLayer);
+
+    this.map.on('pointermove', (event) => {
+      const pixel = this.map.getEventPixel(event.originalEvent);
+      const hit = this.map.hasFeatureAtPixel(pixel);
+      this.map.getTargetElement().style.cursor = hit ? 'pointer' : '';
+    });
+
+    this.map.on('click', (event) => {
+      const markerPixel = this.map.getPixelFromCoordinate(coordinates);
+
+      const offsetX = event.pixel[0] - markerPixel[0];
+      const offsetY = event.pixel[1] - markerPixel[1];
+
+      const isMarkerClicked = Math.sqrt(offsetX * offsetX + offsetY * offsetY) <= 30;
+
+      if (isMarkerClicked) {
+        this.openNeshanMap();
       }
-    }, 500);
+    });
+
+    setTimeout(() => {
+      this.map.updateSize();
+    }, 300);
+  }
+
+  private openNeshanMap(): void {
+    const url ="https://neshan.org/maps/places/_bvgT0Vxx1WS#c35.698-51.130-15z-0p"
+    window.open(url, '_blank', 'noopener,noreferrer');
   }
 }

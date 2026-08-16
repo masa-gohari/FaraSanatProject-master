@@ -3,7 +3,7 @@ import { TgjuIndicator, TgjuService } from '../services/tgju.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { ProductService } from '../services/product.service';
-import { Map } from '../map/map';
+import { MapNeshan } from '../map/map';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ContactMessage } from '../model/contact.model';
 import { ContactService } from '../services/contact.service';
@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterLink, Map, ReactiveFormsModule],
+  imports: [CommonModule, RouterLink, MapNeshan, ReactiveFormsModule],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
