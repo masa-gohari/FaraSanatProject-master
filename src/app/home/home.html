@@ -82,33 +82,64 @@
 <div class="cooperation-section">
   <div class="glass-container">
     <div class="row align-items-center g-4">
-      <div class="col-lg-5">
-        <div class="info-wrapper d-flex align-items-center justify-content-end gap-3 text-end">
-          <div class="icon-circle">
-            <i class="bi bi-handshake"></i>
-            <img src="img/handshake.png" alt="" />
-          </div>
+      <div class="row">
+        <div class="info-wrapper">
           <div class="text-content">
-            <h4 class="m-0 fw-bold gold-text">همکاری با ما</h4>
-            <p class="m-0 text-light opacity-75 small">
+            <h4 class="m-0 fw-bold gold-text text-center">همکاری با ما</h4>
+            <p class="mt-3 text-center text-light opacity-75 small">
               فرصت‌های همکاری در بازار فلزات؛ برای پیوستن به شبکه تأمین‌کنندگان و خریداران ما،
               اطلاعات خود را ثبت کنید تا در کوتاه‌ترین زمان با شما تماس بگیریم.
             </p>
           </div>
         </div>
-      </div>
+      </div> 
 
       <!-- بخش دکمه و اینپوت‌ها -->
-      <div class="col-lg-7">
-        <form class="row g-3 mt-2">
-          <div class="col-md-5">
-            <input type="text" class="form-control glass-input" placeholder="نام و نام خانوادگی" />
-          </div>
-          <div class="col-md-4">
-            <input type="text" class="form-control glass-input" placeholder="شماره تماس" />
+      <div class="col-lg-12">
+        <form class="row" [formGroup]="form">
+          <div class="col-md-4 d-flex mt-2">
+            <label class="form-label d-block fw-bold text-light opacity-75 small">نوع کاربری خود را انتخاب کنید:</label>
+
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                id="buyerRole"
+                value="buyer"
+                formControlName="role"
+              />
+              <label class="form-check-label text-light opacity-75 small" for="buyerRole">خریدار</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                id="sellerRole"
+                value="seller"
+                formControlName="role"
+              />
+              <label class="form-check-label text-light opacity-75 small" for="sellerRole" >فروشنده</label>
+            </div>
           </div>
           <div class="col-md-3">
-            <button type="submit" class="btn btn-send w-100">ارسال</button>
+            <input
+              type="text"
+              class="form-control glass-input"
+              formControlName="fullName"
+              placeholder="نام و نام خانوادگی"
+            />
+          </div>
+          <div class="col-md-3">
+            <input
+              type="text"
+              class="form-control glass-input"
+              formControlName="mobile"
+              placeholder="شماره تماس"
+            />
+          </div>
+          <div class="col-md-2">
+            <button class="btn btn-send w-100" (click)="submit()">ارسال</button>
           </div>
         </form>
       </div>
