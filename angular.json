@@ -36,16 +36,16 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/ngx-toastr/toastr.css",
-
               "node_modules/@neshan-maps-platform/ol/ol.css",
+              "src/src_theme-colors.scss",
               "src/styles.scss"
             ],
             "scripts": ["node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"],
             "outputMode": "static",
             "security": {
               "allowedHosts": []
-            }
+            },
+            "polyfills": ["@angular/localize/init"]
           },
           "configurations": {
             "production": {

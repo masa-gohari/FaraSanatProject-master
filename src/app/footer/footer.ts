@@ -17,12 +17,12 @@ import { Vector as VectorLayer } from '@neshan-maps-platform/ol/layer';
 import { defaults as defaultControls } from '@neshan-maps-platform/ol/control';
 
 @Component({
-  selector: 'app-map',
+  selector: 'app-footer',
   standalone: true,
-  templateUrl: './map.html',
-  styleUrl: './map.scss',
+  templateUrl: './footer.html',
+  styleUrl: './footer.scss',
 })
-export class MapNeshan implements AfterViewInit {
+export class Footer implements AfterViewInit {
   map!: Map;
 
   constructor(@Inject(PLATFORM_ID) private platformId: object) { }

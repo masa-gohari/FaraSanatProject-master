@@ -25,7 +25,7 @@ $text-light: #ffffff;
   position: relative;
   z-index: 5;
   text-align: center;
-  margin-top: -40px;
+  margin-top: -2%;
   padding: 0 20px;
 }
 
@@ -289,6 +289,63 @@ $text-light: #ffffff;
   }
 }
 
+:host button.btn.btn-submit {
+  background-color: $primary-color;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  width: fit-content;
+
+  &:hover {
+    background-color: $primary-hover;
+    transform: translateY(-2px);
+  }
+}
+
+.radio-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.radio-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  direction: rtl;
+}
+
+.p-assist{
+  line-height: 40px;
+} 
+
+.example-radio-button {
+  margin: 0;
+
+  /* رنگ دایره انتخاب‌شده */
+  --mat-radio-selected-icon-color: #f26522;
+  --mat-radio-selected-focus-icon-color: #f26522;
+  --mat-radio-selected-hover-icon-color: #f26522;
+  --mat-radio-selected-pressed-icon-color: #f26522;
+
+  /* رنگ دایره انتخاب‌نشده */
+  --mat-radio-unselected-icon-color: #999999;
+  --mat-radio-unselected-focus-icon-color: #f26522;
+
+  /* استایل متن */
+  --mat-radio-label-text-color: #ffffff;
+  --mat-radio-label-text-font: 'Vazir', sans-serif;
+  --mat-radio-label-text-size: 14px;
+}
+
+.required-star{
+
+}
 
 
 .cooperation-section {
@@ -350,21 +407,6 @@ $text-light: #ffffff;
       box-shadow: none;
       border-color: rgba(255, 255, 255, 0.3);
       color: #fff;
-    }
-  }
-
-  .btn-send {
-    background: $primary-color; /* رنگ سبز تیره مشابه تصویر اصلی */
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 12px;
-    font-weight: bold;
-    transition: all 0.3s ease;
-
-    &:hover {
-      background-color: $primary-hover;
-      transform: translateY(-2px);
     }
   }
 
