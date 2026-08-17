@@ -1,6 +1,6 @@
 $primary-color: #f26522;
 $primary-hover: #d8652f;
-$dark-bg: #2C2C2C;
+$dark-bg: #2c2c2c;
 $text-light: #ffffff;
 
 .hero {
@@ -73,7 +73,7 @@ $text-light: #ffffff;
   display: flex;
   align-items: center;
   padding: 0 70px;
-  border-left: 1px solid $primary-color ;
+  border-left: 1px solid $primary-color;
   transition: transform 0.2s;
 
   &:hover {
@@ -126,7 +126,6 @@ $text-light: #ffffff;
     color: #e74c3c;
     font-size: 14px;
   }
-
 }
 
 .change-icon {
@@ -190,7 +189,8 @@ $text-light: #ffffff;
   text-decoration: none;
   color: #2b2b2b;
 
-  transition: max-width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+  transition:
+    max-width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
     box-shadow 0.3s ease;
   cursor: pointer;
 
@@ -247,7 +247,9 @@ $text-light: #ffffff;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
     border: none;
     height: 100%;
 
@@ -287,6 +289,8 @@ $text-light: #ffffff;
   }
 }
 
+
+
 .cooperation-section {
   position: relative;
   padding: 80px 20px;
@@ -324,7 +328,7 @@ $text-light: #ffffff;
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 100px; 
+    border-radius: 100px;
     padding: 30px 60px;
     box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
   }

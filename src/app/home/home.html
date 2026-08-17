@@ -9,40 +9,35 @@
 <div class="ticker-wrapper mt-3">
   <div class="ticker-content">
     @for (item of indicators(); track item.id) {
-      <div class="ticker-item">
-        <span class="dot"></span>
-        <span class="title">{{ item.title }}</span>
-        <span class="price-value">{{ item.p | number }}</span>
-        <div class="price-info">
-          <span class="change-icon" [class.up]="+item.d >= 0" [class.down]="+item.d < 0">
-            {{ +item.d >= 0 ? '▲' : '▼' }}
-          </span>
-          <span class="percentage">(%{{ item.dp || 0 }})</span>
-        </div>
+    <div class="ticker-item">
+      <span class="dot"></span>
+      <span class="title">{{ item.title }}</span>
+      <span class="price-value">{{ item.p | number }}</span>
+      <div class="price-info">
+        <span class="change-icon" [class.up]="+item.d >= 0" [class.down]="+item.d < 0">
+          {{ +item.d >= 0 ? '▲' : '▼' }}
+        </span>
+        <span class="percentage">(%{{ item.dp || 0 }})</span>
       </div>
+    </div>
     }
 
     @for (item of indicators(); track 'copy-' + item.id) {
-      <div class="ticker-item">
-        <span class="dot"></span>
-        <span class="title">{{ item.title }}</span>
-        <span class="price-value">{{ item.p | number }}</span>
-        <div class="price-info">
-          <span class="change-icon" [class.up]="+item.d >= 0" [class.down]="+item.d < 0">
-            {{ +item.d >= 0 ? '▲' : '▼' }}
-          </span>
-          <span class="percentage">(%{{ item.dp || 0 }})</span>
-        </div>
+    <div class="ticker-item">
+      <span class="dot"></span>
+      <span class="title">{{ item.title }}</span>
+      <span class="price-value">{{ item.p | number }}</span>
+      <div class="price-info">
+        <span class="change-icon" [class.up]="+item.d >= 0" [class.down]="+item.d < 0">
+          {{ +item.d >= 0 ? '▲' : '▼' }}
+        </span>
+        <span class="percentage">(%{{ item.dp || 0 }})</span>
       </div>
+    </div>
     }
   </div>
-  <div
-    class="floating-widget"
-    [class.expanded]="isExpanded()"
-    (mouseenter)="expand()"
-    (mouseleave)="collapse()"
-    (click)="toggle()"
-  >
+  <div class="floating-widget" [class.expanded]="isExpanded()" (mouseenter)="expand()" (mouseleave)="collapse()"
+    (click)="toggle()">
     <div class="icon-wrapper">
       <img src="img/touch-icon-ipad.png" alt="tgju" class="icon-image" />
     </div>
@@ -61,23 +56,45 @@
     </div>
     <div class="row g-4 justify-content-center">
       @for (product of products(); track product.id) {
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-          <a [routerLink]="['/products', product.id]" class="text-decoration-none text-dark">
-            <div class="product-card">
-              <div class="product-image">
-                <img [src]="product.image" [alt]="product.nameFa" class="img-fluid" />
-              </div>
-              <div class="product-info text-end">
-                <p class="mb-1">{{ product.nameFa }}</p>
-                <div class="card-accent-line" [style.background-color]="product.accentColor"></div>
-              </div>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <a [routerLink]="['/products', product.id]" class="text-decoration-none text-dark">
+          <div class="product-card">
+            <div class="product-image">
+              <img [src]="product.image" [alt]="product.nameFa" class="img-fluid" />
             </div>
-          </a>
-        </div>
+            <div class="product-info text-end">
+              <p class="mb-1">{{ product.nameFa }}</p>
+              <div class="card-accent-line" [style.background-color]="product.accentColor"></div>
+            </div>
+          </div>
+        </a>
+      </div>
       }
     </div>
   </div>
 </section>
+
+
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-5" style="margin: 0 auto 0 auto;">
+      <h4>همکاری با ما</h4>
+      <p>
+        فرصت‌های همکاری در بازار فلزات؛ برای پیوستن به شبکه تأمین‌کنندگان و خریداران ما،
+        اطلاعات خود را ثبت کنید تا در کوتاه‌ترین زمان با شما تماس بگیریم.
+      </p>
+      <div>
+        
+      </div>
+
+    </div>
+  </div>
+</div>
+
 
 <div class="cooperation-section">
   <div class="glass-container">
@@ -92,51 +109,31 @@
             </p>
           </div>
         </div>
-      </div> 
+      </div>
 
       <!-- بخش دکمه و اینپوت‌ها -->
       <div class="col-lg-12">
         <form class="row" [formGroup]="form">
           <div class="col-md-4 d-flex mt-2">
-            <label class="form-label d-block fw-bold text-light opacity-75 small">نوع کاربری خود را انتخاب کنید:</label>
+            <label class="form-label d-block fw-bold text-light opacity-75 small">نوع کاربری خود را انتخاب
+              کنید:</label>
 
             <div class="form-check form-check-inline">
-              <input
-                class="form-check-input"
-                type="radio"
-                id="buyerRole"
-                value="buyer"
-                formControlName="role"
-              />
-              <label class="form-check-label text-light opacity-75 small" for="buyerRole">خریدار</label>
+              <input class="form-check-input" type="radio" id="buyerRole" value="buyer" formControlName="role" />
+              <label class="form-check-label text-light opacity-75 small" for="buyerRole">مصرف کننده</label>
             </div>
 
             <div class="form-check form-check-inline">
-              <input
-                class="form-check-input"
-                type="radio"
-                id="sellerRole"
-                value="seller"
-                formControlName="role"
-              />
-              <label class="form-check-label text-light opacity-75 small" for="sellerRole" >فروشنده</label>
+              <input class="form-check-input" type="radio" id="sellerRole" value="seller" formControlName="role" />
+              <label class="form-check-label text-light opacity-75 small" for="sellerRole">تولید کننده</label>
             </div>
           </div>
           <div class="col-md-3">
-            <input
-              type="text"
-              class="form-control glass-input"
-              formControlName="fullName"
-              placeholder="نام و نام خانوادگی"
-            />
+            <input type="text" class="form-control glass-input" formControlName="fullName"
+              placeholder="نام و نام خانوادگی" />
           </div>
           <div class="col-md-3">
-            <input
-              type="text"
-              class="form-control glass-input"
-              formControlName="mobile"
-              placeholder="شماره تماس"
-            />
+            <input type="text" class="form-control glass-input" formControlName="mobile" placeholder="شماره تماس" />
           </div>
           <div class="col-md-2">
             <button class="btn btn-send w-100" (click)="submit()">ارسال</button>
