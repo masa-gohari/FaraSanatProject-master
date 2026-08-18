@@ -1,0 +1,92 @@
+$primary-color: #f26522;
+$primary-hover: #d8652f;
+
+.radio-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.radio-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    direction: rtl;
+}
+
+.p-assist {
+    line-height: 40px;
+}
+
+.example-radio-button {
+    margin: 0;
+    --mat-radio-selected-icon-color: #f26522;
+    --mat-radio-selected-focus-icon-color: #f26522;
+    --mat-radio-selected-hover-icon-color: #f26522;
+    --mat-radio-selected-pressed-icon-color: #f26522;
+
+    --mat-radio-unselected-icon-color: #999999;
+    --mat-radio-unselected-focus-icon-color: #f26522;
+
+    --mat-radio-label-text-color: #ffffff;
+    --mat-radio-label-text-font: 'Vazir', sans-serif;
+    --mat-radio-label-text-size: 14px;
+}
+
+.cooperation-section {
+    position: relative;
+    padding: 80px 20px;
+    overflow: hidden;
+    direction: rtl;
+
+    .glass-container {
+        position: relative;
+        z-index: 1;
+        max-width: 1300px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 100px;
+        padding: 30px 60px;
+        box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
+    }
+
+    .gold-text {
+        color: $primary-color;
+        margin-bottom: 5px !important;
+    }
+
+}
+
+:host button.btn.btn-submit {
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    width: fit-content;
+
+    &:hover {
+        background-color: $primary-hover;
+        transform: translateY(-2px);
+    }
+}
+
+@media (max-width: 991px) {
+    .glass-container {
+        border-radius: 25px;
+        padding: 30px;
+    }
+
+    .info-wrapper {
+        flex-direction: column-reverse;
+        text-align: center !important;
+        justify-content: center !important;
+    }
+}

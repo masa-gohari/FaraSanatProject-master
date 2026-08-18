@@ -106,9 +106,8 @@
 
 <section class="products-section py-5">
   <div class="container mt-3">
-    <div class="text-center mb-5">
-      <h2 class="fw-bold text-white mb-1">محصولات</h2>
-      <div class="title-divider"></div>
+    <div class="mb-5">
+      <h4 class="m-0 fw-bold gold-text text-center">محصولات</h4>
     </div>
     <div class="row g-4 justify-content-center">
       @for (product of products(); track product.id) {
@@ -130,62 +129,18 @@
   </div>
 </section>
 
-<div class="container">
-  <div class="row cooperation-section">
-    <div class="col-lg-6 col-md-12 col-sm-12 glass-container" style="margin: 0 auto 0 auto">
-      <h4 class="m-0 fw-bold gold-text text-center">همکاری با ما</h4>
-      <p class="mt-3 text-center text-white small p-assist">
-        فرصت‌های همکاری در بازار فلزات؛ برای پیوستن به شبکه تأمین‌کنندگان و خریداران ما، اطلاعات خود
-        را ثبت کنید تا در کوتاه‌ترین زمان با شما تماس بگیریم.
-      </p>
-      <form class="row" [formGroup]="form">
-        <div class="d-flex justify-content-center">
-          <label id="example-radio-group-label"></label>
-          <mat-radio-group formControlName="userType">
-            @for (user of users; track user.value) {
-              <mat-radio-button class="example-radio-button text-light" [value]="user.value">{{
-                user.label
-              }}</mat-radio-button>
-            }
-          </mat-radio-group>
-        </div>
-        <div class="d-flex justify-content-center mt-3">
-          <mat-form-field
-            appearance="outline"
-            dir="rtl"
-            [hideRequiredMarker]="true"
-            class="orange-input"
-          >
-            <mat-label class="required-label">
-              <span class="required-star">*</span>
-              <span style="margin-right: 4px">نام و نام خانوادگی</span>
-            </mat-label>
-            <input matInput formControlName="fullName" />
-          </mat-form-field>
-        </div>
-        <div class="d-flex justify-content-center mt-2">
-          <mat-form-field
-            appearance="outline"
-            dir="rtl"
-            [hideRequiredMarker]="true"
-            class="orange-input"
-          >
-            <mat-label class="required-label">
-              <span class="required-star">*</span>
-              <span style="margin-right: 2px"> شماره تماس </span>
-            </mat-label>
-            <input matInput type="text" formControlName="mobile" />
-          </mat-form-field>
-        </div>
-      </form>
-
-      <div class="d-flex justify-content-center">
-        <button class="btn btn-submit" (click)="submit()">ارسال اطلاعات</button>
-      </div>
-    </div>
-  </div>
+<div class="d-flex justify-content-center mt-3 mb-4">
+  <button class="btn catalog-btn">دانلود کاتالوگ</button>
 </div>
 
+<div class="d-flex justify-content-center mt-5">
+  <button class="btn catalog-btn" (click)="goToWeightCalculation()"> جدول محاسبه وزن</button>
+  
+</div>
+
+<div>
+  <app-assist-with-us></app-assist-with-us>
+</div>
 <div class="mt-5">
   <app-footer></app-footer>
 </div>
