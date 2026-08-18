@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { PageBanner } from '../shared/page-banner/page-banner';
 
 @Component({
   selector: 'app-copper',
-  imports: [],
+  imports: [PageBanner],
   templateUrl: './copper.html',
   styleUrl: './copper.scss',
 })

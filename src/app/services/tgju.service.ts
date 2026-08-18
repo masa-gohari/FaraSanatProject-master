@@ -36,7 +36,7 @@ export interface TgjuResponse {
 export class TgjuService {
   private http = inject(HttpClient);
   
-  private apiUrl = 'https://api.tgju.org/v1/widget/tmp?keys=137203,239617,131419,239616,239614,239615,131427';
+  private apiUrl = 'https://api.tgju.org/v1/widget/tmp?keys=239617,131419,239614,239616,239615';
 
   getIndicators(): Observable<TgjuIndicator[]> {
     return this.http.get<TgjuResponse>(this.apiUrl).pipe(

@@ -1,5 +1,10 @@
 <div class="hero" style="background-image: url('img/copper-alloy-rods.jpg')">
   <div class="overlay"></div>
+  <div>
+    <a class="site-logo" routerLink="/home">
+      <img src="img/farasanaat-logo.png" alt="گروه صنعتی فرا صنعت ایران" />
+    </a>
+  </div>
   <div class="content">
     <h1>گروه صنعتی فراصنعت ایران</h1>
     <p class="p-title">تولید قطعات و مقاطع برنجی</p>
@@ -9,35 +14,86 @@
 <div class="ticker-wrapper mt-3">
   <div class="ticker-content">
     @for (item of indicators(); track item.id) {
-    <div class="ticker-item">
-      <span class="dot"></span>
-      <span class="title">{{ item.title }}</span>
-      <span class="price-value">{{ item.p | number }}</span>
-      <div class="price-info">
-        <span class="change-icon" [class.up]="+item.d >= 0" [class.down]="+item.d < 0">
-          {{ +item.d >= 0 ? '▲' : '▼' }}
-        </span>
-        <span class="percentage">(%{{ item.dp || 0 }})</span>
+      <div class="ticker-item">
+        <span class="dot"></span>
+        <span class="title">{{ item.title }}</span>
+        <span class="price-value">{{ item.p | number }}</span>
+
+        <div class="price-info">
+          <span
+            class="change-icon"
+            [class.up]="item.dt === 'high'"
+            [class.down]="item.dt === 'low'"
+            [class.neutral]="!item.dt"
+          >
+            {{ item.dt === 'high' ? '▲' : item.dt === 'low' ? '▼' : '−' }}
+          </span>
+
+          <span
+            class="change-value"
+            [class.up]="item.dt === 'high'"
+            [class.down]="item.dt === 'low'"
+            [class.neutral]="!item.dt"
+          >
+            {{ item.d ?? 0 | number }}
+          </span>
+
+          <span
+            class="percentage"
+            [class.up]="item.dt === 'high'"
+            [class.down]="item.dt === 'low'"
+            [class.neutral]="!item.dt"
+          >
+            (%{{ item.dp ?? 0 }})
+          </span>
+        </div>
       </div>
-    </div>
     }
 
     @for (item of indicators(); track 'copy-' + item.id) {
-    <div class="ticker-item">
-      <span class="dot"></span>
-      <span class="title">{{ item.title }}</span>
-      <span class="price-value">{{ item.p | number }}</span>
-      <div class="price-info">
-        <span class="change-icon" [class.up]="+item.d >= 0" [class.down]="+item.d < 0">
-          {{ +item.d >= 0 ? '▲' : '▼' }}
-        </span>
-        <span class="percentage">(%{{ item.dp || 0 }})</span>
+      <div class="ticker-item">
+        <span class="dot"></span>
+        <span class="title">{{ item.title }}</span>
+        <span class="price-value">{{ item.p | number }}</span>
+
+        <div class="price-info">
+          <span
+            class="change-icon"
+            [class.up]="item.dt === 'high'"
+            [class.down]="item.dt === 'low'"
+            [class.neutral]="!item.dt"
+          >
+            {{ item.dt === 'high' ? '▲' : item.dt === 'low' ? '▼' : '−' }}
+          </span>
+
+          <span
+            class="change-value"
+            [class.up]="item.dt === 'high'"
+            [class.down]="item.dt === 'low'"
+            [class.neutral]="!item.dt"
+          >
+            {{ item.d ?? 0 | number }}
+          </span>
+
+          <span
+            class="percentage"
+            [class.up]="item.dt === 'high'"
+            [class.down]="item.dt === 'low'"
+            [class.neutral]="!item.dt"
+          >
+            (%{{ item.dp ?? 0 }})
+          </span>
+        </div>
       </div>
-    </div>
     }
   </div>
-  <div class="floating-widget" [class.expanded]="isExpanded()" (mouseenter)="expand()" (mouseleave)="collapse()"
-    (click)="toggle()">
+  <div
+    class="floating-widget"
+    [class.expanded]="isExpanded()"
+    (mouseenter)="expand()"
+    (mouseleave)="collapse()"
+    (click)="toggle()"
+  >
     <div class="icon-wrapper">
       <img src="img/touch-icon-ipad.png" alt="tgju" class="icon-image" />
     </div>
@@ -56,61 +112,67 @@
     </div>
     <div class="row g-4 justify-content-center">
       @for (product of products(); track product.id) {
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-        <a [routerLink]="['/products', product.id]" class="text-decoration-none text-dark">
-          <div class="product-card">
-            <div class="product-image">
-              <img [src]="product.image" [alt]="product.nameFa" class="img-fluid" />
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <a [routerLink]="['/products', product.id]" class="text-decoration-none text-dark">
+            <div class="product-card">
+              <div class="product-image">
+                <img [src]="product.image" [alt]="product.nameFa" class="img-fluid" />
+              </div>
+              <div class="product-info text-end">
+                <p class="mb-1">{{ product.nameFa }}</p>
+                <div class="card-accent-line" [style.background-color]="product.accentColor"></div>
+              </div>
             </div>
-            <div class="product-info text-end">
-              <p class="mb-1">{{ product.nameFa }}</p>
-              <div class="card-accent-line" [style.background-color]="product.accentColor"></div>
-            </div>
-          </div>
-        </a>
-      </div>
+          </a>
+        </div>
       }
     </div>
   </div>
 </section>
 
-
-
-
-
-
-<div class="container ">
+<div class="container">
   <div class="row cooperation-section">
-    <div class="col-lg-6 col-md-12 col-sm-12 glass-container" style="margin: 0 auto 0 auto;">
+    <div class="col-lg-6 col-md-12 col-sm-12 glass-container" style="margin: 0 auto 0 auto">
       <h4 class="m-0 fw-bold gold-text text-center">همکاری با ما</h4>
-      <p class="mt-3 text-center text-white small p-assist ">
-        فرصت‌های همکاری در بازار فلزات؛ برای پیوستن به شبکه تأمین‌کنندگان و خریداران ما،
-        اطلاعات خود را ثبت کنید تا در کوتاه‌ترین زمان با شما تماس بگیریم.
+      <p class="mt-3 text-center text-white small p-assist">
+        فرصت‌های همکاری در بازار فلزات؛ برای پیوستن به شبکه تأمین‌کنندگان و خریداران ما، اطلاعات خود
+        را ثبت کنید تا در کوتاه‌ترین زمان با شما تماس بگیریم.
       </p>
       <form class="row" [formGroup]="form">
         <div class="d-flex justify-content-center">
           <label id="example-radio-group-label"></label>
           <mat-radio-group formControlName="userType">
             @for (user of users; track user.value) {
-            <mat-radio-button class="example-radio-button text-light"
-              [value]="user.value">{{user.label}}</mat-radio-button>
+              <mat-radio-button class="example-radio-button text-light" [value]="user.value">{{
+                user.label
+              }}</mat-radio-button>
             }
           </mat-radio-group>
         </div>
         <div class="d-flex justify-content-center mt-3">
-          <mat-form-field appearance="outline" dir="rtl" [hideRequiredMarker]="true" class="orange-input">
+          <mat-form-field
+            appearance="outline"
+            dir="rtl"
+            [hideRequiredMarker]="true"
+            class="orange-input"
+          >
             <mat-label class="required-label">
               <span class="required-star">*</span>
-              <span style="margin-right: 4px;">نام و نام خانوادگی</span>
+              <span style="margin-right: 4px">نام و نام خانوادگی</span>
             </mat-label>
             <input matInput formControlName="fullName" />
           </mat-form-field>
         </div>
         <div class="d-flex justify-content-center mt-2">
-          <mat-form-field appearance="outline" dir="rtl" [hideRequiredMarker]="true" class="orange-input">
+          <mat-form-field
+            appearance="outline"
+            dir="rtl"
+            [hideRequiredMarker]="true"
+            class="orange-input"
+          >
             <mat-label class="required-label">
               <span class="required-star">*</span>
-              <span style="margin-right: 2px;"> شماره تماس </span>
+              <span style="margin-right: 2px"> شماره تماس </span>
             </mat-label>
             <input matInput type="text" formControlName="mobile" />
           </mat-form-field>
@@ -118,9 +180,8 @@
       </form>
 
       <div class="d-flex justify-content-center">
-        <button class="btn btn-submit" (click)="submit()"> ارسال اطلاعات</button>
+        <button class="btn btn-submit" (click)="submit()">ارسال اطلاعات</button>
       </div>
-
     </div>
   </div>
 </div>

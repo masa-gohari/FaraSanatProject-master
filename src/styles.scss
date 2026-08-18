@@ -1,5 +1,7 @@
 @use '@angular/material' as mat;
 @use './src_theme-colors.scss' as my-theme;
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
 
 html {
   @include mat.theme((

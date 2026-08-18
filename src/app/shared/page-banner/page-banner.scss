@@ -1,0 +1,36 @@
+.banner-logo {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 3;
+}
+
+.banner-logo img {
+  width: 145px;
+  height: auto;
+  display: block;
+}
+
+
+@media (max-width: 768px) {
+  .page-banner {
+    height: 220px;
+  }
+
+  .banner-logo {
+    top: 16px;
+    left: 16px;
+  }
+
+  .banner-logo img {
+    width: 105px;
+  }
+
+  .banner-content h1 {
+    font-size: 32px;
+  }
+
+  .banner-content p {
+    font-size: 18px;
+  }
+}

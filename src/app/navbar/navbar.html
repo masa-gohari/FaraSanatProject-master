@@ -1,90 +1,101 @@
-<nav class="navbar sticky-top site-navbar mt-4" dir="rtl">
-  <a class="site-logo d-none d-lg-block" routerLink="/home">
-    <img src="img/farasanaat-logo.png" alt="گروه صنعتی فرا صنعت ایران" />
-  </a>
-  <div>
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#mainDrawer"
-      aria-controls="mainDrawer" aria-label="باز کردن منو">
-      <span class="navbar-toggler-icon"></span>
+<nav
+  class="site-navbar"
+  [class.collapsed]="isSidebarCollapsed"
+  dir="rtl"
+>
+  <div class="sidebar-header">
+    <a class="site-logo" routerLink="/home">
+      <img
+        src="img/farasanaat-logo.png"
+        alt="گروه صنعتی فرا صنعت ایران"
+      />
+    </a>
+
+    <button
+      type="button"
+      class="sidebar-toggle"
+      (click)="toggleSidebar()"
+      [attr.aria-label]="isSidebarCollapsed ? 'باز کردن منو' : 'بستن منو'"
+    >
+      <i
+        class="bi"
+        [class.bi-chevron-left]="isSidebarCollapsed"
+        [class.bi-chevron-right]="!isSidebarCollapsed"
+      ></i>
     </button>
-
-    <div class="offcanvas offcanvas-end site-drawer" tabindex="-1" id="mainDrawer" aria-labelledby="mainDrawerLabel">
-
-      <div class="offcanvas-header">
-        <button type="button" class=" btn btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="بستن">
-        </button>
-      </div>
-
-      <div class="offcanvas-body">
-        <ul class="navbar-nav w-100">
-
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
-              data-bs-dismiss="offcanvas">
-              صفحه اصلی
-            </a>
-          </li>
-
-          <li class="nav-item dropdown" routerLinkActive #productsRla="routerLinkActive">
-
-            <button type="button" class="nav-link dropdown-toggle" [class.active]="productsRla.isActive"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              محصولات
-            </button>
-
-            <ul class="dropdown-menu dropdown-menu-dark">
-              <li>
-                <a class="dropdown-item" routerLink="/products/brass" data-bs-dismiss="offcanvas">
-                  برنج
-                </a>
-              </li>
-
-              <li>
-                <a class="dropdown-item" routerLink="/products/copper" data-bs-dismiss="offcanvas">
-                  مس
-                </a>
-              </li>
-
-              <li>
-                <a class="dropdown-item" routerLink="/products/zinc" data-bs-dismiss="offcanvas">
-                  روی
-                </a>
-              </li>
-
-              <li>
-                <a class="dropdown-item" routerLink="/products/scrap" data-bs-dismiss="offcanvas">
-                  ضایعات
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/weight-calculation" routerLinkActive="active" data-bs-dismiss="offcanvas">
-              محاسبه وزن مقاطع فلزی
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/news" routerLinkActive="active" data-bs-dismiss="offcanvas">
-              اخبار
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/about-us" routerLinkActive="active" data-bs-dismiss="offcanvas">
-              درباره ما
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/assist-with-us" routerLinkActive="active" data-bs-dismiss="offcanvas">
-              همکاری با ما
-            </a>
-          </li>
-
-        </ul>
-      </div>
-    </div>
   </div>
+
+  <ul class="sidebar-menu">
+    <li>
+      <a
+        class="nav-link"
+        routerLink="/home"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        title="صفحه اصلی"
+      >
+        <i class="bi bi-house-door nav-icon"></i>
+        <span class="menu-label">صفحه اصلی</span>
+      </a>
+    </li>
+
+<li class="nav-item dropdown products-dropdown">
+  <button
+    type="button"
+    class="nav-link menu-button dropdown-toggle"
+    data-bs-toggle="dropdown"
+    data-bs-display="static"
+    aria-expanded="false"
+    title="محصولات"
+  >
+    <i class="bi bi-box-seam nav-icon"></i>
+    <span class="menu-label">محصولات</span>
+  </button>
+
+  <ul class="dropdown-menu dropdown-menu-dark">
+    <li>
+      <a class="dropdown-item" routerLink="/products/brass">برنج</a>
+    </li>
+    <li>
+      <a class="dropdown-item" routerLink="/products/copper">مس</a>
+    </li>
+    <li>
+      <a class="dropdown-item" routerLink="/products/zinc">روی</a>
+    </li>
+    <li>
+      <a class="dropdown-item" routerLink="/products/scrap">ضایعات</a>
+    </li>
+  </ul>
+</li>
+
+
+
+    <li>
+      <a class="nav-link" routerLink="/weight-calculation" routerLinkActive="active" title="محاسبه وزن">
+        <i class="bi bi-calculator nav-icon"></i>
+        <span class="menu-label">محاسبه وزن مقاطع فلزی</span>
+      </a>
+    </li>
+
+    <li>
+      <a class="nav-link" routerLink="/news" routerLinkActive="active" title="اخبار">
+        <i class="bi bi-newspaper nav-icon"></i>
+        <span class="menu-label">اخبار</span>
+      </a>
+    </li>
+
+    <li>
+      <a class="nav-link" routerLink="/about-us" routerLinkActive="active" title="درباره ما">
+        <i class="bi bi-info-circle nav-icon"></i>
+        <span class="menu-label">درباره ما</span>
+      </a>
+    </li>
+
+    <li>
+      <a class="nav-link" routerLink="/assist-with-us" routerLinkActive="active" title="همکاری با ما">
+        <i class="bi bi-people nav-icon"></i>
+        <span class="menu-label">همکاری با ما</span>
+      </a>
+    </li>
+  </ul>
 </nav>

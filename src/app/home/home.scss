@@ -3,31 +3,117 @@ $primary-hover: #d8652f;
 $dark-bg: #2c2c2c;
 $text-light: #ffffff;
 
+
 .hero {
   position: relative;
   height: 70vh;
+  min-height: 480px;
+
   background-size: cover;
   background-position: center;
   overflow: hidden;
+
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.overlay {
+.hero .overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.75) 100%);
+
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0.75) 100%
+  );
+
   z-index: 1;
 }
 
-.content {
+/* لوگوی صفحه اصلی، بالای سمت چپ */
+.hero .site-logo {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+
+  z-index: 6;
+  display: block;
+}
+
+.hero .site-logo img {
+  position: static;
+  display: block;
+
+  width: 150px;
+  height: auto;
+  object-fit: contain;
+
+  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.45));
+}
+
+.hero .content {
   position: relative;
   z-index: 5;
-  text-align: center;
-  margin-top: -2%;
+
   padding: 0 20px;
+  margin-top: -2%;
+
+  text-align: center;
 }
+
+.hero .content h1 {
+  color: $text-light;
+  font-size: clamp(36px, 5vw, 68px);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 40px;
+  letter-spacing: -1px;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+.hero .p-title {
+  color: $text-light;
+  font-weight: 900;
+  font-size: clamp(36px, 5vw, 50px);
+}
+
+@media (max-width: 991px) {
+  .hero {
+    height: 65vh;
+    min-height: 420px;
+  }
+
+  .hero .site-logo {
+    top: 16px;
+    left: 16px;
+  }
+
+  .hero .site-logo img {
+    width: 110px;
+  }
+
+  .hero .content h1 {
+    margin-bottom: 24px;
+    font-size: clamp(30px, 8vw, 48px);
+  }
+
+  .hero .p-title {
+    font-size: clamp(24px, 6vw, 36px);
+  }
+
+  .glass-container {
+    border-radius: 25px;
+    padding: 30px;
+  }
+
+  .info-wrapper {
+    flex-direction: column-reverse;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+}
+
 
 .content h1 {
   color: $text-light;
@@ -127,6 +213,31 @@ $text-light: #ffffff;
     font-size: 14px;
   }
 }
+.price-info {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  direction: ltr;
+}
+
+.price-info .up {
+  color: #16a34a;
+    font-size: 13px;
+}
+
+.price-info .down {
+  color: #dc2626;
+    font-size: 13px;
+}
+
+.price-info .neutral {
+  color: #777;
+}
+
+.change-value {
+  font-weight: 600;
+}
+
 
 .change-icon {
   font-size: 0.7rem;
