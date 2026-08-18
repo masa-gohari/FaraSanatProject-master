@@ -8,24 +8,21 @@ import { Product } from '../interfaces/products';
 export class ProductService {
     private productsList = signal<Product[]>([
         {
-            id: 'zinc',
-            nameFa: 'روی',
-            image: 'img/zinc.jpg',
-            accentColor: '#848789'
-        },
-        {
             id: 'copper',
             nameFa: 'مس',
             image: 'img/copper.png',
             accentColor: '#b87333'
-        },
-        {
+        }, {
             id: 'brass',
             nameFa: 'برنج',
             image: 'img/brass.jpg',
             accentColor: '#b5a642'
-        },
-        {
+        }, {
+            id: 'zinc',
+            nameFa: 'روی',
+            image: 'img/zinc.jpg',
+            accentColor: '#848789'
+        }, {
             id: 'scrap',
             nameFa: 'ضایعات',
             image: 'img/scrap.jpg',

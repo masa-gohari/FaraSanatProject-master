@@ -1,0 +1,93 @@
+$primary-color: #e49a78;
+$primary: #f26522;
+
+#shape-preview.visible {
+  height: 120px;
+  opacity: 1;
+  transform: scale(1);
+}
+
+#shape-preview {
+  height: 0;
+  margin-bottom: 20px;
+  text-align: center;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 0.4s ease-in-out;
+}
+#shape-svg {
+  height: 100%;
+  width: 100%;
+}
+.svg-shape {
+  stroke: $primary;
+  stroke-width: 3;
+  fill: $primary-color;
+}
+.svg-dimline {
+  stroke: #000000;
+  stroke-width: 1.5;
+  marker-start: url(#arrowhead);
+  marker-end: url(#arrowhead);
+}
+.svg-label {
+  font-size: 20px;
+  font-weight: bold;
+  fill: #000000;
+  font-family: Vazirmatn, sans-serif;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+.svg-dimline {
+  stroke: #000000;
+  stroke-width: 1.5;
+  marker-start: url(#arrowhead);
+  marker-end: url(#arrowhead);
+}
+.svg-label {
+  font-size: 20px;
+  font-weight: bold;
+  fill: #000000;
+  font-family: Vazirmatn, sans-serif;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+.svg-shape-inner {
+  fill: #ffffff; // رنگ پس‌زمینه‌ی محیط
+  stroke: $primary;
+  stroke-width: 3;
+}
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  min-width: 650px;
+}
+
+th {
+  font-weight: bold;
+  cursor: pointer;
+  text-align: right;
+}
+
+td {
+  text-align: right;
+}
+
+.mat-mdc-header-cell {
+  background-color: #f26522;
+  color: white;
+}
+
+.mat-mdc-row:hover {
+  background-color: #fff3ed;
+}
+
+:host ::ng-deep .products-table .mat-mdc-header-cell {
+  background-color: #fff8f5 !important;
+  color: #222222 !important;
+}
