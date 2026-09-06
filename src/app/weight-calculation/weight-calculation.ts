@@ -2,6 +2,15 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { PageBanner } from '../shared/page-banner/page-banner';
+import { SectionCategory } from '../model/metal-profile.model';
+import { MetalCalculatorService } from '../services/metal-calculator.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSelectModule } from '@angular/material/select'
 
 interface Product {
   name: string;
@@ -13,11 +22,37 @@ interface Product {
 @Component({
   selector: 'app-weight-calculation',
   standalone: true,
-  imports: [MatTableModule, MatSortModule,PageBanner],
+  imports: [MatTableModule, MatSortModule,PageBanner,CommonModule, 
+    FormsModule, MatSnackBarModule, MatFormFieldModule, MatInputModule, MatRadioModule, ReactiveFormsModule,
+    MatSelectModule,],
   templateUrl: './weight-calculation.html',
   styleUrl: './weight-calculation.scss'
 })
 export class WeightCalculation implements AfterViewInit {
+
+ diameter: number = 0;
+  categories: SectionCategory[] = [];
+  selectedSectionId: string = '';
+
+  constructor(private metalService: MetalCalculatorService) {}
+
+  ngOnInit(): void {
+    this.metalService.getSections().subscribe(data => {
+      this.categories = data;
+    });
+  }
+
+   onSectionChange(event: any): void {
+    // اگر لازم است، مقدار جدید را مدیریت کنید
+    // مقدار انتخاب شده در event.value یا این کلاس با selectedSectionId همخوانی دارد
+    console.log('selected', this.selectedSectionId);
+  }
+
+
+
+
+
+
   displayedColumns = ['name', 'category', 'weight', 'price'];
 
   dataSource = new MatTableDataSource<Product>([

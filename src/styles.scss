@@ -2,16 +2,13 @@
 @use './src_theme-colors.scss' as my-theme;
 @import "bootstrap-icons/font/bootstrap-icons.css";
 
-
 html {
-  @include mat.theme((
-    color: (
-      primary: my-theme.$primary-palette,
-      tertiary: my-theme.$tertiary-palette,
-    ),
-    typography: Roboto,
-    density: 0,
-  ));
+  @include mat.theme((color: (primary: my-theme.$primary-palette,
+        tertiary: my-theme.$tertiary-palette,
+      ),
+      typography: 'Vazir',
+      density: 0,
+    ));
 }
 
 
@@ -34,6 +31,44 @@ body {
   background-color: black;
   --mat-form-field-container-text-font: 'Vazir', sans-serif;
   --mat-form-field-container-text-size: 14px;
+}
+
+
+.section-select-panel {
+  .mat-mdc-optgroup-label {
+    .mdc-list-item__primary-text {
+      font-size: 17px !important;
+      font-weight: 600 !important;
+    }
+  }
+
+  .mat-mdc-option {
+    .mdc-list-item__primary-text {
+      font-size: 14px !important;
+      font-weight: 600 !important;
+    }
+  }
+
+  .mat-mdc-optgroup-label {
+    border-bottom: 1px solid rgba(255, 140, 26, 0.4);
+  }
+}
+
+.mat-mdc-select-value,
+.mat-mdc-select-value-text,
+.mat-mdc-select-min-line {
+  color: #fff !important;
+}
+
+
+.mat-mdc-select-arrow {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.orange-input {
+  .mat-mdc-select-value {
+    color: #fff !important;
+  }
 }
 
 .dropdown-toggle::after {
@@ -75,6 +110,6 @@ body {
 
   --mat-form-field-outlined-outline-width: 2px;
   --mat-form-field-container-height: 45px;
-  --mat-form-field-container-vertical-padding: 10px;
+  --mat-form-field-container-vertical-padding: 15px;
   --mat-form-field-outlined-container-shape: 10px;
 }
