@@ -231,70 +231,230 @@
         </div>
         @if (selectedSectionId == 'round_bar') {
           <div class="mt-3">
-            <label class="text-white small d-block"> قطر (d) : میلی متر [mm]</label>
-            <input class="form-control" type="number" [(ngModel)]="diameter" min="0" step="1" />
+            <mat-form-field
+              appearance="outline"
+              dir="rtl"
+              [hideRequiredMarker]="true"
+              class="orange-input w-100 mat-form-field-has-always-float"
+            >
+              <mat-label class="required-label">
+                <span class="required-star">*</span>
+                <span class="label-style"> قطر (d) : میلی متر [mm] </span>
+              </mat-label>
+
+              <input matInput type="number" min="0" />
+            </mat-form-field>
           </div>
         }
         @if (selectedSectionId == 'square_bar') {
           <div class="mt-3">
-            <label class="text-white small d-block"> ضلع (a): میلی متر [mm]</label>
-            <input class="form-control" type="number" [(ngModel)]="diameter" min="0" step="1" />
+            <mat-form-field
+              appearance="outline"
+              dir="rtl"
+              [hideRequiredMarker]="true"
+              class="orange-input w-100 mat-form-field-has-always-float"
+            >
+              <mat-label class="required-label">
+                <span class="required-star">*</span>
+                <span class="label-style"> ضلع (a): میلی متر [mm] </span>
+              </mat-label>
+
+              <input matInput type="number" min="0" />
+            </mat-form-field>
           </div>
         }
         @if (selectedSectionId == 'rect_bar') {
           <div class="mt-3">
-            <label class="text-white small d-block"> عرض (w): میلی متر [mm]</label>
-            <input class="form-control" type="number" [(ngModel)]="diameter" min="0" step="1" />
+            <mat-form-field
+              appearance="outline"
+              dir="rtl"
+              [hideRequiredMarker]="true"
+              class="orange-input w-100 mat-form-field-has-always-float"
+            >
+              <mat-label class="required-label">
+                <span class="required-star">*</span>
+                <span class="label-style"> عرض (w): میلی متر [mm] </span>
+              </mat-label>
+
+              <input matInput type="number" min="0" />
+            </mat-form-field>
           </div>
           <div class="mt-3">
-            <label class="text-white small d-block"> ارتفاع (h): میلی متر [mm]</label>
-            <input class="form-control" type="number" [(ngModel)]="diameter" min="0" step="1" />
+            <mat-form-field
+              appearance="outline"
+              dir="rtl"
+              [hideRequiredMarker]="true"
+              class="orange-input w-100 mat-form-field-has-always-float"
+            >
+              <mat-label class="required-label">
+                <span class="required-star">*</span>
+                <span class="label-style">
+                  ارتفاع (h): میلی متر [mm]
+                </span>
+              </mat-label>
+              <input matInput type="number" min="0" />
+            </mat-form-field>
           </div>
         }
         @if (selectedSectionId == 'hex_bar') {
           <div class="mt-3">
-            <label class="text-white small d-block">آچارخور (f): میلی متر [mm]</label>
-            <input class="form-control" type="number" [(ngModel)]="diameter" min="0" step="1" />
+            <mat-form-field
+              appearance="outline"
+              dir="rtl"
+              [hideRequiredMarker]="true"
+              class="orange-input w-100 mat-form-field-has-always-float"
+            >
+              <mat-label class="required-label">
+                <span class="required-star">*</span>
+                <span class="label-style">
+                  آچارخور (f): میلی متر [mm]
+                </span>
+              </mat-label>
+
+              <input matInput type="number" min="0" />
+            </mat-form-field>
           </div>
         }
         @if (selectedSectionId == 'pipe_circle_in_circle') {
           <div class="mt-3">
-            <label class="text-white small d-block">قطر خارجی (D): میلی متر [mm]</label>
-            <input class="form-control" type="number" [(ngModel)]="diameter" min="0" step="1" />
+            <mat-form-field
+              appearance="outline"
+              dir="rtl"
+              [hideRequiredMarker]="true"
+              class="orange-input w-100 mat-form-field-has-always-float"
+            >
+              <mat-label class="required-label">
+                <span class="required-star">*</span>
+                <span class="label-style">
+                  قطر خارجی (D): میلی متر [mm]
+                </span>
+              </mat-label>
+              <input matInput type="number" min="0" />
+            </mat-form-field>
           </div>
           <div class="mt-3">
-            <label class="text-white small d-block">قطر داخلی (d): میلی متر [mm]</label>
-            <input class="form-control" type="number" [(ngModel)]="diameter" min="0" step="1" />
+            <mat-form-field
+              appearance="outline"
+              dir="rtl"
+              [hideRequiredMarker]="true"
+              class="orange-input w-100 mat-form-field-has-always-float"
+            >
+              <mat-label class="required-label">
+                <span class="required-star">*</span>
+                <span class="label-style">
+                  قطر داخلی (d): میلی متر [mm]
+                </span>
+              </mat-label>
+              <input matInput type="number" min="0" />
+            </mat-form-field>
           </div>
         }
         @if (selectedSectionId == 'circle_in_hex') {
           <div class="mt-3">
-            <label class="text-white small d-block">آچارخور شش‌ضلعی (F): میلی متر [mm]</label>
-            <input class="form-control" type="number" [(ngModel)]="diameter" min="0" step="1" />
+            <mat-form-field
+              appearance="outline"
+              dir="rtl"
+              [hideRequiredMarker]="true"
+              class="orange-input w-100 mat-form-field-has-always-float"
+            >
+              <mat-label class="required-label">
+                <span class="required-star">*</span>
+                <span class="label-style">
+                  آچارخور شش‌ضلعی (F): میلی متر [mm]
+                </span>
+              </mat-label>
+
+              <input matInput type="number" min="0" />
+            </mat-form-field>
           </div>
           <div class="mt-3">
-            <label class="text-white small d-block">قطر دایره (d): میلی متر [mm]</label>
-            <input class="form-control" type="number" [(ngModel)]="diameter" min="0" step="1" />
+            <mat-form-field
+              appearance="outline"
+              dir="rtl"
+              [hideRequiredMarker]="true"
+              class="orange-input w-100 mat-form-field-has-always-float"
+            >
+              <mat-label class="required-label">
+                <span class="required-star">*</span>
+                <span class="label-style">
+                  قطر دایره (d): میلی متر [mm]
+                </span>
+              </mat-label>
+
+              <input matInput type="number" min="0" />
+            </mat-form-field>
           </div>
         }
         @if (selectedSectionId == 'circle_in_square') {
           <div class="mt-3">
-            <label class="text-white small d-block">ضلع مربع (a): میلی متر [mm]</label>
-            <input class="form-control" type="number" [(ngModel)]="diameter" min="0" step="1" />
+            <mat-form-field
+              appearance="outline"
+              dir="rtl"
+              [hideRequiredMarker]="true"
+              class="orange-input w-100 mat-form-field-has-always-float"
+            >
+              <mat-label class="required-label">
+                <span class="required-star">*</span>
+                <span class="label-style">
+                  ضلع مربع (a): میلی متر [mm]
+                </span>
+              </mat-label>
+
+              <input matInput type="number" min="0" />
+            </mat-form-field>
           </div>
           <div class="mt-3">
-            <label class="text-white small d-block"> قطر دایره داخلی (d): میلی متر [mm] </label>
-            <input class="form-control" type="number" [(ngModel)]="diameter" min="0" step="1" />
+            <mat-form-field
+              appearance="outline"
+              dir="rtl"
+              [hideRequiredMarker]="true"
+              class="orange-input w-100 mat-form-field-has-always-float"
+            >
+              <mat-label class="required-label">
+                <span class="required-star">*</span>
+                <span class="label-style">
+                  قطر دایره داخلی (d): میلی متر [mm]
+                </span>
+              </mat-label>
+
+              <input matInput type="number" min="0" />
+            </mat-form-field>
           </div>
         }
         @if (selectedSectionId == 'hex_in_circle') {
           <div class="mt-3">
-            <label class="text-white small d-block">قطر دایره (D): میلی متر [mm]</label>
-            <input class="form-control" type="number" [(ngModel)]="diameter" min="0" step="1" />
+            <mat-form-field
+              appearance="outline"
+              dir="rtl"
+              [hideRequiredMarker]="true"
+              class="orange-input w-100 mat-form-field-has-always-float"
+            >
+              <mat-label class="required-label">
+                <span class="required-star">*</span>
+                <span class="label-style">
+                  قطر دایره (D): میلی متر [mm]
+                </span>
+              </mat-label>
+
+              <input matInput type="number" min="0" />
+            </mat-form-field>
           </div>
           <div class="mt-3">
-            <label class="text-white small d-block"> آچارخور شش‌ضلعی (f): میلی متر [mm] </label>
-            <input class="form-control" type="number" [(ngModel)]="diameter" min="0" step="1" />
+            <mat-form-field
+              appearance="outline"
+              dir="rtl"
+              [hideRequiredMarker]="true"
+              class="orange-input w-100 mat-form-field-has-always-float"
+            >
+              <mat-label class="required-label">
+                <span class="required-star">*</span>
+                <span class="label-style">
+                  آچارخور شش‌ضلعی (f): میلی متر [mm]
+                </span>
+              </mat-label>
+
+              <input matInput type="number" min="0" />
+            </mat-form-field>
           </div>
         }
         @if (selectedSectionId == 'hex_in_hex') {
@@ -307,7 +467,7 @@
             >
               <mat-label class="required-label">
                 <span class="required-star">*</span>
-                <span style="margin-right: 4px; font-weight: bold">
+                <span class="label-style">
                   آچارخور خارجی (F): میلی متر [mm]
                 </span>
               </mat-label>
@@ -324,7 +484,7 @@
             >
               <mat-label class="required-label">
                 <span class="required-star">*</span>
-                <span style="margin-right: 4px; font-weight: bold">
+                <span class="label-style">
                   آچارخور داخلی (f): میلی متر [mm]
                 </span>
               </mat-label>
@@ -343,7 +503,7 @@
             >
               <mat-label class="required-label">
                 <span class="required-star">*</span>
-                <span style="margin-right: 4px; font-weight: bold">
+                <span class="label-style">
                   ضلع خارجی (A): میلی متر [mm]
                 </span>
               </mat-label>
@@ -360,7 +520,7 @@
             >
               <mat-label class="required-label">
                 <span class="required-star">*</span>
-                <span style="margin-right: 4px; font-weight: bold">
+                <span class="label-style">
                   ضخامت جداره (t): میلی متر [mm]
                 </span>
               </mat-label>
@@ -379,7 +539,7 @@
             >
               <mat-label class="required-label">
                 <span class="required-star">*</span>
-                <span style="margin-right: 4px; font-weight: bold">
+                <span class="label-style">
                   عرض خارجی (W): میلی متر [mm]
                 </span>
               </mat-label>
@@ -396,7 +556,7 @@
             >
               <mat-label class="required-label">
                 <span class="required-star">*</span>
-                <span style="margin-right: 4px; font-weight: bold">
+                <span class="label-style">
                   ارتفاع خارجی (H): میلی متر [mm]
                 </span>
               </mat-label>
@@ -413,7 +573,7 @@
             >
               <mat-label class="required-label">
                 <span class="required-star">*</span>
-                <span style="margin-right: 4px; font-weight: bold">
+                <span class="label-style">
                   ضخامت جداره (t): میلی متر [mm]
                 </span>
               </mat-label>
@@ -432,7 +592,7 @@
           >
             <mat-label class="required-label">
               <span class="required-star">*</span>
-              <span style="margin-right: 4px; font-weight: bold"> طول: میلی متر [mm]</span>
+              <span class="label-style"> طول: میلی متر [mm]</span>
             </mat-label>
 
             <input matInput type="number" min="0" />
@@ -447,7 +607,7 @@
           >
             <mat-label class="required-label">
               <span class="required-star">*</span>
-              <span style="margin-right: 4px; font-weight: bold">
+              <span class="label-style">
                 چگالی: تن بر متر مکعب [ton/m³]</span
               >
             </mat-label>
@@ -465,7 +625,7 @@
           >
             <mat-label class="required-label">
               <span class="required-star">*</span>
-              <span style="margin-right: 4px; font-weight: bold"> تعداد شاخه: (عدد)</span>
+              <span class="label-style"> تعداد شاخه: (عدد)</span>
             </mat-label>
 
             <input matInput type="number" min="0" />

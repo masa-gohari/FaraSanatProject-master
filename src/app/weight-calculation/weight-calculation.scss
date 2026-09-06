@@ -1,13 +1,20 @@
 $primary-color: #e49a78;
 $primary: #f26522;
 
-.container-shape{
-  width: 100%;height: 120px;
+.container-shape {
+  width: 100%;
+  height: 120px;
 }
+
 .svg-shape {
   stroke: $primary;
   stroke-width: 3;
   fill: $primary-color;
+}
+
+.label-style {
+  margin-right: 4px;
+  font-weight: bold
 }
 
 .svg-dimline {
@@ -18,19 +25,20 @@ $primary: #f26522;
 }
 
 .mat-form-field-has-always-float {
+
   /* لیبل نارنجی */
   .mat-mdc-form-field-label {
-    color: $primary !important; 
+    color: $primary !important;
   }
 
   .mat-mdc-text-field-wrapper .mat-mdc-form-field-bottom-line::before {
-    background-color: $primary!important;
+    background-color: $primary !important;
   }
 }
 
 .orange-input.mat-form-field-has-always-float {
   .required-label {
-     color: $primary !important;
+    color: $primary !important;
   }
 }
 
