@@ -44,7 +44,7 @@ export class WeightCalculation implements AfterViewInit {
       this.categories = data;
     });
     this.form.get('selectedSegmentTypeId')?.valueChanges.subscribe(() => {
-      this.weightDisplay = null; // یا '' (رشته خالی)
+      this.weightDisplay = null; 
       this.weight = null;
       this.showError = false;
       this.showErrorTypeofSegment = false;
