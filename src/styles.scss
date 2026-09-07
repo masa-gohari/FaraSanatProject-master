@@ -160,13 +160,11 @@ body {
 /* استایل باکس پیام هشدار */
 .alert-box-error {
   display: flex;
+  justify-content: center;
   background-color: #fff2f2;
-  border: 1px solid #e5a4ab;
   color: #a8323e;
   padding: 10px 16px;
   border-radius: 6px;
   font-size: 14px;
   font-weight: 600;
-  margin-bottom: 30px;
-  width: 80%;
 }

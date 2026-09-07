@@ -134,8 +134,31 @@ td {
   }
 }
 
-.error-div{
+.error-div {
   background-color: white;
   border-radius: 8px;
   border: 1px solid #f26522;
+}
+
+.formula-div {
+  background-color: #fff2f2;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.weight-label {
+  margin-top: 4px;
+}
+
+.weight-value {
+  color: #f26522;
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+p {
+  margin: 0;
 }

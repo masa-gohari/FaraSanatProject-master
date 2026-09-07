@@ -256,7 +256,7 @@
                   <span class="label-style"> ضلع (a): میلی متر [mm] </span>
                 </mat-label>
 
-                <input matInput type="number" min="0" />
+                <input matInput type="number" min="0" formControlName="squareSide" />
               </mat-form-field>
             </div>
           }
@@ -273,7 +273,7 @@
                   <span class="label-style"> عرض (w): میلی متر [mm] </span>
                 </mat-label>
 
-                <input matInput type="number" min="0" />
+                <input matInput type="number" min="0" formControlName="rectWidth" />
               </mat-form-field>
             </div>
             <div class="mt-3">
@@ -287,7 +287,7 @@
                   <span class="required-star">*</span>
                   <span class="label-style"> ارتفاع (h): میلی متر [mm] </span>
                 </mat-label>
-                <input matInput type="number" min="0" />
+                <input matInput type="number" min="0" formControlName="rectHight" />
               </mat-form-field>
             </div>
           }
@@ -304,7 +304,7 @@
                   <span class="label-style"> آچارخور (f): میلی متر [mm] </span>
                 </mat-label>
 
-                <input matInput type="number" min="0" />
+                <input matInput type="number" min="0" formControlName="wrenchFlatsHex" />
               </mat-form-field>
             </div>
           }
@@ -320,7 +320,7 @@
                   <span class="required-star">*</span>
                   <span class="label-style"> قطر خارجی (D): میلی متر [mm] </span>
                 </mat-label>
-                <input matInput type="number" min="0" />
+                <input matInput type="number" min="0" formControlName="outerDiameter" />
               </mat-form-field>
             </div>
             <div class="mt-3">
@@ -334,7 +334,7 @@
                   <span class="required-star">*</span>
                   <span class="label-style"> قطر داخلی (d): میلی متر [mm] </span>
                 </mat-label>
-                <input matInput type="number" min="0" />
+                <input matInput type="number" min="0" formControlName="innerDiameter" />
               </mat-form-field>
             </div>
           }
@@ -351,7 +351,7 @@
                   <span class="label-style"> آچارخور شش‌ضلعی (F): میلی متر [mm] </span>
                 </mat-label>
 
-                <input matInput type="number" min="0" />
+                <input matInput type="number" min="0" formControlName="wrenchFlatsCircle" />
               </mat-form-field>
             </div>
             <div class="mt-3">
@@ -366,7 +366,7 @@
                   <span class="label-style"> قطر دایره (d): میلی متر [mm] </span>
                 </mat-label>
 
-                <input matInput type="number" min="0" />
+                <input matInput type="number" min="0" formControlName="diameterHexCircle" />
               </mat-form-field>
             </div>
           }
@@ -589,21 +589,54 @@
                 <span class="label-style"> تعداد شاخه: (عدد)</span>
               </mat-label>
 
-              <input matInput type="number" min="0" formControlName="numberBranches"/>
+              <input matInput type="number" min="0" formControlName="numberBranches" />
             </mat-form-field>
           </div>
           <div class="mt-3">
             <button class="btn btn-calculate-weight" (click)="calculateWeight()">محاسبه کن</button>
-            <span class="text-white">وزن کل: {{ weightDisplay }} کیلوگرم</span>
           </div>
-          @if(showErrorTypeofSegment){
-            <div class="alert-box-error">
-              <span>⚠️ نوع مقطع را انتخاب کنید</span>
+
+          @if (weightDisplay) {
+            <div class="mt-4 mb-3">
+              <div class="formula-div">
+                <div class="d-flex">
+                  <p class="weight-label">وزن کل :</p>
+                  <p class="weight-value">{{ weightDisplay }} کیلوگرم</p>
+                </div>
+                @if (selectedSegmentTypeId == 'round_bar') {
+                  <div class="mt-1">فرمول مساحت: A = (π × d²) / 4</div>
+                }
+                @if (selectedSegmentTypeId == 'square_bar') {
+                  <div class="mt-1">فرمول مساحت: A = a²</div>
+                }
+                @if (selectedSegmentTypeId == 'rect_bar') {
+                  <div class="mt-1">فرمول مساحت: A = w × h</div>
+                }
+                @if (selectedSegmentTypeId == 'hex_bar') {
+                  <div class="mt-1">فرمول مساحت: A ≈ 0.866 × f²</div>
+                }
+                @if (selectedSegmentTypeId == 'pipe_circle_in_circle') {
+                  <div class="mt-1">فرمول مساحت: A = (π/4) × (D² - d²)</div>
+                }
+                @if (selectedSegmentTypeId == 'circle_in_hex') {
+                  <div class="mt-1">فرمول مساحت: A = (0.866 × F²) - (πd²/4)</div>
+                }
+                <div class="mt-1">فرمول وزن: (مساحت × طول × چگالی × تعداد) ÷ ۱٬۰۰۰٬۰۰۰</div>
+              </div>
             </div>
           }
-          @if(showError){
-            <div class="alert-box-error">
-              <span>⚠️ لطفاً مقادیر تمام فیلدهای هایلایت شده را به درستی وارد کنید.</span>
+          @if (showErrorTypeofSegment) {
+            <div class="mt-3 mb-3">
+              <div class="alert-box-error">
+                <span>⚠️ نوع مقطع را انتخاب کنید</span>
+              </div>
+            </div>
+          }
+          @if (showError) {
+            <div class="mt-3 mb-3">
+              <div class="alert-box-error">
+                <span>⚠️ لطفاً مقادیر تمام فیلدهای هایلایت شده را به درستی وارد کنید.</span>
+              </div>
             </div>
           }
         </form>

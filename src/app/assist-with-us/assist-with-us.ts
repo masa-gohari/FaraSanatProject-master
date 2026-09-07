@@ -36,8 +36,6 @@ export class AssistWithUs {
     });
   }
 
-  get f() { return this.form.controls }
-
   submit() {
     const formValues = this.form.getRawValue();
 
