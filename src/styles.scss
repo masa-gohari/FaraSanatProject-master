@@ -2,6 +2,9 @@
 @use './src_theme-colors.scss' as my-theme;
 @import "bootstrap-icons/font/bootstrap-icons.css";
 
+$primary-color: #e2875d;
+$primary: #f26522;
+
 html {
   @include mat.theme((color: (primary: my-theme.$primary-palette,
         tertiary: my-theme.$tertiary-palette,
@@ -11,12 +14,12 @@ html {
     ));
 }
 
-
 @font-face {
   font-family: 'Vazir';
   src: url('./app/shared/font/vazir-font-v16.1.0/Vazir-Thin.woff2') format('woff2');
-  font-style: normal;
+  font-style: normal
 }
+
 
 * {
   box-sizing: border-box;
@@ -24,7 +27,7 @@ html {
 
 html,
 body {
-  font-family: 'Vazir', sans-serif;
+  font-family: 'Vazir';
   margin: 0;
   padding: 0 !important;
   width: 100%;
@@ -91,9 +94,6 @@ body {
 }
 
 .error-snackbar {
-  // --mat-snack-bar-container-color: #eea27f;
-  // --mat-snack-bar-supporting-text-color: #ffffff;
-  // --mat-snack-bar-button-color: #ffffff;
   --mat-snack-bar-supporting-text-size: 13px;
   --mat-snack-bar-supporting-text-font: 'Vazir', sans-serif;
 }
@@ -112,4 +112,61 @@ body {
   --mat-form-field-container-height: 45px;
   --mat-form-field-container-vertical-padding: 15px;
   --mat-form-field-outlined-container-shape: 10px;
+}
+
+.mat-form-field-has-always-float {
+
+  /* لیبل نارنجی */
+  .mat-mdc-form-field-label {
+    color: $primary-color !important;
+  }
+
+  .mat-mdc-text-field-wrapper .mat-mdc-form-field-bottom-line::before {
+    background-color: $primary-color !important;
+  }
+}
+
+.orange-input.mat-form-field-has-always-float {
+  .required-label {
+    color: $primary-color !important;
+  }
+}
+
+/* استایل کادر خطا در انگولار متریال */
+::ng-deep .custom-field.field-error {
+
+  /* پس‌زمینه صورتی کم‌رنگ */
+  .mat-mdc-text-field-wrapper {
+    background-color: #fff2f2 !important;
+    border-radius: 6px;
+  }
+
+  /* کادر قرمز */
+  .mdc-notched-outline__leading,
+  .mdc-notched-outline__notch,
+  .mdc-notched-outline__trailing {
+    border-color: #c94a58 !important;
+    border-width: 1.5px !important;
+  }
+
+  /* رنگ قرمز برای متن و لیبل */
+  .mat-mdc-floating-label,
+  .required-star,
+  .label-style {
+    color: #c94a58 !important;
+  }
+}
+
+/* استایل باکس پیام هشدار */
+.alert-box-error {
+  display: flex;
+  background-color: #fff2f2;
+  border: 1px solid #e5a4ab;
+  color: #a8323e;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  width: 80%;
 }

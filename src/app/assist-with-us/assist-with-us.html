@@ -18,34 +18,47 @@
             }
           </mat-radio-group>
         </div>
-        <div class="d-flex justify-content-center mt-3">
-          <mat-form-field
-            appearance="outline"
-            dir="rtl"
-            [hideRequiredMarker]="true"
-            class="orange-input mat-form-field-has-always-float"
-          >
-            <mat-label class="required-label">
-              <span class="required-star">*</span>
-              <span style="margin-right: 4px;font-weight: bold;">نام و نام خانوادگی</span>
-            </mat-label>
-            <input matInput formControlName="fullName" />
-          </mat-form-field>
-        </div>
         <div class="d-flex justify-content-center mt-2">
           <mat-form-field
             appearance="outline"
             dir="rtl"
             [hideRequiredMarker]="true"
-            class="orange-input mat-form-field-has-always-float"
+            class="orange-input"
+            floatLabel="auto"
           >
             <mat-label class="required-label">
-              <span class="required-star">*</span>
-              <span style="margin-right: 2px;;font-weight: bold"> شماره تماس </span>
+              <span class="required-star text-danger">*</span>
+              <span style="margin-right: 4px; font-weight: bold">نام و نام خانوادگی</span>
+            </mat-label>
+            <input matInput formControlName="fullName" />
+          </mat-form-field>
+        </div>
+
+        <div class="d-flex justify-content-center mt-2">
+          <mat-form-field
+            appearance="outline"
+            dir="rtl"
+            [hideRequiredMarker]="true"
+            class="orange-input"
+            floatLabel="auto"
+          >
+            <mat-label class="required-label">
+              <span class="required-star text-danger">*</span>
+              <span style="margin-right: 2px; font-weight: bold">شماره تماس</span>
             </mat-label>
             <input matInput type="text" formControlName="mobile" />
           </mat-form-field>
         </div>
+        @if (showErrorName) {
+          <div class="alert-box-error">
+            <span>⚠️ نام و نام‌خانوادگی را وارد کنید</span>
+          </div>
+        }
+        @if (showErrorMobile) {
+          <div class="alert-box-error">
+            <span>⚠️ شماره تماس را وارد کنید</span>
+          </div>
+        }
       </form>
 
       <div class="d-flex justify-content-center">

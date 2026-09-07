@@ -4,13 +4,13 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
-import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ContactMessage } from '../model/contact.model';
 import { ContactService } from '../services/contact.service';
 
 @Component({
   selector: 'app-assist-with-us',
-  imports: [PageBanner, MatSnackBarModule, MatFormFieldModule, MatInputModule, MatRadioModule, ReactiveFormsModule,],
+  imports: [PageBanner, MatSnackBarModule, MatFormFieldModule, MatInputModule, MatRadioModule, ReactiveFormsModule, FormsModule],
   templateUrl: './assist-with-us.html',
   styleUrl: './assist-with-us.scss',
 })
@@ -22,7 +22,8 @@ export class AssistWithUs {
     { label: 'تولید کننده', value: 'producer' },
     { label: 'مصرف کننده', value: 'consumer' }
   ];
-
+  showErrorName: boolean = false;
+  showErrorMobile: boolean = false;
   constructor(private fb: FormBuilder, private snackBar: MatSnackBar) {
     this.buildFrom()
   }
@@ -44,24 +45,21 @@ export class AssistWithUs {
     const mobileValue = (formValues.mobile ?? '').trim();
     const userType = formValues.userType;
 
+    this.showErrorName = false;
+    this.showErrorMobile = false;
+
     if (!fullNameValue) {
-      this.snackBar.open('نام و نام‌خانوادگی را وارد نمایید.', '', {
-        duration: 3000,
-        horizontalPosition: 'left',
-        verticalPosition: 'bottom',
-        panelClass: ['error-snackbar']
-      });
+      this.showErrorName = true;
       return;
+    } else {
+      this.showErrorName = false;
     }
 
     if (!mobileValue) {
-      this.snackBar.open('شماره موبایل خود را وارد نمایید.', '', {
-        duration: 3000,
-        horizontalPosition: 'left',
-        verticalPosition: 'bottom',
-        panelClass: ['error-snackbar']
-      });
+      this.showErrorMobile = true;
       return;
+    } else {
+      this.showErrorMobile = false;
     }
 
     if (userType !== 'seller' && userType !== 'buyer') {

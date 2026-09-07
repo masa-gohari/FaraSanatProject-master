@@ -1,5 +1,5 @@
-$primary-color: #f26522;
 $primary-hover: #d8652f;
+$primary-color: #f26522;
 
 .radio-wrapper {
     width: 100%;
@@ -62,19 +62,23 @@ $primary-hover: #d8652f;
 
 }
 
+
+
 :host button.btn.btn-submit {
     background-color: $primary-color;
+    border: 2px solid #f26522 !important;
     color: white;
     border: none;
     border-radius: 8px;
     padding: 12px;
     font-weight: bold;
-    transition: all 0.3s ease;
+
     width: fit-content;
 
     &:hover {
-        background-color: $primary-hover;
-        transform: translateY(-2px);
+        border: 2px solid $primary-color;
+        background-color: transparent;
+        color: white;
     }
 }
 

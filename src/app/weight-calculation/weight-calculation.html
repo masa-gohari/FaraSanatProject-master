@@ -3,7 +3,7 @@
 <div class="container mt-5">
   <div class="row cooperation-section">
     <div class="row glass-container">
-      <div class="col-6">
+      <div class="col-lg-6 col-md-12 col-sm-12">
         <div class="table-wrapper" dir="rtl">
           <table
             mat-table
@@ -50,587 +50,563 @@
           </table>
         </div>
       </div>
-      <div class="col-6">
-        <div>
-          <mat-form-field
-            appearance="outline"
-            dir="rtl"
-            [hideRequiredMarker]="true"
-            class="orange-input w-100 mat-form-field-has-always-float"
-          >
-            <mat-label class="required-label">
-              <span class="required-star">*</span>
-              <span style="margin-right: 4px; font-weight: bold"> نوع مقطع را انتخاب کنید:</span>
-            </mat-label>
-
-            <mat-select
-              [(ngModel)]="selectedSectionId"
-              panelClass="section-select-panel"
-              (selectionChange)="onSectionChange($event)"
+      <div class="col-lg-6 col-md-12 col-sm-12">
+        <form class="row" [formGroup]="form">
+          <div>
+            <mat-form-field
+              appearance="outline"
+              dir="rtl"
+              [hideRequiredMarker]="true"
+              class="orange-input w-100 mat-form-field-has-always-float"
             >
-              @for (group of categories; track group.category) {
-                <mat-optgroup [label]="group.category">
-                  @for (item of group.items; track item.id) {
-                    <mat-option [value]="item.id">
-                      {{ item.title }}
-                    </mat-option>
-                  }
-                </mat-optgroup>
-              }
-            </mat-select>
-          </mat-form-field>
-          @if (selectedSectionId) {
-            <div class="d-flex justify-content-center container-shape">
-              @switch (selectedSectionId) {
-                <!-- میلگرد - دایره -->
-                @case ('round_bar') {
-                  <svg id="shape-svg" viewBox="0 0 120 120" preserveAspectRatio="xMidYMid meet">
-                    <circle class="svg-shape" cx="60" cy="60" r="45"></circle>
-                    <line class="svg-dimline" x1="15" y1="60" x2="105" y2="60"></line>
-                    <text class="svg-label" x="60" y="45">d</text>
-                  </svg>
-                }
-                <!-- چهارپهلو - مربع -->
-                @case ('square_bar') {
-                  <svg id="shape-svg" viewBox="0 0 120 120" preserveAspectRatio="xMidYMid meet">
-                    <rect class="svg-shape" x="20" y="20" width="80" height="80" rx="2"></rect>
-                    <line class="svg-dimline" x1="20" y1="105" x2="100" y2="105"></line>
-                    <text class="svg-label" x="60" y="90">a</text>
-                  </svg>
-                }
-                <!-- چهارپهلو - مستطیل -->
-                @case ('rect_bar') {
-                  <svg id="shape-svg" viewBox="0 0 120 120" preserveAspectRatio="xMidYMid meet">
-                    <rect class="svg-shape" x="15" y="30" width="90" height="60" rx="2"></rect>
-                    <line class="svg-dimline" x1="15" y1="95" x2="105" y2="95"></line>
-                    <text class="svg-label" x="60" y="80">w</text>
-                    <line class="svg-dimline" x1="108" y1="30" x2="108" y2="90"></line>
-                    <text class="svg-label" x="93" y="60">h</text>
-                  </svg>
-                }
-                <!-- شش پر - شش ضلعی -->
-                @case ('hex_bar') {
-                  <svg id="shape-svg" viewBox="0 0 120 120" preserveAspectRatio="xMidYMid meet">
-                    <path
-                      class="svg-shape"
-                      d="M86.6,25 L43.3,25 L21.65,60 L43.3,95 L86.6,95 L108.25,60 Z"
-                    ></path>
-                    <line class="svg-dimline" x1="65" y1="25" x2="65" y2="95"></line>
-                    <text class="svg-label" x="80" y="60">f</text>
-                  </svg>
-                }
-                <!-- لوله - دایره در دایره -->
-                @case ('pipe_circle_in_circle') {
-                  <svg id="shape-svg" viewBox="0 0 120 120" preserveAspectRatio="xMidYMid meet">
-                    <circle class="svg-shape" cx="60" cy="60" r="50"></circle>
-                    <circle class="svg-shape-inner" cx="60" cy="60" r="30"></circle>
-                    <line class="svg-dimline" x1="10" y1="60" x2="110" y2="60"></line>
-                    <text class="svg-label" x="85" y="45">D</text>
-                    <line class="svg-dimline" x1="30" y1="75" x2="90" y2="75"></line>
-                    <text class="svg-label" x="60" y="90">d</text>
-                  </svg>
-                }
-                <!-- دایره در شش ضلعی -->
-                @case ('circle_in_hex') {
-                  <svg id="shape-svg" viewBox="0 0 120 120" preserveAspectRatio="xMidYMid meet">
-                    <path
-                      class="svg-shape"
-                      d="M86.6,25 L43.3,25 L21.65,60 L43.3,95 L86.6,95 L108.25,60 Z"
-                    ></path>
-                    <circle class="svg-shape-inner" cx="65" cy="60" r="25"></circle>
-                    <line class="svg-dimline" x1="65" y1="25" x2="65" y2="95"></line>
-                    <text class="svg-label" x="85" y="60">F</text>
-                    <line class="svg-dimline" x1="40" y1="60" x2="90" y2="60"></line>
-                    <text class="svg-label" x="65" y="45">d</text>
-                  </svg>
-                }
-                <!-- دایره در مربع -->
-                @case ('circle_in_square') {
-                  <svg id="shape-svg" viewBox="0 0 120 120" preserveAspectRatio="xMidYMid meet">
-                    <rect class="svg-shape" x="20" y="20" width="80" height="80" rx="2"></rect>
-                    <circle class="svg-shape-inner" cx="60" cy="60" r="30"></circle>
-                    <line class="svg-dimline" x1="20" y1="105" x2="100" y2="105"></line>
-                    <text class="svg-label" x="60" y="90">a</text>
-                    <line class="svg-dimline" x1="30" y1="60" x2="90" y2="60"></line>
-                    <text class="svg-label" x="60" y="45">d</text>
-                  </svg>
-                }
-                <!-- شش ضلعی در دایره -->
-                @case ('hex_in_circle') {
-                  <svg id="shape-svg" viewBox="0 0 120 120" preserveAspectRatio="xMidYMid meet">
-                    <circle class="svg-shape" cx="60" cy="60" r="50"></circle>
-                    <path
-                      class="svg-shape-inner"
-                      d="M75,42.01 L45,42.01 L30,60 L45,77.99 L75,77.99 L90,60 Z"
-                    ></path>
-                    <line class="svg-dimline" x1="10" y1="60" x2="110" y2="60"></line>
-                    <text class="svg-label" x="85" y="45">D</text>
-                    <line class="svg-dimline" x1="60" y1="42.01" x2="60" y2="77.99"></line>
-                    <text class="svg-label" x="45" y="60">f</text>
-                  </svg>
-                }
-                <!-- شش ضلعی در شش ضلعی -->
-                @case ('hex_in_hex') {
-                  <svg id="shape-svg" viewBox="0 0 120 120" preserveAspectRatio="xMidYMid meet">
-                    <path
-                      class="svg-shape"
-                      d="M86.6,25 L43.3,25 L21.65,60 L43.3,95 L86.6,95 L108.25,60 Z"
-                    ></path>
-                    <path
-                      class="svg-shape-inner"
-                      d="M75.8,42.5 L54.1,42.5 L43.3,60 L54.1,77.5 L75.8,77.5 L86.6,60 Z"
-                    ></path>
-                    <line class="svg-dimline" x1="65" y1="25" x2="65" y2="95"></line>
-                    <text class="svg-label" x="80" y="60">F</text>
-                    <line class="svg-dimline" x1="65" y1="42.5" x2="65" y2="77.5"></line>
-                    <text class="svg-label" x="50" y="60">f</text>
-                  </svg>
-                }
-                <!-- قوطی پروفیل - مربع در مربع -->
-                @case ('square_pipe') {
-                  <svg id="shape-svg" viewBox="0 0 120 120" preserveAspectRatio="xMidYMid meet">
-                    <rect class="svg-shape" x="20" y="20" width="80" height="80" rx="2"></rect>
-                    <rect
-                      class="svg-shape-inner"
-                      x="40"
-                      y="40"
-                      width="40"
-                      height="40"
-                      rx="2"
-                    ></rect>
-                    <line class="svg-dimline" x1="20" y1="105" x2="100" y2="105"></line>
-                    <text class="svg-label" x="60" y="90">A</text>
-                    <path class="svg-dimline" d="M 20 28 L 40 28"></path>
-                    <text class="svg-label" x="30" y="43">t</text>
-                  </svg>
-                }
+              <mat-label class="required-label">
+                <span class="required-star">*</span>
+                <span style="margin-right: 4px; font-weight: bold"> نوع مقطع را انتخاب کنید:</span>
+              </mat-label>
 
-                <!-- قوطی پروفیل - مستطیل در مستطیل -->
-                @case ('rect_pipe') {
-                  <svg id="shape-svg" viewBox="0 0 120 120" preserveAspectRatio="xMidYMid meet">
-                    <rect class="svg-shape" x="15" y="30" width="90" height="60" rx="2"></rect>
-                    <rect
-                      class="svg-shape-inner"
-                      x="35"
-                      y="45"
-                      width="50"
-                      height="30"
-                      rx="2"
-                    ></rect>
-                    <line class="svg-dimline" x1="15" y1="95" x2="105" y2="95"></line>
-                    <text class="svg-label" x="60" y="80">W</text>
-                    <line class="svg-dimline" x1="108" y1="30" x2="108" y2="90"></line>
-                    <text class="svg-label" x="93" y="60">H</text>
-                    <path class="svg-dimline" d="M 15 38 L 35 38"></path>
-                    <text class="svg-label" x="25" y="53">t</text>
-                  </svg>
+              <mat-select formControlName="selectedSegmentTypeId" panelClass="section-select-panel">
+                @for (group of categories; track group.category) {
+                  <mat-optgroup [label]="group.category">
+                    @for (item of group.items; track item.id) {
+                      <mat-option [value]="item.id">
+                        {{ item.title }}
+                      </mat-option>
+                    }
+                  </mat-optgroup>
                 }
-              }
+              </mat-select>
+            </mat-form-field>
+            @if (selectedSegmentTypeId) {
+              <div class="d-flex justify-content-center container-shape">
+                @switch (selectedSegmentTypeId) {
+                  <!-- میلگرد - دایره -->
+                  @case ('round_bar') {
+                    <svg id="shape-svg" viewBox="0 0 120 120" preserveAspectRatio="xMidYMid meet">
+                      <circle class="svg-shape" cx="60" cy="60" r="45"></circle>
+                      <line class="svg-dimline" x1="15" y1="60" x2="105" y2="60"></line>
+                      <text class="svg-label" x="60" y="45">d</text>
+                    </svg>
+                  }
+                  <!-- چهارپهلو - مربع -->
+                  @case ('square_bar') {
+                    <svg id="shape-svg" viewBox="0 0 120 120" preserveAspectRatio="xMidYMid meet">
+                      <rect class="svg-shape" x="20" y="20" width="80" height="80" rx="2"></rect>
+                      <line class="svg-dimline" x1="20" y1="105" x2="100" y2="105"></line>
+                      <text class="svg-label" x="60" y="90">a</text>
+                    </svg>
+                  }
+                  <!-- چهارپهلو - مستطیل -->
+                  @case ('rect_bar') {
+                    <svg id="shape-svg" viewBox="0 0 120 120" preserveAspectRatio="xMidYMid meet">
+                      <rect class="svg-shape" x="15" y="30" width="90" height="60" rx="2"></rect>
+                      <line class="svg-dimline" x1="15" y1="95" x2="105" y2="95"></line>
+                      <text class="svg-label" x="60" y="80">w</text>
+                      <line class="svg-dimline" x1="108" y1="30" x2="108" y2="90"></line>
+                      <text class="svg-label" x="93" y="60">h</text>
+                    </svg>
+                  }
+                  <!-- شش پر - شش ضلعی -->
+                  @case ('hex_bar') {
+                    <svg id="shape-svg" viewBox="0 0 120 120" preserveAspectRatio="xMidYMid meet">
+                      <path
+                        class="svg-shape"
+                        d="M86.6,25 L43.3,25 L21.65,60 L43.3,95 L86.6,95 L108.25,60 Z"
+                      ></path>
+                      <line class="svg-dimline" x1="65" y1="25" x2="65" y2="95"></line>
+                      <text class="svg-label" x="80" y="60">f</text>
+                    </svg>
+                  }
+                  <!-- لوله - دایره در دایره -->
+                  @case ('pipe_circle_in_circle') {
+                    <svg id="shape-svg" viewBox="0 0 120 120" preserveAspectRatio="xMidYMid meet">
+                      <circle class="svg-shape" cx="60" cy="60" r="50"></circle>
+                      <circle class="svg-shape-inner" cx="60" cy="60" r="30"></circle>
+                      <line class="svg-dimline" x1="10" y1="60" x2="110" y2="60"></line>
+                      <text class="svg-label" x="85" y="45">D</text>
+                      <line class="svg-dimline" x1="30" y1="75" x2="90" y2="75"></line>
+                      <text class="svg-label" x="60" y="90">d</text>
+                    </svg>
+                  }
+                  <!-- دایره در شش ضلعی -->
+                  @case ('circle_in_hex') {
+                    <svg id="shape-svg" viewBox="0 0 120 120" preserveAspectRatio="xMidYMid meet">
+                      <path
+                        class="svg-shape"
+                        d="M86.6,25 L43.3,25 L21.65,60 L43.3,95 L86.6,95 L108.25,60 Z"
+                      ></path>
+                      <circle class="svg-shape-inner" cx="65" cy="60" r="25"></circle>
+                      <line class="svg-dimline" x1="65" y1="25" x2="65" y2="95"></line>
+                      <text class="svg-label" x="85" y="60">F</text>
+                      <line class="svg-dimline" x1="40" y1="60" x2="90" y2="60"></line>
+                      <text class="svg-label" x="65" y="45">d</text>
+                    </svg>
+                  }
+                  <!-- دایره در مربع -->
+                  @case ('circle_in_square') {
+                    <svg id="shape-svg" viewBox="0 0 120 120" preserveAspectRatio="xMidYMid meet">
+                      <rect class="svg-shape" x="20" y="20" width="80" height="80" rx="2"></rect>
+                      <circle class="svg-shape-inner" cx="60" cy="60" r="30"></circle>
+                      <line class="svg-dimline" x1="20" y1="105" x2="100" y2="105"></line>
+                      <text class="svg-label" x="60" y="90">a</text>
+                      <line class="svg-dimline" x1="30" y1="60" x2="90" y2="60"></line>
+                      <text class="svg-label" x="60" y="45">d</text>
+                    </svg>
+                  }
+                  <!-- شش ضلعی در دایره -->
+                  @case ('hex_in_circle') {
+                    <svg id="shape-svg" viewBox="0 0 120 120" preserveAspectRatio="xMidYMid meet">
+                      <circle class="svg-shape" cx="60" cy="60" r="50"></circle>
+                      <path
+                        class="svg-shape-inner"
+                        d="M75,42.01 L45,42.01 L30,60 L45,77.99 L75,77.99 L90,60 Z"
+                      ></path>
+                      <line class="svg-dimline" x1="10" y1="60" x2="110" y2="60"></line>
+                      <text class="svg-label" x="85" y="45">D</text>
+                      <line class="svg-dimline" x1="60" y1="42.01" x2="60" y2="77.99"></line>
+                      <text class="svg-label" x="45" y="60">f</text>
+                    </svg>
+                  }
+                  <!-- شش ضلعی در شش ضلعی -->
+                  @case ('hex_in_hex') {
+                    <svg id="shape-svg" viewBox="0 0 120 120" preserveAspectRatio="xMidYMid meet">
+                      <path
+                        class="svg-shape"
+                        d="M86.6,25 L43.3,25 L21.65,60 L43.3,95 L86.6,95 L108.25,60 Z"
+                      ></path>
+                      <path
+                        class="svg-shape-inner"
+                        d="M75.8,42.5 L54.1,42.5 L43.3,60 L54.1,77.5 L75.8,77.5 L86.6,60 Z"
+                      ></path>
+                      <line class="svg-dimline" x1="65" y1="25" x2="65" y2="95"></line>
+                      <text class="svg-label" x="80" y="60">F</text>
+                      <line class="svg-dimline" x1="65" y1="42.5" x2="65" y2="77.5"></line>
+                      <text class="svg-label" x="50" y="60">f</text>
+                    </svg>
+                  }
+                  <!-- قوطی پروفیل - مربع در مربع -->
+                  @case ('square_pipe') {
+                    <svg id="shape-svg" viewBox="0 0 120 120" preserveAspectRatio="xMidYMid meet">
+                      <rect class="svg-shape" x="20" y="20" width="80" height="80" rx="2"></rect>
+                      <rect
+                        class="svg-shape-inner"
+                        x="40"
+                        y="40"
+                        width="40"
+                        height="40"
+                        rx="2"
+                      ></rect>
+                      <line class="svg-dimline" x1="20" y1="105" x2="100" y2="105"></line>
+                      <text class="svg-label" x="60" y="90">A</text>
+                      <path class="svg-dimline" d="M 20 28 L 40 28"></path>
+                      <text class="svg-label" x="30" y="43">t</text>
+                    </svg>
+                  }
+
+                  <!-- قوطی پروفیل - مستطیل در مستطیل -->
+                  @case ('rect_pipe') {
+                    <svg id="shape-svg" viewBox="0 0 120 120" preserveAspectRatio="xMidYMid meet">
+                      <rect class="svg-shape" x="15" y="30" width="90" height="60" rx="2"></rect>
+                      <rect
+                        class="svg-shape-inner"
+                        x="35"
+                        y="45"
+                        width="50"
+                        height="30"
+                        rx="2"
+                      ></rect>
+                      <line class="svg-dimline" x1="15" y1="95" x2="105" y2="95"></line>
+                      <text class="svg-label" x="60" y="80">W</text>
+                      <line class="svg-dimline" x1="108" y1="30" x2="108" y2="90"></line>
+                      <text class="svg-label" x="93" y="60">H</text>
+                      <path class="svg-dimline" d="M 15 38 L 35 38"></path>
+                      <text class="svg-label" x="25" y="53">t</text>
+                    </svg>
+                  }
+                }
+              </div>
+            }
+          </div>
+          @if (selectedSegmentTypeId == 'round_bar') {
+            <div class="mt-3">
+              <mat-form-field
+                appearance="outline"
+                dir="rtl"
+                [hideRequiredMarker]="true"
+                class="orange-input w-100 mat-form-field-has-always-float"
+              >
+                <mat-label class="required-label">
+                  <span class="required-star">*</span>
+                  <span class="label-style"> قطر (d) : میلی متر [mm] </span>
+                </mat-label>
+
+                <input matInput type="number" min="0" formControlName="diameteRoundBar" />
+              </mat-form-field>
             </div>
           }
-        </div>
-        @if (selectedSectionId == 'round_bar') {
-          <div class="mt-3">
-            <mat-form-field
-              appearance="outline"
-              dir="rtl"
-              [hideRequiredMarker]="true"
-              class="orange-input w-100 mat-form-field-has-always-float"
-            >
-              <mat-label class="required-label">
-                <span class="required-star">*</span>
-                <span class="label-style"> قطر (d) : میلی متر [mm] </span>
-              </mat-label>
-
-              <input matInput type="number" min="0" />
-            </mat-form-field>
-          </div>
-        }
-        @if (selectedSectionId == 'square_bar') {
-          <div class="mt-3">
-            <mat-form-field
-              appearance="outline"
-              dir="rtl"
-              [hideRequiredMarker]="true"
-              class="orange-input w-100 mat-form-field-has-always-float"
-            >
-              <mat-label class="required-label">
-                <span class="required-star">*</span>
-                <span class="label-style"> ضلع (a): میلی متر [mm] </span>
-              </mat-label>
-
-              <input matInput type="number" min="0" />
-            </mat-form-field>
-          </div>
-        }
-        @if (selectedSectionId == 'rect_bar') {
-          <div class="mt-3">
-            <mat-form-field
-              appearance="outline"
-              dir="rtl"
-              [hideRequiredMarker]="true"
-              class="orange-input w-100 mat-form-field-has-always-float"
-            >
-              <mat-label class="required-label">
-                <span class="required-star">*</span>
-                <span class="label-style"> عرض (w): میلی متر [mm] </span>
-              </mat-label>
-
-              <input matInput type="number" min="0" />
-            </mat-form-field>
-          </div>
-          <div class="mt-3">
-            <mat-form-field
-              appearance="outline"
-              dir="rtl"
-              [hideRequiredMarker]="true"
-              class="orange-input w-100 mat-form-field-has-always-float"
-            >
-              <mat-label class="required-label">
-                <span class="required-star">*</span>
-                <span class="label-style">
-                  ارتفاع (h): میلی متر [mm]
-                </span>
-              </mat-label>
-              <input matInput type="number" min="0" />
-            </mat-form-field>
-          </div>
-        }
-        @if (selectedSectionId == 'hex_bar') {
-          <div class="mt-3">
-            <mat-form-field
-              appearance="outline"
-              dir="rtl"
-              [hideRequiredMarker]="true"
-              class="orange-input w-100 mat-form-field-has-always-float"
-            >
-              <mat-label class="required-label">
-                <span class="required-star">*</span>
-                <span class="label-style">
-                  آچارخور (f): میلی متر [mm]
-                </span>
-              </mat-label>
-
-              <input matInput type="number" min="0" />
-            </mat-form-field>
-          </div>
-        }
-        @if (selectedSectionId == 'pipe_circle_in_circle') {
-          <div class="mt-3">
-            <mat-form-field
-              appearance="outline"
-              dir="rtl"
-              [hideRequiredMarker]="true"
-              class="orange-input w-100 mat-form-field-has-always-float"
-            >
-              <mat-label class="required-label">
-                <span class="required-star">*</span>
-                <span class="label-style">
-                  قطر خارجی (D): میلی متر [mm]
-                </span>
-              </mat-label>
-              <input matInput type="number" min="0" />
-            </mat-form-field>
-          </div>
-          <div class="mt-3">
-            <mat-form-field
-              appearance="outline"
-              dir="rtl"
-              [hideRequiredMarker]="true"
-              class="orange-input w-100 mat-form-field-has-always-float"
-            >
-              <mat-label class="required-label">
-                <span class="required-star">*</span>
-                <span class="label-style">
-                  قطر داخلی (d): میلی متر [mm]
-                </span>
-              </mat-label>
-              <input matInput type="number" min="0" />
-            </mat-form-field>
-          </div>
-        }
-        @if (selectedSectionId == 'circle_in_hex') {
-          <div class="mt-3">
-            <mat-form-field
-              appearance="outline"
-              dir="rtl"
-              [hideRequiredMarker]="true"
-              class="orange-input w-100 mat-form-field-has-always-float"
-            >
-              <mat-label class="required-label">
-                <span class="required-star">*</span>
-                <span class="label-style">
-                  آچارخور شش‌ضلعی (F): میلی متر [mm]
-                </span>
-              </mat-label>
-
-              <input matInput type="number" min="0" />
-            </mat-form-field>
-          </div>
-          <div class="mt-3">
-            <mat-form-field
-              appearance="outline"
-              dir="rtl"
-              [hideRequiredMarker]="true"
-              class="orange-input w-100 mat-form-field-has-always-float"
-            >
-              <mat-label class="required-label">
-                <span class="required-star">*</span>
-                <span class="label-style">
-                  قطر دایره (d): میلی متر [mm]
-                </span>
-              </mat-label>
-
-              <input matInput type="number" min="0" />
-            </mat-form-field>
-          </div>
-        }
-        @if (selectedSectionId == 'circle_in_square') {
-          <div class="mt-3">
-            <mat-form-field
-              appearance="outline"
-              dir="rtl"
-              [hideRequiredMarker]="true"
-              class="orange-input w-100 mat-form-field-has-always-float"
-            >
-              <mat-label class="required-label">
-                <span class="required-star">*</span>
-                <span class="label-style">
-                  ضلع مربع (a): میلی متر [mm]
-                </span>
-              </mat-label>
-
-              <input matInput type="number" min="0" />
-            </mat-form-field>
-          </div>
-          <div class="mt-3">
-            <mat-form-field
-              appearance="outline"
-              dir="rtl"
-              [hideRequiredMarker]="true"
-              class="orange-input w-100 mat-form-field-has-always-float"
-            >
-              <mat-label class="required-label">
-                <span class="required-star">*</span>
-                <span class="label-style">
-                  قطر دایره داخلی (d): میلی متر [mm]
-                </span>
-              </mat-label>
-
-              <input matInput type="number" min="0" />
-            </mat-form-field>
-          </div>
-        }
-        @if (selectedSectionId == 'hex_in_circle') {
-          <div class="mt-3">
-            <mat-form-field
-              appearance="outline"
-              dir="rtl"
-              [hideRequiredMarker]="true"
-              class="orange-input w-100 mat-form-field-has-always-float"
-            >
-              <mat-label class="required-label">
-                <span class="required-star">*</span>
-                <span class="label-style">
-                  قطر دایره (D): میلی متر [mm]
-                </span>
-              </mat-label>
-
-              <input matInput type="number" min="0" />
-            </mat-form-field>
-          </div>
-          <div class="mt-3">
-            <mat-form-field
-              appearance="outline"
-              dir="rtl"
-              [hideRequiredMarker]="true"
-              class="orange-input w-100 mat-form-field-has-always-float"
-            >
-              <mat-label class="required-label">
-                <span class="required-star">*</span>
-                <span class="label-style">
-                  آچارخور شش‌ضلعی (f): میلی متر [mm]
-                </span>
-              </mat-label>
-
-              <input matInput type="number" min="0" />
-            </mat-form-field>
-          </div>
-        }
-        @if (selectedSectionId == 'hex_in_hex') {
-          <div class="mt-3">
-            <mat-form-field
-              appearance="outline"
-              dir="rtl"
-              [hideRequiredMarker]="true"
-              class="orange-input w-100 mat-form-field-has-always-float"
-            >
-              <mat-label class="required-label">
-                <span class="required-star">*</span>
-                <span class="label-style">
-                  آچارخور خارجی (F): میلی متر [mm]
-                </span>
-              </mat-label>
-
-              <input matInput type="number" min="0" />
-            </mat-form-field>
-          </div>
-          <div class="mt-3">
-            <mat-form-field
-              appearance="outline"
-              dir="rtl"
-              [hideRequiredMarker]="true"
-              class="orange-input w-100 mat-form-field-has-always-float"
-            >
-              <mat-label class="required-label">
-                <span class="required-star">*</span>
-                <span class="label-style">
-                  آچارخور داخلی (f): میلی متر [mm]
-                </span>
-              </mat-label>
-
-              <input matInput type="number" min="0" />
-            </mat-form-field>
-          </div>
-        }
-        @if (selectedSectionId == 'square_pipe') {
-          <div class="mt-3">
-            <mat-form-field
-              appearance="outline"
-              dir="rtl"
-              [hideRequiredMarker]="true"
-              class="orange-input w-100 mat-form-field-has-always-float"
-            >
-              <mat-label class="required-label">
-                <span class="required-star">*</span>
-                <span class="label-style">
-                  ضلع خارجی (A): میلی متر [mm]
-                </span>
-              </mat-label>
-
-              <input matInput type="number" min="0" />
-            </mat-form-field>
-          </div>
-          <div class="mt-3">
-            <mat-form-field
-              appearance="outline"
-              dir="rtl"
-              [hideRequiredMarker]="true"
-              class="orange-input w-100 mat-form-field-has-always-float"
-            >
-              <mat-label class="required-label">
-                <span class="required-star">*</span>
-                <span class="label-style">
-                  ضخامت جداره (t): میلی متر [mm]
-                </span>
-              </mat-label>
-
-              <input matInput type="number" min="0" />
-            </mat-form-field>
-          </div>
-        }
-        @if (selectedSectionId == 'rect_pipe') {
-          <div class="mt-3">
-            <mat-form-field
-              appearance="outline"
-              dir="rtl"
-              [hideRequiredMarker]="true"
-              class="orange-input w-100 mat-form-field-has-always-float"
-            >
-              <mat-label class="required-label">
-                <span class="required-star">*</span>
-                <span class="label-style">
-                  عرض خارجی (W): میلی متر [mm]
-                </span>
-              </mat-label>
-
-              <input matInput type="number" min="0" />
-            </mat-form-field>
-          </div>
-          <div class="mt-3">
-            <mat-form-field
-              appearance="outline"
-              dir="rtl"
-              [hideRequiredMarker]="true"
-              class="orange-input w-100 mat-form-field-has-always-float"
-            >
-              <mat-label class="required-label">
-                <span class="required-star">*</span>
-                <span class="label-style">
-                  ارتفاع خارجی (H): میلی متر [mm]
-                </span>
-              </mat-label>
-
-              <input matInput type="number" min="0" />
-            </mat-form-field>
-          </div>
-          <div class="mt-3">
-            <mat-form-field
-              appearance="outline"
-              dir="rtl"
-              [hideRequiredMarker]="true"
-              class="orange-input w-100 mat-form-field-has-always-float"
-            >
-              <mat-label class="required-label">
-                <span class="required-star">*</span>
-                <span class="label-style">
-                  ضخامت جداره (t): میلی متر [mm]
-                </span>
-              </mat-label>
-
-              <input matInput type="number" min="0" />
-            </mat-form-field>
-          </div>
-        }
-
-        <div class="mt-3 w-100">
-          <mat-form-field
-            appearance="outline"
-            dir="rtl"
-            [hideRequiredMarker]="true"
-            class="orange-input w-100 mat-form-field-has-always-float"
-          >
-            <mat-label class="required-label">
-              <span class="required-star">*</span>
-              <span class="label-style"> طول: میلی متر [mm]</span>
-            </mat-label>
-
-            <input matInput type="number" min="0" />
-          </mat-form-field>
-        </div>
-        <div class="mt-3">
-          <mat-form-field
-            appearance="outline"
-            dir="rtl"
-            [hideRequiredMarker]="true"
-            class="orange-input w-100 mat-form-field-has-always-float"
-          >
-            <mat-label class="required-label">
-              <span class="required-star">*</span>
-              <span class="label-style">
-                چگالی: تن بر متر مکعب [ton/m³]</span
+          @if (selectedSegmentTypeId == 'square_bar') {
+            <div class="mt-3">
+              <mat-form-field
+                appearance="outline"
+                dir="rtl"
+                [hideRequiredMarker]="true"
+                class="orange-input w-100 mat-form-field-has-always-float"
               >
-            </mat-label>
+                <mat-label class="required-label">
+                  <span class="required-star">*</span>
+                  <span class="label-style"> ضلع (a): میلی متر [mm] </span>
+                </mat-label>
 
-            <input matInput type="number" min="0" />
-          </mat-form-field>
-        </div>
+                <input matInput type="number" min="0" />
+              </mat-form-field>
+            </div>
+          }
+          @if (selectedSegmentTypeId == 'rect_bar') {
+            <div class="mt-3">
+              <mat-form-field
+                appearance="outline"
+                dir="rtl"
+                [hideRequiredMarker]="true"
+                class="orange-input w-100 mat-form-field-has-always-float"
+              >
+                <mat-label class="required-label">
+                  <span class="required-star">*</span>
+                  <span class="label-style"> عرض (w): میلی متر [mm] </span>
+                </mat-label>
 
-        <div class="mt-3">
-          <mat-form-field
-            appearance="outline"
-            dir="rtl"
-            [hideRequiredMarker]="true"
-            class="orange-input w-100 mat-form-field-has-always-float"
-          >
-            <mat-label class="required-label">
-              <span class="required-star">*</span>
-              <span class="label-style"> تعداد شاخه: (عدد)</span>
-            </mat-label>
+                <input matInput type="number" min="0" />
+              </mat-form-field>
+            </div>
+            <div class="mt-3">
+              <mat-form-field
+                appearance="outline"
+                dir="rtl"
+                [hideRequiredMarker]="true"
+                class="orange-input w-100 mat-form-field-has-always-float"
+              >
+                <mat-label class="required-label">
+                  <span class="required-star">*</span>
+                  <span class="label-style"> ارتفاع (h): میلی متر [mm] </span>
+                </mat-label>
+                <input matInput type="number" min="0" />
+              </mat-form-field>
+            </div>
+          }
+          @if (selectedSegmentTypeId == 'hex_bar') {
+            <div class="mt-3">
+              <mat-form-field
+                appearance="outline"
+                dir="rtl"
+                [hideRequiredMarker]="true"
+                class="orange-input w-100 mat-form-field-has-always-float"
+              >
+                <mat-label class="required-label">
+                  <span class="required-star">*</span>
+                  <span class="label-style"> آچارخور (f): میلی متر [mm] </span>
+                </mat-label>
 
-            <input matInput type="number" min="0" />
-          </mat-form-field>
-        </div>
+                <input matInput type="number" min="0" />
+              </mat-form-field>
+            </div>
+          }
+          @if (selectedSegmentTypeId == 'pipe_circle_in_circle') {
+            <div class="mt-3">
+              <mat-form-field
+                appearance="outline"
+                dir="rtl"
+                [hideRequiredMarker]="true"
+                class="orange-input w-100 mat-form-field-has-always-float"
+              >
+                <mat-label class="required-label">
+                  <span class="required-star">*</span>
+                  <span class="label-style"> قطر خارجی (D): میلی متر [mm] </span>
+                </mat-label>
+                <input matInput type="number" min="0" />
+              </mat-form-field>
+            </div>
+            <div class="mt-3">
+              <mat-form-field
+                appearance="outline"
+                dir="rtl"
+                [hideRequiredMarker]="true"
+                class="orange-input w-100 mat-form-field-has-always-float"
+              >
+                <mat-label class="required-label">
+                  <span class="required-star">*</span>
+                  <span class="label-style"> قطر داخلی (d): میلی متر [mm] </span>
+                </mat-label>
+                <input matInput type="number" min="0" />
+              </mat-form-field>
+            </div>
+          }
+          @if (selectedSegmentTypeId == 'circle_in_hex') {
+            <div class="mt-3">
+              <mat-form-field
+                appearance="outline"
+                dir="rtl"
+                [hideRequiredMarker]="true"
+                class="orange-input w-100 mat-form-field-has-always-float"
+              >
+                <mat-label class="required-label">
+                  <span class="required-star">*</span>
+                  <span class="label-style"> آچارخور شش‌ضلعی (F): میلی متر [mm] </span>
+                </mat-label>
+
+                <input matInput type="number" min="0" />
+              </mat-form-field>
+            </div>
+            <div class="mt-3">
+              <mat-form-field
+                appearance="outline"
+                dir="rtl"
+                [hideRequiredMarker]="true"
+                class="orange-input w-100 mat-form-field-has-always-float"
+              >
+                <mat-label class="required-label">
+                  <span class="required-star">*</span>
+                  <span class="label-style"> قطر دایره (d): میلی متر [mm] </span>
+                </mat-label>
+
+                <input matInput type="number" min="0" />
+              </mat-form-field>
+            </div>
+          }
+          @if (selectedSegmentTypeId == 'circle_in_square') {
+            <div class="mt-3">
+              <mat-form-field
+                appearance="outline"
+                dir="rtl"
+                [hideRequiredMarker]="true"
+                class="orange-input w-100 mat-form-field-has-always-float"
+              >
+                <mat-label class="required-label">
+                  <span class="required-star">*</span>
+                  <span class="label-style"> ضلع مربع (a): میلی متر [mm] </span>
+                </mat-label>
+
+                <input matInput type="number" min="0" />
+              </mat-form-field>
+            </div>
+            <div class="mt-3">
+              <mat-form-field
+                appearance="outline"
+                dir="rtl"
+                [hideRequiredMarker]="true"
+                class="orange-input w-100 mat-form-field-has-always-float"
+              >
+                <mat-label class="required-label">
+                  <span class="required-star">*</span>
+                  <span class="label-style"> قطر دایره داخلی (d): میلی متر [mm] </span>
+                </mat-label>
+
+                <input matInput type="number" min="0" />
+              </mat-form-field>
+            </div>
+          }
+          @if (selectedSegmentTypeId == 'hex_in_circle') {
+            <div class="mt-3">
+              <mat-form-field
+                appearance="outline"
+                dir="rtl"
+                [hideRequiredMarker]="true"
+                class="orange-input w-100 mat-form-field-has-always-float"
+              >
+                <mat-label class="required-label">
+                  <span class="required-star">*</span>
+                  <span class="label-style"> قطر دایره (D): میلی متر [mm] </span>
+                </mat-label>
+
+                <input matInput type="number" min="0" />
+              </mat-form-field>
+            </div>
+            <div class="mt-3">
+              <mat-form-field
+                appearance="outline"
+                dir="rtl"
+                [hideRequiredMarker]="true"
+                class="orange-input w-100 mat-form-field-has-always-float"
+              >
+                <mat-label class="required-label">
+                  <span class="required-star">*</span>
+                  <span class="label-style"> آچارخور شش‌ضلعی (f): میلی متر [mm] </span>
+                </mat-label>
+
+                <input matInput type="number" min="0" />
+              </mat-form-field>
+            </div>
+          }
+          @if (selectedSegmentTypeId == 'hex_in_hex') {
+            <div class="mt-3">
+              <mat-form-field
+                appearance="outline"
+                dir="rtl"
+                [hideRequiredMarker]="true"
+                class="orange-input w-100 mat-form-field-has-always-float"
+              >
+                <mat-label class="required-label">
+                  <span class="required-star">*</span>
+                  <span class="label-style"> آچارخور خارجی (F): میلی متر [mm] </span>
+                </mat-label>
+
+                <input matInput type="number" min="0" />
+              </mat-form-field>
+            </div>
+            <div class="mt-3">
+              <mat-form-field
+                appearance="outline"
+                dir="rtl"
+                [hideRequiredMarker]="true"
+                class="orange-input w-100 mat-form-field-has-always-float"
+              >
+                <mat-label class="required-label">
+                  <span class="required-star">*</span>
+                  <span class="label-style"> آچارخور داخلی (f): میلی متر [mm] </span>
+                </mat-label>
+
+                <input matInput type="number" min="0" />
+              </mat-form-field>
+            </div>
+          }
+          @if (selectedSegmentTypeId == 'square_pipe') {
+            <div class="mt-3">
+              <mat-form-field
+                appearance="outline"
+                dir="rtl"
+                [hideRequiredMarker]="true"
+                class="orange-input w-100 mat-form-field-has-always-float"
+              >
+                <mat-label class="required-label">
+                  <span class="required-star">*</span>
+                  <span class="label-style"> ضلع خارجی (A): میلی متر [mm] </span>
+                </mat-label>
+
+                <input matInput type="number" min="0" />
+              </mat-form-field>
+            </div>
+            <div class="mt-3">
+              <mat-form-field
+                appearance="outline"
+                dir="rtl"
+                [hideRequiredMarker]="true"
+                class="orange-input w-100 mat-form-field-has-always-float"
+              >
+                <mat-label class="required-label">
+                  <span class="required-star">*</span>
+                  <span class="label-style"> ضخامت جداره (t): میلی متر [mm] </span>
+                </mat-label>
+
+                <input matInput type="number" min="0" />
+              </mat-form-field>
+            </div>
+          }
+          @if (selectedSegmentTypeId == 'rect_pipe') {
+            <div class="mt-3">
+              <mat-form-field
+                appearance="outline"
+                dir="rtl"
+                [hideRequiredMarker]="true"
+                class="orange-input w-100 mat-form-field-has-always-float"
+              >
+                <mat-label class="required-label">
+                  <span class="required-star">*</span>
+                  <span class="label-style"> عرض خارجی (W): میلی متر [mm] </span>
+                </mat-label>
+
+                <input matInput type="number" min="0" />
+              </mat-form-field>
+            </div>
+            <div class="mt-3">
+              <mat-form-field
+                appearance="outline"
+                dir="rtl"
+                [hideRequiredMarker]="true"
+                class="orange-input w-100 mat-form-field-has-always-float"
+              >
+                <mat-label class="required-label">
+                  <span class="required-star">*</span>
+                  <span class="label-style"> ارتفاع خارجی (H): میلی متر [mm] </span>
+                </mat-label>
+
+                <input matInput type="number" min="0" />
+              </mat-form-field>
+            </div>
+            <div class="mt-3">
+              <mat-form-field
+                appearance="outline"
+                dir="rtl"
+                [hideRequiredMarker]="true"
+                class="orange-input w-100 mat-form-field-has-always-float"
+              >
+                <mat-label class="required-label">
+                  <span class="required-star">*</span>
+                  <span class="label-style"> ضخامت جداره (t): میلی متر [mm] </span>
+                </mat-label>
+
+                <input matInput type="number" min="0" />
+              </mat-form-field>
+            </div>
+          }
+
+          <div class="mt-3 w-100">
+            <mat-form-field
+              appearance="outline"
+              dir="rtl"
+              [hideRequiredMarker]="true"
+              class="orange-input w-100 mat-form-field-has-always-float"
+            >
+              <mat-label class="required-label">
+                <span class="required-star">*</span>
+                <span class="label-style"> طول: میلی متر [mm]</span>
+              </mat-label>
+
+              <input matInput type="number" min="0" formControlName="lengthSegment" />
+            </mat-form-field>
+          </div>
+          <div class="mt-3">
+            <mat-form-field
+              appearance="outline"
+              dir="rtl"
+              [hideRequiredMarker]="true"
+              class="orange-input w-100 mat-form-field-has-always-float"
+            >
+              <mat-label class="required-label">
+                <span class="required-star">*</span>
+                <span class="label-style"> چگالی: تن بر متر مکعب [ton/m³]</span>
+              </mat-label>
+
+              <input matInput type="number" min="0" formControlName="density" />
+            </mat-form-field>
+          </div>
+
+          <div class="mt-3">
+            <mat-form-field
+              appearance="outline"
+              dir="rtl"
+              [hideRequiredMarker]="true"
+              class="orange-input w-100 mat-form-field-has-always-float"
+            >
+              <mat-label class="required-label">
+                <span class="required-star">*</span>
+                <span class="label-style"> تعداد شاخه: (عدد)</span>
+              </mat-label>
+
+              <input matInput type="number" min="0" formControlName="numberBranches"/>
+            </mat-form-field>
+          </div>
+          <div class="mt-3">
+            <button class="btn btn-calculate-weight" (click)="calculateWeight()">محاسبه کن</button>
+            <span class="text-white">وزن کل: {{ weightDisplay }} کیلوگرم</span>
+          </div>
+          @if(showErrorTypeofSegment){
+            <div class="alert-box-error">
+              <span>⚠️ نوع مقطع را انتخاب کنید</span>
+            </div>
+          }
+          @if(showError){
+            <div class="alert-box-error">
+              <span>⚠️ لطفاً مقادیر تمام فیلدهای هایلایت شده را به درستی وارد کنید.</span>
+            </div>
+          }
+        </form>
       </div>
     </div>
   </div>

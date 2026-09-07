@@ -4,7 +4,7 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 import { PageBanner } from '../shared/page-banner/page-banner';
 import { SectionCategory } from '../model/metal-profile.model';
 import { MetalCalculatorService } from '../services/metal-calculator.service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -22,33 +22,72 @@ interface Product {
 @Component({
   selector: 'app-weight-calculation',
   standalone: true,
-  imports: [MatTableModule, MatSortModule,PageBanner,CommonModule, 
+  imports: [MatTableModule, MatSortModule, PageBanner, CommonModule,
     FormsModule, MatSnackBarModule, MatFormFieldModule, MatInputModule, MatRadioModule, ReactiveFormsModule,
     MatSelectModule,],
   templateUrl: './weight-calculation.html',
   styleUrl: './weight-calculation.scss'
 })
 export class WeightCalculation implements AfterViewInit {
-
- diameter: number = 0;
   categories: SectionCategory[] = [];
-  selectedSectionId: string = '';
+  area: any;
+  weightDisplay: any;
+  weight: any;
+  showErrorTypeofSegment: boolean = false;
+  showError: boolean = false;
+  form!: FormGroup;
 
-  constructor(private metalService: MetalCalculatorService) {}
+  constructor(private metalService: MetalCalculatorService, private fb: FormBuilder) { this.buildFrom() }
 
   ngOnInit(): void {
     this.metalService.getSections().subscribe(data => {
       this.categories = data;
     });
   }
-
-   onSectionChange(event: any): void {
-    // اگر لازم است، مقدار جدید را مدیریت کنید
-    // مقدار انتخاب شده در event.value یا این کلاس با selectedSectionId همخوانی دارد
-    console.log('selected', this.selectedSectionId);
+  // دسترسی سریع به مقدار کنترل انتخاب شده
+  get selectedSegmentTypeId(): string {
+    return this.form.get('selectedSegmentTypeId')?.value;
   }
 
 
+  buildFrom() {
+    this.form = this.fb.group({
+      selectedSegmentTypeId: ['', Validators.required],
+      diameteRoundBar: ['', Validators.required],
+      lengthSegment: ['', Validators.required],
+      density: [8.5, Validators.required],
+      numberBranches: [1, Validators.required],
+    });
+  }
+
+  get f() { return this.form.controls }
+  calculateWeight() {
+    const formValues = this.form.getRawValue();
+
+    // ۱. ریست کردن وضعیت خطاها در ابتدای متد
+    this.showErrorTypeofSegment = false;
+    this.showError = false;
+
+    // ۲. بررسی انتخاب نوع مقطع
+    if (!formValues.selectedSegmentTypeId) {
+      this.showErrorTypeofSegment = true;
+      return;
+    } else {
+      this.showErrorTypeofSegment = false;
+    }
+    if (!formValues.diameteRoundBar || !formValues.numberBranches || !formValues.density || !formValues.lengthSegment) {
+      this.showError = true;
+      return
+    } else {
+      this.showError = false;
+    }
+
+   if (formValues.selectedSegmentTypeId == 'round_bar') {
+      this.area = ((Math.PI * formValues.diameteRoundBar * formValues.diameteRoundBar) / 4);
+      this.weight = (formValues.numberBranches * formValues.density * formValues.lengthSegment * this.area) / 1000000;
+      this.weightDisplay = this.weight.toFixed(4).replace('.', '/');
+    }
+  }
 
 
 

@@ -1,4 +1,4 @@
-$primary-color: #e49a78;
+$primary-color: #e2875d;
 $primary: #f26522;
 
 .container-shape {
@@ -22,24 +22,6 @@ $primary: #f26522;
   stroke-width: 1.5;
   marker-start: url(#arrowhead);
   marker-end: url(#arrowhead);
-}
-
-.mat-form-field-has-always-float {
-
-  /* لیبل نارنجی */
-  .mat-mdc-form-field-label {
-    color: $primary !important;
-  }
-
-  .mat-mdc-text-field-wrapper .mat-mdc-form-field-bottom-line::before {
-    background-color: $primary !important;
-  }
-}
-
-.orange-input.mat-form-field-has-always-float {
-  .required-label {
-    color: $primary !important;
-  }
 }
 
 .svg-label {
@@ -132,4 +114,28 @@ td {
     margin-bottom: 5px !important;
   }
 
+}
+
+:host button.btn.btn-calculate-weight {
+  background-color: $primary;
+  border: 2px solid #f26522 !important;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-weight: bold;
+
+  width: 100%;
+
+  &:hover {
+    border: 2px solid $primary;
+    background-color: transparent;
+    color: white;
+  }
+}
+
+.error-div{
+  background-color: white;
+  border-radius: 8px;
+  border: 1px solid #f26522;
 }
