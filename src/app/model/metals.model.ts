@@ -6,6 +6,14 @@ export interface Metal {
 
 export const Metals: Metal[] = [
     {
+        metalName: 'برنج (Brass)',
+        density: '8.5',
+    },
+    {
+        metalName: 'مس (Copper)',
+        density: '8.96',
+    },
+    {
         metalName: 'آلومینیوم (Aluminum)',
         density: '2.7',
     },
@@ -16,14 +24,5 @@ export const Metals: Metal[] = [
     {
         metalName: 'فولاد (Steel)',
         density: '7.85',
-    },
-
-    {
-        metalName: 'برنج (Brass)',
-        density: '8.5',
-    },
-    {
-        metalName: 'مس (Copper)',
-        density: '8.96',
     },
 ];
