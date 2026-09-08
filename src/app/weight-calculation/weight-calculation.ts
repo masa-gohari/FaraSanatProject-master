@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { PageBanner } from '../shared/page-banner/page-banner';
@@ -11,13 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSelectModule } from '@angular/material/select'
-
-interface Product {
-  name: string;
-  category: string;
-  weight: number;
-  price: number;
-}
+import { Metal, Metals } from '../model/metals.model';
 
 @Component({
   selector: 'app-weight-calculation',
@@ -28,8 +22,10 @@ interface Product {
   templateUrl: './weight-calculation.html',
   styleUrl: './weight-calculation.scss'
 })
-export class WeightCalculation implements AfterViewInit {
+
+export class WeightCalculation implements OnInit {
   categories: SectionCategory[] = [];
+  metals: Metal[] = Metals;
   area: any;
   weightDisplay: any;
   weight: any;
@@ -222,8 +218,7 @@ export class WeightCalculation implements AfterViewInit {
         this.showError = true;
         return;
       }
-// فرمول مساحت: A = (W×H) - ((W-2t)×(H-2t))
-//       this.area = 
+      this.area = (W * H) - ((W - (2 * t)) * (H - (2 * t)))
     }
 
     this.weight = (formValues.numberBranches * formValues.density * formValues.lengthSegment * this.area) / 1000000;
@@ -236,47 +231,4 @@ export class WeightCalculation implements AfterViewInit {
   }
 
 
-
-
-  displayedColumns = ['name', 'category', 'weight', 'price'];
-
-  dataSource = new MatTableDataSource<Product>([
-    {
-      name: 'مس',
-      category: 'مقاطع فلزی',
-      weight: 6,
-      price: 3
-    },
-    {
-      name: 'برنج',
-      category: 'مقاطع فلزی',
-      weight: 7,
-      price: 4
-    },
-    {
-      name: 'روی',
-      category: 'فلزات',
-      weight: 8,
-      price: 5
-    }
-  ]);
-
-  @ViewChild(MatSort) sort!: MatSort;
-
-  ngAfterViewInit(): void {
-    this.dataSource.sort = this.sort;
-
-    // برای مرتب‌سازی عددی صحیح
-    this.dataSource.sortingDataAccessor = (item, property) => {
-      if (property === 'weight') {
-        return item.weight;
-      }
-
-      if (property === 'price') {
-        return item.price;
-      }
-
-      return item[property as keyof Product] as string;
-    };
-  }
 }

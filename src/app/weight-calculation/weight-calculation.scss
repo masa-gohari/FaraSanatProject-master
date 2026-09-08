@@ -55,26 +55,6 @@ $primary: #f26522;
   stroke-width: 3;
 }
 
-.table-wrapper {
-  width: 100%;
-  overflow-x: auto;
-}
-
-table {
-  width: 100%;
-  min-width: 650px;
-}
-
-th {
-  font-weight: bold;
-  cursor: pointer;
-  text-align: right;
-}
-
-td {
-  text-align: right;
-}
-
 .mat-mdc-header-cell {
   background-color: #f26522;
   color: white;
@@ -161,4 +141,21 @@ td {
 
 p {
   margin: 0;
+}
+
+th,
+td {
+  color: #e2875d;
+}
+
+.custom-table-container {
+  max-width: 480px;
+  margin: 82px auto ;
+  border-radius: 12px;
+  overflow: hidden;
+  overflow-x: auto;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  .table {
+    margin-bottom: 0;
+  }
 }
