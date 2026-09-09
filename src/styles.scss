@@ -63,7 +63,6 @@ body {
   color: #fff !important;
 }
 
-
 .mat-mdc-select-arrow {
   color: rgba(255, 255, 255, 0.85) !important;
 }
@@ -115,8 +114,6 @@ body {
 }
 
 .mat-form-field-has-always-float {
-
-  /* لیبل نارنجی */
   .mat-mdc-form-field-label {
     color: $primary-color !important;
   }
@@ -132,16 +129,12 @@ body {
   }
 }
 
-/* استایل کادر خطا در انگولار متریال */
 ::ng-deep .custom-field.field-error {
-
-  /* پس‌زمینه صورتی کم‌رنگ */
   .mat-mdc-text-field-wrapper {
     background-color: #fff2f2 !important;
     border-radius: 6px;
   }
 
-  /* کادر قرمز */
   .mdc-notched-outline__leading,
   .mdc-notched-outline__notch,
   .mdc-notched-outline__trailing {
@@ -149,7 +142,6 @@ body {
     border-width: 1.5px !important;
   }
 
-  /* رنگ قرمز برای متن و لیبل */
   .mat-mdc-floating-label,
   .required-star,
   .label-style {
@@ -157,7 +149,6 @@ body {
   }
 }
 
-/* استایل باکس پیام هشدار */
 .alert-box-error {
   display: flex;
   justify-content: center;

@@ -7,7 +7,13 @@ $primary-hover: #d8652f;
   z-index: 0;
 }
 
-.address{
-  color: white;
-  font-weight: 500;
+.address {
+  color: #e2875d;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 32px;
+}
+
+::ng-deep .ol-viewport {
+  border-radius: 15px;
 }
