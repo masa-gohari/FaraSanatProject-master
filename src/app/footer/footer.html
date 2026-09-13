@@ -1,56 +1,132 @@
-<hr style="color: white" />
+<footer class="site-footer" dir="rtl">
+  <div class="footer-divider-glow"></div>
 
-<div class="row col-11" style="margin:50px auto 0 auto">
-  <div class="row mb-3 mt-2 justify-content-center">
-    <div class="col-lg-4 col-md-6 col-sm-12" style="margin: 0 auto 0 auto;">
-      <h5 class="fw-bold mb-2 title">فرا صنعت ایران</h5>
-      <img src="img/farasanaat-logo.png" class="img-fluid img-logo" alt="لوگو" />
-      <p class="p-style" style="width: 92%">
-        گروه صنعتی «فرا صنعت ایران» با هدف دستیابی به خودکفایی صنعتی کشور و با تکیه بر شعار «رضایت
-        مشتری»، در زمینه تولید قطعات و مقاطع برنجی هندسی و غیرهندسی فعالیت می‌کند. این مجموعه با
-        بهره‌گیری از دانش مهندسین متخصص، آزمایشگاه‌های دقیق کنترل کیفیت و ماشین‌آلات پیشرفته جهانی،
-        نیاز صنایع آب، برق، گاز و حوزه‌های وابسته را تأمین می‌نماید. محصولات این گروه شامل انواع
-        مقاطع برنجی هندسی، غیرهندسی و قطعات برنجی است.
-      </p>
-    </div>
-    <div class="col-lg-2 col-md-6 col-sm-12">
-      <h5 class="fw-bold mb-2 title">دسترسی سریع</h5>
-      <p class="p-style">
-        <a
-          class="nav-link"
-          routerLink="/home"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
-          <span class="menu-label">صفحه اصلی</span>
-        </a>
-      </p>
-      <p class="p-style">
-        <a class="nav-link" routerLink="/weight-calculation" routerLinkActive="active">
-          <span class="menu-label">محاسبه وزن مقاطع فلزی</span>
-        </a>
-      </p>
-      <p class="p-style">
-        <a class="nav-link" routerLink="/news" routerLinkActive="active">
-          <span class="menu-label">اخبار</span>
-        </a>
-      </p>
-      <p class="p-style">
-        <a class="nav-link" routerLink="/about-us" routerLinkActive="active">
-          <span class="menu-label">درباره ما</span>
-        </a>
-      </p>
-    </div>
-    <div class="col-lg-3 col-md-6 col-sm-12">
-      <h5 class="fw-bold mb-2 title">اطلاعات تماس</h5>
-      <p class="address">
-        آدرس: کیلومتر ٢٠ جاده قدیم کرج، شهر قدس (قلعه حسن خان)، بلوار امامزاده، گلبرگ جنوبی، روبروی
-        آتش نشانی، گلچین یکم، دوازده متری دوم، پلاک ۴۷
-      </p>
-      <p class="address mt-2">تلفکس: ۰۲۱۷۶۲۶۳۰۲۰</p>
-    </div>
-    <div class="col-lg-2 col-md-6 col-sm-12">
-      <div id="map"></div>
+  <div class="container-fluid footer-content-wrapper">
+    <div class="row g-4 justify-content-between">
+
+      <!-- ستون ۱: معرفی برند و لوگو -->
+      <div class="col-xl-4 col-lg-4 col-md-12 col-12">
+        <div class="brand-box">
+          <div class="brand-header d-flex align-items-center gap-3 mb-3">
+            <div class="logo-wrapper">
+              <img src="img/farasanaat-logo.png" class="img-logo" alt="لوگو فرا صنعت ایران" />
+            </div>
+            <div>
+              <h4 class="brand-title m-0">فرا صنعت ایران</h4>
+              <span class="brand-subtitle">تولیدکننده تخصصی مقاطع و قطعات برنجی و فلزی</span>
+            </div>
+          </div>
+          <p class="brand-desc">
+            گروه صنعتی «فرا صنعت ایران» با هدف دستیابی به خودکفایی صنعتی کشور و با تکیه بر شعار «رضایت مشتری»، در زمینه
+            تولید انواع مقاطع و قطعات برنجی هندسی و غیرهندسی فعالیت می‌نماید. تامین‌کننده معتبر صنایع آب، برق، گاز و
+            پروژه‌های زیرساختی کشور با بالاترین استانداردهای کنترل کیفیت.
+          </p>
+        </div>
+      </div>
+
+      <!-- ستون ۲: دسترسی سریع -->
+      <div class="col-xl-2 col-lg-2 col-md-4 col-6">
+        <h5 class="col-title">
+          <span>دسترسی سریع</span>
+        </h5>
+        <ul class="footer-links list-unstyled p-0 m-0">
+          <li>
+            <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+              <svg class="link-bullet" viewBox="0 0 16 16">
+                <path fill="currentColor" d="M9.5 3l-5 5 5 5V3z" />
+              </svg>
+              صفحه اصلی
+            </a>
+          </li>
+          <li>
+            <a routerLink="/weight-calculation" routerLinkActive="active">
+              <svg class="link-bullet" viewBox="0 0 16 16">
+                <path fill="currentColor" d="M9.5 3l-5 5 5 5V3z" />
+              </svg>
+              محاسبه‌گر وزن مقاطع
+            </a>
+          </li>
+          <li>
+            <a routerLink="/articles" routerLinkActive="active">
+              <svg class="link-bullet" viewBox="0 0 16 16">
+                <path fill="currentColor" d="M9.5 3l-5 5 5 5V3z" />
+              </svg>
+              مقالات
+            </a>
+          </li>
+          <li>
+            <a routerLink="/about-us" routerLinkActive="active">
+              <svg class="link-bullet" viewBox="0 0 16 16">
+                <path fill="currentColor" d="M9.5 3l-5 5 5 5V3z" />
+              </svg>
+              درباره ما
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- ستون ۳: تماس با ما -->
+      <div class="col-xl-3 col-lg-3 col-md-4 col-6">
+        <h5 class="col-title">
+          <span>اطلاعات تماس</span>
+        </h5>
+        <div class="contact-items d-flex flex-column gap-3">
+
+          <div class="contact-item d-flex align-items-start gap-2">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+                <circle cx="12" cy="9" r="2.5" />
+              </svg>
+            </div>
+            <p class="contact-text m-0">
+              <strong>کارخانه و دفتر :</strong><br>
+              کیلومتر ۲۰ جاده قدیم کرج، شهر قدس، بلوار امامزاده، گلبرگ جنوبی، روبروی آتش‌نشانی، گلچین یکم، دوازده‌متری
+              دوم، پلاک ۴۷
+            </p>
+          </div>
+
+          <div class="contact-item d-flex align-items-center gap-2">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 12.84 12.84 0 0 0 2.81.7 2 2 0 0 1 1.72 2v3a2 2 0 0 1-2 2.18z" />
+              </svg>
+            </div>
+
+            <p class="contact-text m-0">
+              <strong>تلفکس :</strong><br>
+              ۰۲۱-۷۶۲۶۳۰۲۰
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ستون ۴: موقعیت روی نقشه -->
+      <div class="col-xl-3 col-lg-3 col-md-4 col-12">
+        <h5 class="col-title">
+          <span>موقعیت کارخانه</span>
+        </h5>
+        <div class="map-card-wrapper">
+          <div id="map" class="footer-map"></div>
+          <div class="map-glow-border"></div>
+        </div>
+      </div>
+
+
+
+      <!-- نوار پایینی حق کپی‌رایت -->
+      <div
+        class="footer-bottom mt-4 pt-3 border-top border-secondary border-opacity-25 d-flex flex-wrap justify-content-between align-items-center gap-2">
+        <p class="copyright m-0">
+          تمامی حقوق مادی و معنوی این وب‌سایت متعلق به <strong>گروه صنعتی فرا صنعت ایران</strong> است.
+        </p>
+        <div class="bottom-tags">
+        </div>
+      </div>
+
     </div>
   </div>
-</div>
+</footer>

@@ -4,12 +4,12 @@ import { TgjuService, TgjuIndicator } from '../services/tgju.service';
 import { PageBanner } from '../shared/page-banner/page-banner';
 
 @Component({
-  selector: 'app-news',
+  selector: 'app-article',
   imports: [CommonModule,PageBanner],
-  templateUrl: './news.html',
-  styleUrl: './news.scss',
+  templateUrl: './articles.html',
+  styleUrl: './articles.scss',
 })
-export class News {
+export class ArticleComponent {
     private tgjuService = inject(TgjuService);
   indicators = signal<TgjuIndicator[]>([]);
 

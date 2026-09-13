@@ -113,7 +113,7 @@
                 <img [src]="product.image" [alt]="product.nameFa" class="img-fluid" />
               </div>
               <div class="product-info text-end">
-                <p class="mb-1">{{ product.nameFa }}</p>
+                <p class="mb-1 fw-bold">{{ product.nameFa }}</p>
                 <div class="card-accent-line" [style.background-color]="product.accentColor"></div>
               </div>
             </div>
@@ -124,14 +124,42 @@
   </div>
 </section>
 
+<!-- دکمه دانلود کاتالوگ: حالت Main (پررنگ) -->
 <div class="d-flex justify-content-center mt-3 mb-4">
-  <button class="btn catalog-btn">دانلود کاتالوگ</button>
+  <button class="btn catalog-btn catalog-btn--primary">
+    <span class="btn-icon">
+      <!-- آیکون دانلود -->
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+        <polyline points="7 10 12 15 17 10"/>
+        <line x1="12" y1="15" x2="12" y2="3"/>
+      </svg>
+    </span>
+    <span class="btn-label">دانلود کاتالوگ</span>
+  </button>
 </div>
 
+<!-- دکمه جدول محاسبه وزن: حالت Secondary ( outline با هاور پر شدن) -->
 <div class="d-flex justify-content-center mt-5">
-  <button class="btn catalog-btn" (click)="goToWeightCalculation()"> جدول محاسبه وزن</button>
-  
+  <button class="btn catalog-btn catalog-btn--primary" (click)="goToWeightCalculation()">
+    <span class="btn-icon">
+      <!-- آیکون ماشین‌حساب -->
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="4" y="2" width="16" height="20" rx="2"/>
+        <line x1="8" y1="7" x2="16" y2="7"/>
+        <line x1="8" y1="12" x2="8" y2="12.01"/>
+        <line x1="12" y1="12" x2="12" y2="12.01"/>
+        <line x1="16" y1="12" x2="16" y2="12.01"/>
+        <line x1="8" y1="16" x2="8" y2="16.01"/>
+        <line x1="12" y1="16" x2="12" y2="16.01"/>
+        <line x1="16" y1="16" x2="16" y2="16.01"/>
+      </svg>
+    </span>
+    <span class="btn-label">جدول محاسبه وزن</span>
+
+  </button>
 </div>
+
 
 <div>
   <app-assist-with-us></app-assist-with-us>

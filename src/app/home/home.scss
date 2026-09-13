@@ -395,88 +395,164 @@ $text-light: #ffffff;
   color: $primary-color;
   margin-bottom: 5px !important;
 }
+// ============================
+//  دکمه‌های صنعتی فرا صنعت
+// ============================
+$orange-main: #f4510b;
+$orange-mid: #ff8610;
+$orange-dark: #c84408;
+$text-light: #ffffff;
 
 .catalog-btn {
   position: relative;
   isolation: isolate;
   overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
   min-width: 270px;
-  height: 54px;
-  padding: 0 28px;
-  border: 2px solid rgba(255, 255, 255, 0.75);
+  height: 56px;
+  padding: 0 30px;
   border-radius: 999px;
-  color: #fff;
-  background: linear-gradient(to bottom,
-      #ffb52d 0%,
-      #ff8610 45%,
-      #f4510b 100%);
   font-family: inherit;
   font-size: 16px;
   font-weight: 700;
+  letter-spacing: 0.3px;
   cursor: pointer;
+  user-select: none;
+  transition: transform 0.2s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease;
 
-  box-shadow:
-    0 7px 0 #c84408,
-    0 13px 22px rgba(244, 81, 11, 0.38),
-    inset 0 3px 4px rgba(255, 255, 255, 0.55),
-    inset 0 -5px 8px rgba(142, 39, 0, 0.3);
+  .btn-icon {
+    display: inline-flex;
+    align-items: center;
+    transition: transform 0.25s ease;
+  }
 
-  transition: 0.25s ease;
+  .btn-arrow {
+    position: absolute;
+    right: 22px;
+    font-size: 18px;
+    font-weight: 700;
+    opacity: 0;
+    transform: translateX(8px);
+    transition: all 0.25s ease;
+  }
 
-  &:hover {
-    color: white;
-    transform: translateY(-3px);
+  &:active {
+    transform: translateY(3px) scale(0.98);
+  }
+
+  &:focus-visible {
+    outline: 3px solid rgba(255, 134, 16, 0.5);
+    outline-offset: 3px;
+  }
+
+  // ---------- Variant 1: اصلی (پرشده) ----------
+  &--primary {
+    color: $text-light;
+    border: 2px solid rgba(255, 255, 255, 0.65);
+    background: linear-gradient(to bottom, #ffb52d 0%, $orange-mid 45%, $orange-main 100%);
+
     box-shadow:
-      0 9px 0 #c84408,
-      0 18px 28px rgba(244, 81, 11, 0.48),
-      inset 0 3px 4px rgba(255, 255, 255, 0.6),
+      0 7px 0 $orange-dark,
+      0 14px 26px rgba(244, 81, 11, 0.4),
+      inset 0 3px 4px rgba(255, 255, 255, 0.55),
       inset 0 -5px 8px rgba(142, 39, 0, 0.3);
+
+    &:hover {
+      color: $text-light;
+      transform: translateY(-3px);
+
+      box-shadow:
+        0 10px 0 $orange-dark,
+        0 20px 34px rgba(244, 81, 11, 0.5),
+        inset 0 3px 4px rgba(255, 255, 255, 0.6),
+        inset 0 -5px 8px rgba(142, 39, 0, 0.3);
+
+      .btn-icon {
+        transform: translateY(2px); // آیکون دانلود انگشت‌نما پایین می‌رود
+      }
+    }
+
+    &:active {
+      box-shadow:
+        0 2px 0 $orange-dark,
+        0 6px 12px rgba(244, 81, 11, 0.3),
+        inset 0 3px 5px rgba(120, 30, 0, 0.25);
+    }
+
+    // درخشش عبوری نرم، فقط موقع هاور (بجای انیمیشن دائمی)
+    &::after {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      top: -30%;
+      left: -65%;
+      width: 40%;
+      height: 160%;
+      background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+      transform: skewX(-22deg);
+      transition: left 0.6s ease;
+    }
+
+    &:hover::after {
+      left: 140%;
+      transition: left 0.7s ease;
+    }
   }
 
-  &::before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    inset: 5px;
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    border-radius: inherit;
-    box-shadow: inset 0 1px rgba(255, 255, 255, 0.45);
-  }
+  // ---------- Variant 2: ثانویه (Outline مدرن) ----------
+  &--secondary {
+    color: $text-light;
+    background: transparent;
+    border: 2px solid rgba(255, 134, 16, 0.85);
 
-  &::after {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    top: -30%;
-    left: -65%;
-    width: 42%;
-    height: 160%;
-    background: linear-gradient(100deg,
-        transparent,
-        rgba(255, 255, 255, 0.55),
-        transparent);
-    transform: skewX(-22deg);
-    animation: button-shine 5s ease-in-out infinite;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+
+    &::before {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(to bottom, #ffb52d 0%, $orange-mid 45%, $orange-main 100%);
+      transform: scaleX(0);
+      transform-origin: right; // در RTL از راست پر می‌شود
+      transition: transform 0.35s ease;
+    }
+
+    &:hover {
+      color: $text-light;
+      border-color: $orange-main;
+      transform: translateY(-3px);
+
+      box-shadow:
+        0 10px 26px rgba(244, 81, 11, 0.45);
+
+      &::before {
+        transform: scaleX(1);
+      }
+
+      .btn-arrow {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    &:active {
+      transform: translateY(2px) scale(0.98);
+      box-shadow: 0 4px 10px rgba(244, 81, 11, 0.3);
+    }
   }
 }
 
-.catalog-btn:active {
-  transform: translateY(4px);
-  box-shadow:
-    0 2px 0 #c84408,
-    0 6px 12px rgba(244, 81, 11, 0.3),
-    inset 0 3px 5px rgba(120, 30, 0, 0.25);
-}
-
-@keyframes button-shine {
-
-  0%,
-  70% {
-    left: -65%;
-  }
-
-  90%,
-  100% {
-    left: 140%;
+// ریسپانسیو: در موبایل عرض دکمه‌ها فشرده‌تر
+@media (max-width: 575.98px) {
+  .catalog-btn {
+    min-width: 100%;
+    max-width: 320px;
+    font-size: 15px;
   }
 }

@@ -1,40 +1,222 @@
-$primary-color: #f26522;
-$primary-hover: #d8652f;
+$primary-orange: #f26522;
+$primary-orange-light: #ff7d3b;
+$dark-bg: #0c0f14;
+$card-bg: rgba(255, 255, 255, 0.02);
+$border-color: rgba(255, 255, 255, 0.08);
+$text-light: #f1f5f9;
+$text-muted: #94a3b8;
+$sidebar-offset: 80px; // عرض منوی شناور سایدبار راست
 
-#map {
-  height: 220px;
+.site-footer {
   position: relative;
-  z-index: 0;
-}
+  background: linear-gradient(180deg, #0f1218 0%, #080a0d 100%);
+  color: $text-light;
+  padding-top: 2rem;
+  padding-bottom: 1.5rem;
+  padding-right: $sidebar-offset; // خالی گذاشتن فضای سایدبار در دسکتاپ
+  padding-left: 2rem;
+  border-top: 1px solid rgba(242, 101, 34, 0.2);
 
-.address,
-.p-style {
-  color: white;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 32px;
-}
-
-::ng-deep .ol-viewport {
-  border-radius: 15px;
-}
-
-.title {
-  color: $primary-color ;
-  margin-right: -9px;
-}
-
-.img-logo {
-  max-width: 130px;
-  display: flex;
-  float: right;
-  margin: 20px
-}
-
-a {
-  text-decoration: none;
-
-  &:hover {
-    color: $primary-color ;
+  // در تبلت و موبایل که سایدبار حذف یا تغییر حالت می‌دهد
+  @media (max-width: 991.98px) {
+    padding-right: 1.25rem;
+    padding-left: 1.25rem;
   }
+}
+
+// خط جداکننده نورانی در بالای فوتر
+.footer-divider-glow {
+  position: absolute;
+  top: -1px;
+  right: 10%;
+  left: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, $primary-orange, transparent);
+  box-shadow: 0 0 12px $primary-orange;
+}
+
+.footer-content-wrapper {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+// بخش معرفی برند
+.brand-box {
+  .logo-wrapper {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid $border-color;
+    border-radius: 12px;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .img-logo {
+      max-height: 52px;
+      width: auto;
+      object-fit: contain;
+    }
+  }
+
+  .brand-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+  }
+
+  .brand-subtitle {
+    font-size: 0.78rem;
+    color: $primary-orange;
+    display: block;
+    margin-top: 2px;
+  }
+
+  .brand-desc {
+    font-size: 0.86rem;
+    line-height: 1.95;
+    color: $text-muted;
+    text-align: justify;
+    margin: 0;
+    font-weight: bold;
+  }
+}
+
+// عناوین ستون‌ها
+.col-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1.25rem;
+  position: relative;
+  display: inline-block;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 3px;
+    background: linear-gradient(90deg, $primary-orange, transparent);
+    border-radius: 2px;
+    margin-top: 6px;
+  }
+}
+
+// لینک‌های فوتر
+.footer-links {
+  li {
+    margin-bottom: 0.75rem;
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: $text-muted;
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: all 0.25s ease;
+      font-weight: bold;
+
+      .link-bullet {
+        width: 12px;
+        height: 12px;
+        color: rgba(255, 255, 255, 0.3);
+        transition:
+          transform 0.25s ease,
+          color 0.25s ease;
+      }
+
+      &:hover,
+      &.active {
+        color: $primary-orange-light;
+        transform: translateX(-4px);
+
+        .link-bullet {
+          color: $primary-orange;
+          transform: translateX(-2px);
+        }
+      }
+    }
+  }
+}
+
+// بخش تماس با ما
+.contact-items {
+  .contact-item {
+    .contact-icon {
+      background: rgba(242, 101, 34, 0.1);
+      border: 1px solid rgba(242, 101, 34, 0.25);
+      border-radius: 8px;
+      min-width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $primary-orange;
+      margin-top: 2px;
+    }
+
+    .contact-text {
+      font-size: 0.86rem;
+      line-height: 1.8;
+      color: $text-muted;
+      font-weight: bold;
+
+      strong {
+        color: #e2e8f0;
+      }
+
+      .tel-link {
+        color: $text-light;
+        text-decoration: none;
+        direction: ltr;
+        display: inline-block;
+        font-family: inherit;
+        font-weight: 600;
+        margin-right: 6px;
+        transition: color 0.2s ease;
+
+        &:hover {
+          color: $primary-orange;
+        }
+      }
+    }
+  }
+}
+
+// بخش نقشه
+.map-card-wrapper {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+
+  .footer-map {
+    height: 190px;
+    width: 100%;
+    background-color: #1e293b;
+  }
+}
+
+// نوار کپی‌رایت پایین
+.footer-bottom {
+  .copyright {
+    font-size: 0.8rem;
+    color: #64748b;
+    font-weight: bold;
+
+    strong {
+      color: #94a3b8;
+    }
+  }
+
+  .bottom-tags span {
+    font-size: 0.75rem;
+  }
+}
+
+// ریست استایل پورت OpenLayers (در صورت استفاده از map)
+::ng-deep .ol-viewport {
+  border-radius: 14px;
 }
