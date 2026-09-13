@@ -71,7 +71,6 @@ $primary: #f26522;
 
 .cooperation-section {
   position: relative;
-  padding: 80px 20px;
   overflow: hidden;
   direction: rtl;
 
@@ -150,12 +149,104 @@ td {
 
 .custom-table-container {
   max-width: 480px;
-  margin: 82px auto ;
+  margin: 82px auto;
   border-radius: 12px;
   overflow: hidden;
   overflow-x: auto;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+
   .table {
     margin-bottom: 0;
+  }
+}
+
+.calc-intro {
+  text-align: center;
+  margin-bottom: 32px;
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    display: inline-block;
+    border-bottom: 2px solid #c8792f; // رنگ مسی هماهنگ با تم سایت
+  }
+
+  &__desc {
+    max-width: 820px;
+    margin: 0 auto;
+    color: #94a3b8;
+    font-size: 0.95rem;
+    line-height: 2;
+    text-align: justify;
+    font-weight: bold;
+  }
+}
+
+.calc-guide {
+  margin-top: 70px;
+  margin-bottom: 150px;
+
+  &__title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #f8fafc;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  &__steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+}
+
+.step-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 20px;
+  position: relative;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    border-color: #c8792f; // رنگ مسی
+  }
+
+  &__badge {
+    width: 32px;
+    height: 32px;
+    background: #c8792f;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+
+  &__title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #e2e8f0;
+    margin-bottom: 8px;
+  }
+
+  &__desc {
+    font-size: 0.875rem;
+    color: #94a3b8;
+    line-height: 1.7;
+    margin: 0;
+    font-weight: bold;
+
+    strong {
+      color: #cbd5e1;
+    }
   }
 }

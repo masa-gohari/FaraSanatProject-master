@@ -12,13 +12,14 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSelectModule } from '@angular/material/select'
 import { Metal, Metals } from '../model/metals.model';
+import { Footer } from '../footer/footer';
 
 @Component({
   selector: 'app-weight-calculation',
   standalone: true,
   imports: [MatTableModule, MatSortModule, PageBanner, CommonModule,
     FormsModule, MatSnackBarModule, MatFormFieldModule, MatInputModule, MatRadioModule, ReactiveFormsModule,
-    MatSelectModule,],
+    MatSelectModule,Footer],
   templateUrl: './weight-calculation.html',
   styleUrl: './weight-calculation.scss'
 })

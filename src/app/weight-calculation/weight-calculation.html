@@ -1,5 +1,14 @@
 <app-page-banner></app-page-banner>
-<div class="container mt-5">
+<div class="container" style="margin: 120px auto 0 auto">
+  <div class="calc-intro mt-5">
+    <h2 class="calc-intro__title">سامانه هوشمند محاسبه آنلاین وزن مقاطع و آلیاژهای فلزی</h2>
+    <p class="calc-intro__desc">
+      بدون نیاز به محاسبات دستی و جداول پیچیده وزنی، وزن دقیق انواع مقاطع فلزی (گرد، چهارگوش، شش‌پر،
+      لوله و ... ) از جنس مس، برنج، روی، فولاد و آلومینیوم را در چند ثانیه محاسبه کنید. این ابزار
+      مهندسی با هدف بهینه‌سازی فرآیند خرید، برآورد ریالی پروژه‌ها و محاسبه دقیق اوزان بارگیری و
+      لجستیک، در اختیار متخصصان، بازرگانان و تولیدکنندگان حوزه صنعت فلزات قرار گرفته است.
+    </p>
+  </div>
   <div class="row cooperation-section">
     <div class="row glass-container">
       <div class="col-lg-6 col-md-12 col-sm-12">
@@ -565,7 +574,7 @@
             </mat-form-field>
           </div>
           <div class="mt-3">
-            <button class="btn btn-calculate-weight" (click)="calculateWeight()">محاسبه کن</button>
+            <button class="btn btn-calculate-weight" (click)="calculateWeight()">محاسبه</button>
           </div>
           @if (weightDisplay) {
             <div class="mt-4 mb-3">
@@ -632,4 +641,52 @@
       </div>
     </div>
   </div>
+  <!-- راهنمای گام به گام ماشین حساب وزن -->
+  <section class="calc-guide">
+    <h3 class="calc-guide__title">۴ گام راهنمای استفاده از ماشین حساب</h3>
+
+    <div class="calc-guide__steps">
+      <!-- گام اول -->
+      <div class="step-card">
+        <div class="step-card__badge">۱</div>
+        <h4 class="step-card__title">انتخاب نوع مقطع هندسی</h4>
+        <p class="step-card__desc">
+          از منوی کشویی، مقطع مورد نظر (میلگرد، چهارپایه‌/چهارپهلو، شش‌پر، لوله، قوطی یا مقاطع
+          توخالی) را انتخاب کنید.
+        </p>
+      </div>
+
+      <!-- گام دوم -->
+      <div class="step-card">
+        <div class="step-card__badge">۲</div>
+        <h4 class="step-card__title">ورود ابعاد فنی (به میلی‌متر)</h4>
+        <p class="step-card__desc">
+          با انتخاب هر مقطع، فیلدهای مربوطه مشخص می‌شوند. تمام مشخصات ابعادی را بر حسب
+          <strong>میلی‌متر (mm)</strong> وارد کنید (مثلاً برای شاخه ۲ متری، عدد ۲۰۰۰).
+        </p>
+      </div>
+
+      <!-- گام سوم -->
+      <div class="step-card">
+        <div class="step-card__badge">۳</div>
+        <h4 class="step-card__title">تنظیم چگالی و تعداد</h4>
+        <p class="step-card__desc">
+          چگالی آلیاژ را بر حسب <strong>ton/m³</strong> (با امکان استفاده از مقادیر پیش‌فرض مس،
+          برنج، فولاد و...) مشخص کرده و تعداد شاخه‌ها را وارد نمایید.
+        </p>
+      </div>
+
+      <!-- گام چهارم -->
+      <div class="step-card">
+        <div class="step-card__badge">۴</div>
+        <h4 class="step-card__title">دریافت آنی خروجی و فرمول</h4>
+        <p class="step-card__desc">
+          با کلیک روی دکمه <strong>«محاسبه»</strong>، وزن کل به کیلوگرم همراه با فرمول ریاضی
+          استفاده‌شده، آنی نمایش داده می‌شود.
+        </p>
+      </div>
+    </div>
+  </section>
 </div>
+
+<app-footer></app-footer>
