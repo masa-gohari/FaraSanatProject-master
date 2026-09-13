@@ -1,0 +1,146 @@
+$primary-brass: #f59e0b;
+$glass-bg: rgba(22, 27, 34, 0.75);
+$glass-border: rgba(255, 255, 255, 0.1);
+$glass-shadow: 0 12px 32px 0 rgba(0, 0, 0, 0.45);
+
+.zinc-products-section {
+  background-color: #0d1117; // یا گرادیانت پس‌زمینه سایت شما
+  min-height: 100vh;
+
+  .cards-grid {
+    // جلوگیری از کشیده‌شدن کارت‌های هم‌ردیف
+    align-items: flex-start;
+  }
+
+  .glass-card {
+    height: auto;
+    background: $glass-bg;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid $glass-border;
+    border-radius: 18px;
+    box-shadow: $glass-shadow;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+      border-color: rgba($primary-brass, 0.35);
+    }
+  }
+
+  .card-img-wrapper {
+    width: 100%;
+    height: 190px;
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    background: #161b22;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    &:hover img {
+      transform: scale(1.05);
+    }
+  }
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-title {
+    color: #ffffff;
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  // مدیریت حالت بسته و باز با Fade گرادیانت
+  .list-collapse-wrapper {
+    max-height: 145px; // ارتفاع پیش‌فرض خلاصه متن
+    overflow: hidden;
+    position: relative;
+    transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 55px;
+      background: linear-gradient(to bottom, transparent, rgba(16, 20, 26, 0.98));
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    &.is-expanded {
+      max-height: 1000px; // باز شدن کامل محتوا
+
+      &::after {
+        opacity: 0;
+      }
+    }
+  }
+
+  .product-info-list {
+    list-style: disc inside;
+    padding: 0;
+    margin: 0;
+    color: #cbd5e1;
+    font-size: 0.88rem;
+    line-height: 1.85;
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .info-label {
+      color: #f1f5f9;
+      font-weight: 700;
+      margin-left: 4px;
+    }
+
+    .info-value {
+      color: #94a3b8;
+    }
+  }
+
+  .btn-read-more {
+    margin-top: 14px;
+    align-self: center;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #e2e8f0;
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+
+    &:hover {
+      background: rgba($primary-brass, 0.15);
+      border-color: $primary-brass;
+      color: #fff;
+    }
+
+    i {
+      font-size: 0.8rem;
+    }
+  }
+}

@@ -7,8 +7,9 @@ $primary-hover: #d8652f;
   z-index: 0;
 }
 
-.address {
-  color: #e2875d;
+.address,
+.p-style {
+  color: white;
   font-weight: 600;
   font-size: 14px;
   line-height: 32px;
@@ -16,4 +17,24 @@ $primary-hover: #d8652f;
 
 ::ng-deep .ol-viewport {
   border-radius: 15px;
+}
+
+.title {
+  color: $primary-color ;
+  margin-right: -9px;
+}
+
+.img-logo {
+  max-width: 130px;
+  display: flex;
+  float: right;
+  margin: 20px
+}
+
+a {
+  text-decoration: none;
+
+  &:hover {
+    color: $primary-color ;
+  }
 }

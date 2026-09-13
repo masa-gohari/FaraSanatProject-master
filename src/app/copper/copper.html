@@ -1,1 +1,47 @@
 <app-page-banner></app-page-banner>
+<section class="copper-products-section py-5" dir="rtl">
+  <div class="container" style="margin:100px auto 0 auto">
+    <div class="row g-4 cards-grid">
+      <div *ngFor="let item of products" class="col-lg-4 col-md-6 col-12">
+        <div class="glass-card">
+          <!-- تصویر کارت -->
+          <div class="card-img-wrapper">
+            <img [src]="item.image" [alt]="item.title" loading="lazy" />
+          </div>
+
+          <!-- محتوای کارت -->
+          <div class="card-content">
+            <h3 class="card-title">{{ item.title }}</h3>
+
+            <!-- بخش جمع‌شونده محتوا -->
+            <div class="list-collapse-wrapper" [class.is-expanded]="expandedCards[item.id]">
+              <ul class="product-info-list">
+                <li>
+                  <span class="info-label">ماهیت محصول:</span>
+                  <span class="info-value">{{ item.nature }}</span>
+                </li>
+                <li>
+                  <span class="info-label">روش تولید:</span>
+                  <span class="info-value">{{ item.production }}</span>
+                </li>
+                <li *ngFor="let point of item.keyPoints">
+                  <span class="info-value">{{ point }}</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- دکمه ادامه/بستن مطلب -->
+            <button type="button" class="btn-read-more" (click)="toggleCard(item.id)">
+              <span>{{ expandedCards[item.id] ? 'بستن مطلب' : 'ادامه مطلب' }}</span>
+              <i
+                class="bi"
+                [class]="expandedCards[item.id] ? 'bi-chevron-up' : 'bi-chevron-down'"
+              ></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<app-footer></app-footer>

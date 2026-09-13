@@ -11,9 +11,9 @@ export class Navbar {
   isSidebarCollapsed = true;
 
 
-toggleSidebar(): void {
-  this.isSidebarCollapsed = !this.isSidebarCollapsed;
-}
+  toggleSidebar(): void {
+    this.isSidebarCollapsed = !this.isSidebarCollapsed;
+  }
 
 
 }

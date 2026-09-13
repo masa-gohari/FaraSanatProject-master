@@ -15,9 +15,11 @@ import { Style, Icon } from '@neshan-maps-platform/ol/style';
 import { Vector as VectorSource } from '@neshan-maps-platform/ol/source';
 import { Vector as VectorLayer } from '@neshan-maps-platform/ol/layer';
 import { defaults as defaultControls } from '@neshan-maps-platform/ol/control';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
+  imports: [RouterLink, RouterLinkActive],
   standalone: true,
   templateUrl: './footer.html',
   styleUrl: './footer.scss',
@@ -99,7 +101,7 @@ export class Footer implements AfterViewInit {
   }
 
   private openNeshanMap(): void {
-    const url ="https://neshan.org/maps/places/_bvgT0Vxx1WS#c35.698-51.130-15z-0p"
+    const url = "https://neshan.org/maps/places/_bvgT0Vxx1WS#c35.698-51.130-15z-0p"
     window.open(url, '_blank', 'noopener,noreferrer');
   }
 }

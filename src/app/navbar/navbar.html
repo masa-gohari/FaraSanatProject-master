@@ -1,14 +1,7 @@
-<nav
-  class="site-navbar"
-  [class.collapsed]="isSidebarCollapsed"
-  dir="rtl"
->
+<nav class="site-navbar" [class.collapsed]="isSidebarCollapsed" dir="rtl">
   <div class="sidebar-header">
     <a class="site-logo" routerLink="/home">
-      <img
-        src="img/farasanaat-logo.png"
-        alt="گروه صنعتی فرا صنعت ایران"
-      />
+      <img src="img/farasanaat-logo.png" alt="گروه صنعتی فرا صنعت ایران" />
     </a>
 
     <button
@@ -39,39 +32,42 @@
       </a>
     </li>
 
-<li class="nav-item dropdown products-dropdown">
-  <button
-    type="button"
-    class="nav-link menu-button dropdown-toggle"
-    data-bs-toggle="dropdown"
-    data-bs-display="static"
-    aria-expanded="false"
-    title="محصولات"
-  >
-    <i class="bi bi-box-seam nav-icon"></i>
-    <span class="menu-label">محصولات</span>
-  </button>
+    <li class="nav-item dropdown products-dropdown">
+      <button
+        type="button"
+        class="nav-link menu-button dropdown-toggle"
+        data-bs-toggle="dropdown"
+        data-bs-display="static"
+        aria-expanded="false"
+        title="محصولات"
+      >
+        <i class="bi bi-box-seam nav-icon"></i>
+        <span class="menu-label">محصولات</span>
+      </button>
 
-  <ul class="dropdown-menu dropdown-menu-dark">
-    <li>
-      <a class="dropdown-item" routerLink="/products/brass">برنج</a>
+      <ul class="dropdown-menu dropdown-menu-dark">
+        <li>
+          <a class="dropdown-item" routerLink="/products/brass">برنج</a>
+        </li>
+        <li>
+          <a class="dropdown-item" routerLink="/products/copper">مس</a>
+        </li>
+        <li>
+          <a class="dropdown-item" routerLink="/products/zinc">روی</a>
+        </li>
+        <li>
+          <a class="dropdown-item" routerLink="/products/scrap">ضایعات</a>
+        </li>
+      </ul>
     </li>
-    <li>
-      <a class="dropdown-item" routerLink="/products/copper">مس</a>
-    </li>
-    <li>
-      <a class="dropdown-item" routerLink="/products/zinc">روی</a>
-    </li>
-    <li>
-      <a class="dropdown-item" routerLink="/products/scrap">ضایعات</a>
-    </li>
-  </ul>
-</li>
-
-
 
     <li>
-      <a class="nav-link" routerLink="/weight-calculation" routerLinkActive="active" title="محاسبه وزن">
+      <a
+        class="nav-link"
+        routerLink="/weight-calculation"
+        routerLinkActive="active"
+        title="محاسبه وزن"
+      >
         <i class="bi bi-calculator nav-icon"></i>
         <span class="menu-label">محاسبه وزن مقاطع فلزی</span>
       </a>
@@ -92,7 +88,12 @@
     </li>
 
     <li>
-      <a class="nav-link" routerLink="/assist-with-us" routerLinkActive="active" title="همکاری با ما">
+      <a
+        class="nav-link"
+        routerLink="/assist-with-us"
+        routerLinkActive="active"
+        title="همکاری با ما"
+      >
         <i class="bi bi-people nav-icon"></i>
         <span class="menu-label">همکاری با ما</span>
       </a>
