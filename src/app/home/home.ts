@@ -52,4 +52,13 @@ export class Home implements OnInit {
   goToWeightCalculation() {
     this.router.navigate(['/weight-calculation']);
   }
+
+  downloadCatalog() {
+    const link = document.createElement('a');
+    link.href = '/pdf/FaraSanat.pdf';
+    link.download = 'FaraSanat.pdf';
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  }
 }

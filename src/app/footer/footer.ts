@@ -19,10 +19,11 @@ import { defaults as defaultControls } from '@neshan-maps-platform/ol/control';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { TranslatePipe } from '../shared/translate.pipe';
 import { TranslationService } from '../services/translation.service';
+import { CustomersSlider } from '../shared/customers-slider/customers-slider';
 
 @Component({
   selector: 'app-footer',
-  imports: [RouterLink, RouterLinkActive, TranslatePipe],
+  imports: [RouterLink, RouterLinkActive, TranslatePipe, CustomersSlider],
   standalone: true,
   templateUrl: './footer.html',
   styleUrl: './footer.scss',

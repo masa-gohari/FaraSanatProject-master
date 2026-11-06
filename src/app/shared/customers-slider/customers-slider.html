@@ -1,0 +1,31 @@
+<section class="customers-section" [attr.aria-label]="'مشتریان ما' | translate">
+  <div class="customers-container">
+    <div class="customers-heading-row">
+      <h2 class="m-0 fw-bold gold-text text-center" [attr.dir]="translations.direction()">{{ 'مشتریان ما' | translate }}</h2>
+    </div>
+
+    <div class="customers-marquee" dir="ltr" role="list"
+      [attr.aria-label]="'مشتریان ما' | translate">
+      <div class="customers-track">
+        <div class="customers-group">
+          @for (customer of customers; track customer.image) {
+            <div class="customer-slide" role="listitem">
+              <div class="customer-logo-frame">
+                <img [src]="customer.image" [alt]="customer.name" loading="lazy" />
+              </div>
+            </div>
+          }
+        </div>
+        <div class="customers-group" aria-hidden="true">
+          @for (customer of customers; track 'copy-' + customer.image) {
+            <div class="customer-slide">
+              <div class="customer-logo-frame">
+                <img [src]="customer.image" alt="" loading="lazy" />
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

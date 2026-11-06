@@ -9,10 +9,10 @@ import { ContactMessage } from '../model/contact.model';
 import { ContactService } from '../services/contact.service';
 import { TranslatePipe } from '../shared/translate.pipe';
 import { TranslationService } from '../services/translation.service';
-
+import { Footer } from '../footer/footer';
 @Component({
   selector: 'app-assist-with-us',
-  imports: [PageBanner, MatSnackBarModule, MatFormFieldModule, MatInputModule, MatRadioModule, ReactiveFormsModule, FormsModule, TranslatePipe],
+  imports: [PageBanner, MatSnackBarModule, MatFormFieldModule, MatInputModule, MatRadioModule, ReactiveFormsModule, FormsModule, TranslatePipe,Footer],
   templateUrl: './assist-with-us.html',
   styleUrl: './assist-with-us.scss',
 })
