@@ -147,6 +147,11 @@
   border-radius: 8px;
 }
 
+.site-navbar .dropdown-item > span {
+  display: block;
+  text-align: start;
+}
+
 .site-navbar .dropdown-item:hover,
 .site-navbar .dropdown-item:focus {
   color: #f26522;
@@ -155,6 +160,81 @@
 
 .site-navbar {
   overflow: visible !important;
+}
+
+.language-switcher {
+  position: fixed;
+  top: 24px;
+  left: 190px;
+  direction: rtl;
+  z-index: 2100;
+}
+
+.language-current,
+.language-option {
+  display: flex;
+  width: auto;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 8px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  background: #1f1f1f;
+  color: #fff;
+  font: inherit;
+  text-align: right;
+  cursor: pointer;
+}
+
+.language-current:hover,
+.language-option:hover,
+.language-option[aria-selected='true'] {
+  color: #f26522;
+  background: rgba(242, 101, 34, 0.13);
+}
+
+.language-flag {
+  display: block;
+  flex: 0 0 auto;
+  width: 25px;
+  height: 17px;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.country-code {
+  min-width: 22px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+.language-chevron {
+  font-size: 12px;
+}
+
+.language-options {
+  position: absolute;
+  top: calc(100% + 7px);
+  left: 0;
+  display: grid;
+  gap: 4px;
+  min-width: 88px;
+  padding: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  background: #1f1f1f;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.language-option {
+  justify-content: flex-start;
+  min-height: 36px;
+  border-color: transparent;
+  background: transparent;
 }
 
 .products-dropdown {
@@ -243,6 +323,28 @@
     min-width: 0;
     font-size: 22px;
     line-height: 1;
+  }
+
+  .language-switcher {
+    top: 16px;
+    left: 138px;
+  }
+
+  .language-current {
+    width: auto;
+    min-width: 62px;
+    min-height: 38px;
+    justify-content: center;
+    gap: 5px;
+    padding: 7px 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  }
+
+  .language-options {
+    top: calc(100% + 7px);
+    left: 0;
+    width: max-content;
+    min-width: 88px;
   }
 
   /*

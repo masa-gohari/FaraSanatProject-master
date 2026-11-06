@@ -1,8 +1,8 @@
 <div class="hero" style="background-image: url('img/copper-alloy-rods.jpg')">
   <div class="overlay"></div>
   <div class="content">
-    <h1>گروه صنعتی فراصنعت ایران</h1>
-    <p class="p-title">تولید قطعات و مقاطع برنجی</p>
+    <h1>{{ 'گروه صنعتی فراصنعت ایران' | translate }}</h1>
+    <p class="p-title">{{ 'تولید قطعات و مقاطع برنجی' | translate }}</p>
   </div>
 </div>
 
@@ -11,8 +11,8 @@
     @for (item of indicators(); track item.id) {
       <div class="ticker-item">
         <span class="dot"></span>
-        <span class="title">{{ item.title }}</span>
-        <span class="price-value">{{ item.p | number }}</span>
+        <span class="title">{{ item.title | translate }}</span>
+        <span class="price-value">{{ item.p | number | translate }}</span>
 
         <div class="price-info">
           <span
@@ -30,7 +30,7 @@
             [class.down]="item.dt === 'low'"
             [class.neutral]="!item.dt"
           >
-            {{ item.d ?? 0 | number }}
+            {{ item.d ?? 0 | number | translate }}
           </span>
 
           <span
@@ -39,7 +39,7 @@
             [class.down]="item.dt === 'low'"
             [class.neutral]="!item.dt"
           >
-            (%{{ item.dp ?? 0 }})
+            (%{{ item.dp ?? 0 | number | translate }})
           </span>
         </div>
       </div>
@@ -48,8 +48,8 @@
     @for (item of indicators(); track 'copy-' + item.id) {
       <div class="ticker-item">
         <span class="dot"></span>
-        <span class="title">{{ item.title }}</span>
-        <span class="price-value">{{ item.p | number }}</span>
+        <span class="title">{{ item.title | translate }}</span>
+        <span class="price-value">{{ item.p | number | translate }}</span>
 
         <div class="price-info">
           <span
@@ -67,7 +67,7 @@
             [class.down]="item.dt === 'low'"
             [class.neutral]="!item.dt"
           >
-            {{ item.d ?? 0 | number }}
+            {{ item.d ?? 0 | number | translate }}
           </span>
 
           <span
@@ -76,7 +76,7 @@
             [class.down]="item.dt === 'low'"
             [class.neutral]="!item.dt"
           >
-            (%{{ item.dp ?? 0 }})
+            (%{{ item.dp ?? 0 | number | translate }})
           </span>
         </div>
       </div>
@@ -90,7 +90,7 @@
     (click)="toggle()"
   >
     <div class="icon-wrapper">
-      <img src="img/touch-icon-ipad.png" alt="tgju" class="icon-image" />
+    <img src="img/touch-icon-ipad.png" alt="tgju" class="icon-image" />
     </div>
 
     <a [href]="linkUrl" class="content-wrapper" target="_blank">
@@ -102,18 +102,18 @@
 <section class="products-section py-5">
   <div class="container mt-3">
     <div class="mb-5">
-      <h4 class="m-0 fw-bold gold-text text-center">محصولات</h4>
+      <h4 class="m-0 fw-bold gold-text text-center">{{ 'محصولات' | translate }}</h4>
     </div>
     <div class="row g-4 justify-content-center">
-      @for (product of products(); track product.id) {
+      @for (product of localizedProducts(); track product.id) {
         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
           <a [routerLink]="['/products', product.id]" class="text-decoration-none text-dark">
             <div class="product-card">
               <div class="product-image">
-                <img [src]="product.image" [alt]="product.nameFa" class="img-fluid" />
+            <img [src]="product.image" [alt]="product.displayName" class="img-fluid" />
               </div>
               <div class="product-info text-end">
-                <p class="mb-1 fw-bold">{{ product.nameFa }}</p>
+                <p class="mb-1 fw-bold">{{ product.displayName }}</p>
                 <div class="card-accent-line" [style.background-color]="product.accentColor"></div>
               </div>
             </div>
@@ -135,7 +135,7 @@
         <line x1="12" y1="15" x2="12" y2="3"/>
       </svg>
     </span>
-    <span class="btn-label">دانلود کاتالوگ</span>
+    <span class="btn-label">{{ 'دانلود کاتالوگ' | translate }}</span>
   </button>
 </div>
 
@@ -155,7 +155,7 @@
         <line x1="16" y1="16" x2="16" y2="16.01"/>
       </svg>
     </span>
-    <span class="btn-label">جدول محاسبه وزن</span>
+    <span class="btn-label">{{ 'جدول محاسبه وزن' | translate }}</span>
 
   </button>
 </div>

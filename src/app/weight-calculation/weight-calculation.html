@@ -1,13 +1,8 @@
 <app-page-banner></app-page-banner>
 <div class="container" style="margin: 120px auto 0 auto">
   <div class="calc-intro mt-5">
-    <h2 class="calc-intro__title">سامانه هوشمند محاسبه آنلاین وزن مقاطع و آلیاژهای فلزی</h2>
-    <p class="calc-intro__desc">
-      بدون نیاز به محاسبات دستی و جداول پیچیده وزنی، وزن دقیق انواع مقاطع فلزی (گرد، چهارگوش، شش‌پر،
-      لوله و ... ) از جنس مس، برنج، روی، فولاد و آلومینیوم را در چند ثانیه محاسبه کنید. این ابزار
-      مهندسی با هدف بهینه‌سازی فرآیند خرید، برآورد ریالی پروژه‌ها و محاسبه دقیق اوزان بارگیری و
-      لجستیک، در اختیار متخصصان، بازرگانان و تولیدکنندگان حوزه صنعت فلزات قرار گرفته است.
-    </p>
+    <h2 class="calc-intro__title">{{ 'سامانه هوشمند محاسبه آنلاین وزن مقاطع و آلیاژهای فلزی' | translate }}</h2>
+    <p class="calc-intro__desc">{{ 'بدون نیاز به محاسبات دستی و جداول پیچیده وزنی، وزن دقیق انواع مقاطع فلزی (گرد، چهارگوش، شش‌پر، لوله و ... ) از جنس مس، برنج، روی، فولاد و آلومینیوم را در چند ثانیه محاسبه کنید. این ابزار مهندسی با هدف بهینه‌سازی فرآیند خرید، برآورد ریالی پروژه‌ها و محاسبه دقیق اوزان بارگیری و لجستیک، در اختیار متخصصان، بازرگانان و تولیدکنندگان حوزه صنعت فلزات قرار گرفته است.' | translate }}</p>
   </div>
   <div class="row cooperation-section">
     <div class="row glass-container">
@@ -16,14 +11,14 @@
           <table class="table table-striped table-dark">
             <thead>
               <tr>
-                <th class="text-center" scope="col">نام فلز</th>
-                <th class="text-center" scope="col">چگالی (ton/m³)</th>
+                <th class="text-center" scope="col">{{ 'نام فلز' | translate }}</th>
+                <th class="text-center" scope="col">{{ 'چگالی (ton/m³)' | translate }}</th>
               </tr>
             </thead>
             <tbody>
               @for (item of metals; track item.metalName) {
                 <tr>
-                  <td class="text-center">{{ item.metalName }}</td>
+                  <td class="text-center">{{ item.metalName | translate }}</td>
                   <td class="text-center">{{ item.density }}</td>
                 </tr>
               }
@@ -42,15 +37,15 @@
             >
               <mat-label class="required-label">
                 <span class="required-star">*</span>
-                <span style="margin-right: 4px; font-weight: bold"> نوع مقطع را انتخاب کنید:</span>
+                <span style="margin-right: 4px; font-weight: bold">{{ 'نوع مقطع را انتخاب کنید:' | translate }}</span>
               </mat-label>
 
               <mat-select formControlName="selectedSegmentTypeId" panelClass="section-select-panel">
                 @for (group of categories; track group.category) {
-                  <mat-optgroup [label]="group.category">
+                  <mat-optgroup [label]="group.category | translate">
                     @for (item of group.items; track item.id) {
                       <mat-option [value]="item.id">
-                        {{ item.title }}
+                        {{ item.title | translate }}
                       </mat-option>
                     }
                   </mat-optgroup>
@@ -217,7 +212,7 @@
               >
                 <mat-label class="required-label">
                   <span class="required-star">*</span>
-                  <span class="label-style"> قطر (d) : میلی متر [mm] </span>
+                  <span class="label-style">{{ 'قطر (d) : میلی متر [mm]' | translate }}</span>
                 </mat-label>
 
                 <input matInput type="number" min="0" formControlName="diameterRoundBar" />
@@ -234,7 +229,7 @@
               >
                 <mat-label class="required-label">
                   <span class="required-star">*</span>
-                  <span class="label-style"> ضلع (a): میلی متر [mm] </span>
+                  <span class="label-style">{{ 'ضلع (a): میلی متر [mm]' | translate }}</span>
                 </mat-label>
 
                 <input matInput type="number" min="0" formControlName="squareSide" />
@@ -251,7 +246,7 @@
               >
                 <mat-label class="required-label">
                   <span class="required-star">*</span>
-                  <span class="label-style"> عرض (w): میلی متر [mm] </span>
+                  <span class="label-style">{{ 'عرض (w): میلی متر [mm]' | translate }}</span>
                 </mat-label>
 
                 <input matInput type="number" min="0" formControlName="rectWidth" />
@@ -266,7 +261,7 @@
               >
                 <mat-label class="required-label">
                   <span class="required-star">*</span>
-                  <span class="label-style"> ارتفاع (h): میلی متر [mm] </span>
+                  <span class="label-style">{{ 'ارتفاع (h): میلی متر [mm]' | translate }}</span>
                 </mat-label>
                 <input matInput type="number" min="0" formControlName="rectHeight" />
               </mat-form-field>
@@ -282,7 +277,7 @@
               >
                 <mat-label class="required-label">
                   <span class="required-star">*</span>
-                  <span class="label-style"> آچارخور (f): میلی متر [mm] </span>
+                  <span class="label-style">{{ 'آچارخور (f): میلی متر [mm]' | translate }}</span>
                 </mat-label>
 
                 <input matInput type="number" min="0" formControlName="wrenchFlatsHex" />
@@ -299,7 +294,7 @@
               >
                 <mat-label class="required-label">
                   <span class="required-star">*</span>
-                  <span class="label-style"> قطر خارجی (D): میلی متر [mm] </span>
+                  <span class="label-style">{{ 'قطر خارجی (D): میلی متر [mm]' | translate }}</span>
                 </mat-label>
                 <input matInput type="number" min="0" formControlName="outerDiameter" />
               </mat-form-field>
@@ -313,7 +308,7 @@
               >
                 <mat-label class="required-label">
                   <span class="required-star">*</span>
-                  <span class="label-style"> قطر داخلی (d): میلی متر [mm] </span>
+                  <span class="label-style">{{ 'قطر داخلی (d): میلی متر [mm]' | translate }}</span>
                 </mat-label>
                 <input matInput type="number" min="0" formControlName="innerDiameter" />
               </mat-form-field>
@@ -329,7 +324,7 @@
               >
                 <mat-label class="required-label">
                   <span class="required-star">*</span>
-                  <span class="label-style"> آچارخور شش‌ضلعی (F): میلی متر [mm] </span>
+                  <span class="label-style">{{ 'آچارخور شش‌ضلعی (F): میلی متر [mm]' | translate }}</span>
                 </mat-label>
 
                 <input matInput type="number" min="0" formControlName="wrenchFlatsCircle" />
@@ -344,7 +339,7 @@
               >
                 <mat-label class="required-label">
                   <span class="required-star">*</span>
-                  <span class="label-style"> قطر دایره (d): میلی متر [mm] </span>
+                  <span class="label-style">{{ 'قطر دایره (d): میلی متر [mm]' | translate }}</span>
                 </mat-label>
 
                 <input matInput type="number" min="0" formControlName="diameterHexCircle" />
@@ -361,7 +356,7 @@
               >
                 <mat-label class="required-label">
                   <span class="required-star">*</span>
-                  <span class="label-style"> ضلع مربع (a): میلی متر [mm] </span>
+                  <span class="label-style">{{ 'ضلع مربع (a): میلی متر [mm]' | translate }}</span>
                 </mat-label>
 
                 <input matInput type="number" min="0" formControlName="squareSideCircle" />
@@ -376,7 +371,7 @@
               >
                 <mat-label class="required-label">
                   <span class="required-star">*</span>
-                  <span class="label-style"> قطر دایره داخلی (d): میلی متر [mm] </span>
+                  <span class="label-style">{{ 'قطر دایره داخلی (d): میلی متر [mm]' | translate }}</span>
                 </mat-label>
 
                 <input matInput type="number" min="0" formControlName="innerDiameterCircle" />
@@ -393,7 +388,7 @@
               >
                 <mat-label class="required-label">
                   <span class="required-star">*</span>
-                  <span class="label-style"> قطر دایره (D): میلی متر [mm] </span>
+                  <span class="label-style">{{ 'قطر دایره (D): میلی متر [mm]' | translate }}</span>
                 </mat-label>
 
                 <input matInput type="number" min="0" formControlName="diameterHexInCircle" />
@@ -408,7 +403,7 @@
               >
                 <mat-label class="required-label">
                   <span class="required-star">*</span>
-                  <span class="label-style"> آچارخور شش‌ضلعی (f): میلی متر [mm] </span>
+                  <span class="label-style">{{ 'آچارخور شش‌ضلعی (f): میلی متر [mm]' | translate }}</span>
                 </mat-label>
 
                 <input matInput type="number" min="0" formControlName="wrenchFlatsHexInCircle" />
@@ -425,7 +420,7 @@
               >
                 <mat-label class="required-label">
                   <span class="required-star">*</span>
-                  <span class="label-style"> آچارخور خارجی (F): میلی متر [mm] </span>
+                  <span class="label-style">{{ 'آچارخور خارجی (F): میلی متر [mm]' | translate }}</span>
                 </mat-label>
 
                 <input matInput type="number" min="0" formControlName="outerWrenchFlats" />
@@ -440,7 +435,7 @@
               >
                 <mat-label class="required-label">
                   <span class="required-star">*</span>
-                  <span class="label-style"> آچارخور داخلی (f): میلی متر [mm] </span>
+                  <span class="label-style">{{ 'آچارخور داخلی (f): میلی متر [mm]' | translate }}</span>
                 </mat-label>
 
                 <input matInput type="number" min="0" formControlName="innerWrenchFlats" />
@@ -457,7 +452,7 @@
               >
                 <mat-label class="required-label">
                   <span class="required-star">*</span>
-                  <span class="label-style"> ضلع خارجی (A): میلی متر [mm] </span>
+                  <span class="label-style">{{ 'ضلع خارجی (A): میلی متر [mm]' | translate }}</span>
                 </mat-label>
 
                 <input matInput type="number" min="0" formControlName="outerSide" />
@@ -472,7 +467,7 @@
               >
                 <mat-label class="required-label">
                   <span class="required-star">*</span>
-                  <span class="label-style"> ضخامت جداره (t): میلی متر [mm] </span>
+                  <span class="label-style">{{ 'ضخامت جداره (t): میلی متر [mm]' | translate }}</span>
                 </mat-label>
 
                 <input matInput type="number" min="0" formControlName="wallThickness" />
@@ -489,7 +484,7 @@
               >
                 <mat-label class="required-label">
                   <span class="required-star">*</span>
-                  <span class="label-style"> عرض خارجی (W): میلی متر [mm] </span>
+                  <span class="label-style">{{ 'عرض خارجی (W): میلی متر [mm]' | translate }}</span>
                 </mat-label>
 
                 <input matInput type="number" min="0" formControlName="outerWidth" />
@@ -504,7 +499,7 @@
               >
                 <mat-label class="required-label">
                   <span class="required-star">*</span>
-                  <span class="label-style"> ارتفاع خارجی (H): میلی متر [mm] </span>
+                  <span class="label-style">{{ 'ارتفاع خارجی (H): میلی متر [mm]' | translate }}</span>
                 </mat-label>
 
                 <input matInput type="number" min="0" formControlName="outerHeight" />
@@ -519,7 +514,7 @@
               >
                 <mat-label class="required-label">
                   <span class="required-star">*</span>
-                  <span class="label-style"> ضخامت جداره (t): میلی متر [mm] </span>
+                  <span class="label-style">{{ 'ضخامت جداره (t): میلی متر [mm]' | translate }}</span>
                 </mat-label>
 
                 <input matInput type="number" min="0" formControlName="wallThicknessRect" />
@@ -536,7 +531,7 @@
             >
               <mat-label class="required-label">
                 <span class="required-star">*</span>
-                <span class="label-style"> طول: میلی متر [mm]</span>
+                <span class="label-style">{{ 'طول: میلی متر [mm]' | translate }}</span>
               </mat-label>
 
               <input matInput type="number" min="0" formControlName="lengthSegment" />
@@ -551,7 +546,7 @@
             >
               <mat-label class="required-label">
                 <span class="required-star">*</span>
-                <span class="label-style"> چگالی: تن بر متر مکعب [ton/m³]</span>
+                <span class="label-style">{{ 'چگالی: تن بر متر مکعب [ton/m³]' | translate }}</span>
               </mat-label>
 
               <input matInput type="number" min="0" formControlName="density" />
@@ -567,73 +562,73 @@
             >
               <mat-label class="required-label">
                 <span class="required-star">*</span>
-                <span class="label-style"> تعداد شاخه: (عدد)</span>
+                <span class="label-style">{{ 'تعداد شاخه: (عدد)' | translate }}</span>
               </mat-label>
 
               <input matInput type="number" min="0" formControlName="numberBranches" />
             </mat-form-field>
           </div>
           <div class="mt-3">
-            <button class="btn btn-calculate-weight" (click)="calculateWeight()">محاسبه</button>
+            <button class="btn btn-calculate-weight" (click)="calculateWeight()"><span>{{ 'محاسبه' | translate }}</span></button>
           </div>
           @if (weightDisplay) {
             <div class="mt-4 mb-3">
               <div class="formula-div">
                 <div class="d-flex">
-                  <p class="weight-label">وزن کل :</p>
+                  <p class="weight-label">{{ 'وزن کل :' | translate }}</p>
                   <span class="weight-value" dir="ltr" style="display: inline-block">
                     {{ weightDisplay }}
                   </span>
-                  <span class="weight-value">کیلوگرم</span>
+                  <span class="weight-value">{{ 'کیلوگرم' | translate }}</span>
                 </div>
                 @if (selectedSegmentTypeId == 'round_bar') {
-                  <div class="mt-1">فرمول مساحت: A = (π × d²) / 4</div>
+                  <div class="mt-1" dir="auto">{{ 'فرمول مساحت: A = (π × d²) / 4' | translate }}</div>
                 }
                 @if (selectedSegmentTypeId == 'square_bar') {
-                  <div class="mt-1">فرمول مساحت: A = a²</div>
+                  <div class="mt-1" dir="auto">{{ 'فرمول مساحت: A = a²' | translate }}</div>
                 }
                 @if (selectedSegmentTypeId == 'rect_bar') {
-                  <div class="mt-1">فرمول مساحت: A = w × h</div>
+                  <div class="mt-1" dir="auto">{{ 'فرمول مساحت: A = w × h' | translate }}</div>
                 }
                 @if (selectedSegmentTypeId == 'hex_bar') {
-                  <div class="mt-1">فرمول مساحت: A ≈ 0.866 × f²</div>
+                  <div class="mt-1" dir="auto">{{ 'فرمول مساحت: A ≈ 0.866 × f²' | translate }}</div>
                 }
                 @if (selectedSegmentTypeId == 'pipe_circle_in_circle') {
-                  <div class="mt-1">فرمول مساحت: A = (π/4) × (D² - d²)</div>
+                  <div class="mt-1" dir="auto">{{ 'فرمول مساحت: A = (π/4) × (D² - d²)' | translate }}</div>
                 }
                 @if (selectedSegmentTypeId == 'circle_in_hex') {
-                  <div class="mt-1">فرمول مساحت: A = (0.866 × F²) - (πd²/4)</div>
+                  <div class="mt-1" dir="auto">{{ 'فرمول مساحت: A = (0.866 × F²) - (πd²/4)' | translate }}</div>
                 }
                 @if (selectedSegmentTypeId == 'circle_in_square') {
-                  <div class="mt-1">فرمول مساحت: A = a² - (π × d²) / 4</div>
+                  <div class="mt-1" dir="auto">{{ 'فرمول مساحت: A = a² - (π × d²) / 4' | translate }}</div>
                 }
                 @if (selectedSegmentTypeId == 'hex_in_circle') {
-                  <div class="mt-1">فرمول مساحت: A = (πD²/4) - (0.866 × f²)</div>
+                  <div class="mt-1" dir="auto">{{ 'فرمول مساحت: A = (πD²/4) - (0.866 × f²)' | translate }}</div>
                 }
                 @if (selectedSegmentTypeId == 'hex_in_hex') {
-                  <div class="mt-1">فرمول مساحت: A ≈ 0.866 × (F² - f²)</div>
+                  <div class="mt-1" dir="auto">{{ 'فرمول مساحت: A ≈ 0.866 × (F² - f²)' | translate }}</div>
                 }
                 @if (selectedSegmentTypeId == 'square_pipe') {
-                  <div class="mt-1">فرمول مساحت: A = A² - (A - 2t)²</div>
+                  <div class="mt-1" dir="auto">{{ 'فرمول مساحت: A = A² - (A - 2t)²' | translate }}</div>
                 }
                 @if (selectedSegmentTypeId == 'rect_pipe') {
-                  <div class="mt-1">فرمول مساحت: A = (W×H) - ((W-2t)×(H-2t))</div>
+                  <div class="mt-1" dir="auto">{{ 'فرمول مساحت: A = (W×H) - ((W-2t)×(H-2t))' | translate }}</div>
                 }
-                <div class="mt-1">فرمول وزن: (مساحت × طول × چگالی × تعداد) ÷ ۱٬۰۰۰٬۰۰۰</div>
+                <div class="mt-1" dir="auto">{{ 'فرمول وزن: (مساحت × طول × چگالی × تعداد) ÷ ۱٬۰۰۰٬۰۰۰' | translate }}</div>
               </div>
             </div>
           }
           @if (showErrorTypeofSegment) {
             <div class="mt-3 mb-3">
               <div class="alert-box-error">
-                <span>⚠️ نوع مقطع را انتخاب کنید</span>
+                <span>{{ '⚠️ نوع مقطع را انتخاب کنید' | translate }}</span>
               </div>
             </div>
           }
           @if (showError) {
             <div class="mt-3 mb-3">
               <div class="alert-box-error">
-                <span>⚠️ لطفاً مقادیر فیلدهای هایلایت شده را به درستی وارد کنید.</span>
+                <span>{{ '⚠️ لطفاً مقادیر فیلدهای هایلایت شده را به درستی وارد کنید.' | translate }}</span>
               </div>
             </div>
           }
@@ -643,46 +638,35 @@
   </div>
   <!-- راهنمای گام به گام ماشین حساب وزن -->
   <section class="calc-guide">
-    <h3 class="calc-guide__title">۴ گام راهنمای استفاده از ماشین حساب</h3>
+    <h3 class="calc-guide__title">{{ '۴ گام راهنمای استفاده از ماشین حساب' | translate }}</h3>
 
     <div class="calc-guide__steps">
       <!-- گام اول -->
       <div class="step-card">
-        <div class="step-card__badge">۱</div>
-        <h4 class="step-card__title">انتخاب نوع مقطع هندسی</h4>
-        <p class="step-card__desc">
-          از منوی کشویی، مقطع مورد نظر (میلگرد، چهارپهلو، شش‌پر، لوله، قوطی و ... ) را انتخاب کنید.
-        </p>
+        <div class="step-card__badge">{{ '۱' | translate }}</div>
+        <h4 class="step-card__title">{{ 'انتخاب نوع مقطع هندسی' | translate }}</h4>
+        <p class="step-card__desc">{{ 'از منوی کشویی، مقطع مورد نظر (میلگرد، چهارپهلو، شش‌پر، لوله، قوطی و ... ) را انتخاب کنید.' | translate }}</p>
       </div>
 
       <!-- گام دوم -->
       <div class="step-card">
-        <div class="step-card__badge">۲</div>
-        <h4 class="step-card__title">ورود ابعاد فنی (به میلی‌متر)</h4>
-        <p class="step-card__desc">
-          با انتخاب هر مقطع، فیلدهای مربوطه مشخص می‌شوند. تمام مشخصات ابعادی را بر حسب
-          <strong>میلی‌متر (mm)</strong> وارد کنید (مثلاً برای شاخه ۲ متری، عدد ۲۰۰۰).
-        </p>
+        <div class="step-card__badge">{{ '۲' | translate }}</div>
+        <h4 class="step-card__title">{{ 'ورود ابعاد فنی (به میلی‌متر)' | translate }}</h4>
+        <p class="step-card__desc">{{ 'با انتخاب هر مقطع، فیلدهای مربوطه مشخص می‌شوند. تمام مشخصات ابعادی را بر حسب' | translate }}<strong>{{ 'میلی‌متر (mm)' | translate }}</strong>{{ 'وارد کنید (مثلاً برای شاخه ۲ متری، عدد ۲۰۰۰).' | translate }}</p>
       </div>
 
       <!-- گام سوم -->
       <div class="step-card">
-        <div class="step-card__badge">۳</div>
-        <h4 class="step-card__title">تنظیم چگالی و تعداد</h4>
-        <p class="step-card__desc">
-          چگالی آلیاژ را بر حسب <strong>ton/m³</strong> (با امکان استفاده از مقادیر پیش‌فرض مس،
-          برنج، فولاد و...) مشخص کرده و تعداد شاخه‌ها را وارد نمایید.
-        </p>
+        <div class="step-card__badge">{{ '۳' | translate }}</div>
+        <h4 class="step-card__title">{{ 'تنظیم چگالی و تعداد' | translate }}</h4>
+        <p class="step-card__desc">{{ 'چگالی آلیاژ را بر حسب' | translate }}<strong>ton/m³</strong>{{ '(با امکان استفاده از مقادیر پیش‌فرض مس، برنج، فولاد و...) مشخص کرده و تعداد شاخه‌ها را وارد نمایید.' | translate }}</p>
       </div>
 
       <!-- گام چهارم -->
       <div class="step-card">
-        <div class="step-card__badge">۴</div>
-        <h4 class="step-card__title">دریافت آنی خروجی و فرمول</h4>
-        <p class="step-card__desc">
-          با کلیک روی دکمه <strong>«محاسبه»</strong>، وزن کل به کیلوگرم همراه با فرمول ریاضی
-          استفاده‌شده، آنی نمایش داده می‌شود.
-        </p>
+        <div class="step-card__badge">{{ '۴' | translate }}</div>
+        <h4 class="step-card__title">{{ 'دریافت آنی خروجی و فرمول' | translate }}</h4>
+        <p class="step-card__desc">{{ 'با کلیک روی دکمه' | translate }}<strong>{{ '«محاسبه»' | translate }}</strong>{{ '، وزن کل به کیلوگرم همراه با فرمول ریاضی استفاده‌شده، آنی نمایش داده می‌شود.' | translate }}</p>
       </div>
     </div>
   </section>

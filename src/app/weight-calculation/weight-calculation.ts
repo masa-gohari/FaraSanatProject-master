@@ -13,13 +13,15 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSelectModule } from '@angular/material/select'
 import { Metal, Metals } from '../model/metals.model';
 import { Footer } from '../footer/footer';
+import { TranslatePipe } from '../shared/translate.pipe';
+import { TranslationService } from '../services/translation.service';
 
 @Component({
   selector: 'app-weight-calculation',
   standalone: true,
   imports: [MatTableModule, MatSortModule, PageBanner, CommonModule,
     FormsModule, MatSnackBarModule, MatFormFieldModule, MatInputModule, MatRadioModule, ReactiveFormsModule,
-    MatSelectModule,Footer],
+    MatSelectModule, Footer, TranslatePipe],
   templateUrl: './weight-calculation.html',
   styleUrl: './weight-calculation.scss'
 })
@@ -34,7 +36,11 @@ export class WeightCalculation implements OnInit {
   showError: boolean = false;
   form!: FormGroup;
 
-  constructor(private metalService: MetalCalculatorService, private fb: FormBuilder) { this.buildFrom() }
+  constructor(
+    private metalService: MetalCalculatorService,
+    private fb: FormBuilder,
+    private translations: TranslationService,
+  ) { this.buildFrom() }
 
   ngOnInit(): void {
     this.metalService.getSections().subscribe(data => {
@@ -80,11 +86,6 @@ export class WeightCalculation implements OnInit {
       wallThicknessRect: [''],
     });
 
-  }
-
-  private toPersianDigits(str: string): string {
-    const persianDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
-    return str.replace(/\d/g, d => persianDigits[+d]);
   }
 
   private parseNumber(val: any): number {
@@ -227,7 +228,7 @@ export class WeightCalculation implements OnInit {
       minimumFractionDigits: 4,
       maximumFractionDigits: 4
     });
-    this.weightDisplay = this.toPersianDigits(formattedNumber.replace('.', '/'));
+    this.weightDisplay = this.translations.localizeDigits(formattedNumber.replace('.', '/'));
 
   }
 

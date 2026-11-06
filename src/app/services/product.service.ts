@@ -10,7 +10,7 @@ export class ProductService {
         {
             id: 'copper',
             nameFa: 'مس',
-            image: 'img/copper.png',
+            image: 'img/copper.jpg',
             accentColor: '#b87333'
         }, {
             id: 'brass',

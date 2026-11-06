@@ -6,33 +6,33 @@
         <div class="glass-card">
           <!-- تصویر کارت -->
           <div class="card-img-wrapper">
-            <img [src]="item.image" [alt]="item.title" loading="lazy" />
+            <img [src]="item.image" [alt]="item.title | translate" loading="lazy" />
           </div>
 
           <!-- محتوای کارت -->
           <div class="card-content">
-            <h3 class="card-title">{{ item.title }}</h3>
+            <h3 class="card-title">{{ item.title | translate }}</h3>
 
             <!-- بخش جمع‌شونده محتوا -->
             <div class="list-collapse-wrapper" [class.is-expanded]="expandedCards[item.id]">
               <ul class="product-info-list">
                 <li>
-                  <span class="info-label">ماهیت محصول:</span>
-                  <span class="info-value">{{ item.nature }}</span>
+                  <span class="info-label">{{ 'ماهیت محصول:' | translate }}</span>
+                  <span class="info-value">{{ item.nature | translate }}</span>
                 </li>
                 <li>
-                  <span class="info-label">روش تولید:</span>
-                  <span class="info-value">{{ item.production }}</span>
+                  <span class="info-label">{{ 'روش تولید:' | translate }}</span>
+                  <span class="info-value">{{ item.production | translate }}</span>
                 </li>
                 <li *ngFor="let point of item.keyPoints">
-                  <span class="info-value">{{ point }}</span>
+                  <span class="info-value">{{ point | translate }}</span>
                 </li>
               </ul>
             </div>
 
             <!-- دکمه ادامه/بستن مطلب -->
             <button type="button" class="btn-read-more" (click)="toggleCard(item.id)">
-              <span>{{ expandedCards[item.id] ? 'بستن مطلب' : 'ادامه مطلب' }}</span>
+              <span>{{ (expandedCards[item.id] ? 'بستن مطلب' : 'ادامه مطلب') | translate }}</span>
               <i
                 class="bi"
                 [class]="expandedCards[item.id] ? 'bi-chevron-up' : 'bi-chevron-down'"

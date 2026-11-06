@@ -2,7 +2,8 @@ import {
   AfterViewInit,
   Component,
   Inject,
-  PLATFORM_ID
+  PLATFORM_ID,
+  inject,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
@@ -16,15 +17,18 @@ import { Vector as VectorSource } from '@neshan-maps-platform/ol/source';
 import { Vector as VectorLayer } from '@neshan-maps-platform/ol/layer';
 import { defaults as defaultControls } from '@neshan-maps-platform/ol/control';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { TranslatePipe } from '../shared/translate.pipe';
+import { TranslationService } from '../services/translation.service';
 
 @Component({
   selector: 'app-footer',
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, TranslatePipe],
   standalone: true,
   templateUrl: './footer.html',
   styleUrl: './footer.scss',
 })
 export class Footer implements AfterViewInit {
+  readonly translations = inject(TranslationService);
   map!: Map;
 
   constructor(@Inject(PLATFORM_ID) private platformId: object) { }

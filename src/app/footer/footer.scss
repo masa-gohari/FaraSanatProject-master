@@ -157,13 +157,26 @@ $sidebar-offset: 80px; // عرض منوی شناور سایدبار راست
     }
 
     .contact-text {
+      flex: 1 1 0;
+      min-width: 0;
+      width: 100%;
       font-size: 0.86rem;
       line-height: 1.8;
       color: $text-muted;
       font-weight: bold;
+      text-align: start;
+      unicode-bidi: plaintext;
 
       strong {
         color: #e2e8f0;
+      }
+
+      .contact-phone {
+        display: inline-block;
+        direction: ltr;
+        unicode-bidi: isolate;
+        white-space: nowrap;
+        font-variant-numeric: tabular-nums;
       }
 
       .tel-link {

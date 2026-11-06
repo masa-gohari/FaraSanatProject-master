@@ -36,6 +36,28 @@ body {
   --mat-form-field-container-text-size: 14px;
 }
 
+/* Language changes affect text runs only. Form controls and dropdown shells keep their RTL direction. */
+app-root :is(
+  h1, h2, h3, h4, h5, h6, p, span, strong, em, small, th, td,
+  .menu-label, .info-label, .info-value, .brand-title,
+  .brand-subtitle, .copyright, .weight-label, .weight-value,
+  .label-style
+) {
+  direction: var(--localized-text-direction, rtl);
+  unicode-bidi: plaintext;
+}
+
+/* Angular Material renders select options in a body-level overlay. */
+.mat-mdc-option .mdc-list-item__primary-text {
+  direction: var(--localized-text-direction, rtl);
+  unicode-bidi: plaintext;
+}
+
+/* Keep all existing form fields and select controls in their original orientation. */
+app-root :is(input, textarea, select, mat-select, mat-radio-button, .mat-mdc-select-trigger, .mat-mdc-select-value) {
+  direction: rtl !important;
+}
+
 
 .section-select-panel {
   .mat-mdc-optgroup-label {

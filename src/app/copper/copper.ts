@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { PageBanner } from '../shared/page-banner/page-banner';
 import { CommonModule } from '@angular/common';
 import { Footer } from '../footer/footer';
+import { TranslatePipe } from '../shared/translate.pipe';
 export interface CopperProduct {
   id: string;
   title: string;
@@ -12,7 +13,7 @@ export interface CopperProduct {
 }
 @Component({
   selector: 'app-copper',
-  imports: [PageBanner,CommonModule,Footer],
+  imports: [PageBanner, CommonModule, Footer, TranslatePipe],
   templateUrl: './copper.html',
   styleUrl: './copper.scss',
 })

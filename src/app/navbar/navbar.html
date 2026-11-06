@@ -1,14 +1,14 @@
 <nav class="site-navbar" [class.collapsed]="isSidebarCollapsed" dir="rtl">
   <div class="sidebar-header">
     <a class="site-logo" routerLink="/home">
-      <img src="img/farasanaat-logo.png" alt="گروه صنعتی فرا صنعت ایران" />
+      <img src="img/farasanaat-logo.png" [alt]="'گروه صنعتی فراصنعت ایران' | translate" />
     </a>
 
-    <button
+        <button
       type="button"
       class="sidebar-toggle"
       (click)="toggleSidebar()"
-      [attr.aria-label]="isSidebarCollapsed ? 'باز کردن منو' : 'بستن منو'"
+      [attr.aria-label]="(isSidebarCollapsed ? 'باز کردن منو' : 'بستن منو') | translate"
     >
       <i
         class="bi"
@@ -25,10 +25,10 @@
         routerLink="/home"
         routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }"
-        title="صفحه اصلی"
+        [title]="'صفحه اصلی' | translate"
       >
         <i class="bi bi-house-door nav-icon"></i>
-        <span class="menu-label">صفحه اصلی</span>
+        <span class="menu-label">{{ 'صفحه اصلی' | translate }}</span>
       </a>
     </li>
 
@@ -39,24 +39,24 @@
         data-bs-toggle="dropdown"
         data-bs-display="static"
         aria-expanded="false"
-        title="محصولات"
+        [title]="'محصولات' | translate"
       >
         <i class="bi bi-box-seam nav-icon"></i>
-        <span class="menu-label">محصولات</span>
+        <span class="menu-label">{{ 'محصولات' | translate }}</span>
       </button>
 
       <ul class="dropdown-menu dropdown-menu-dark">
         <li>
-          <a class="dropdown-item" routerLink="/products/brass">برنج</a>
+          <a class="dropdown-item" routerLink="/products/brass"><span>{{ 'برنج' | translate }}</span></a>
         </li>
         <li>
-          <a class="dropdown-item" routerLink="/products/copper">مس</a>
+          <a class="dropdown-item" routerLink="/products/copper"><span>{{ 'مس' | translate }}</span></a>
         </li>
         <li>
-          <a class="dropdown-item" routerLink="/products/zinc">روی</a>
+          <a class="dropdown-item" routerLink="/products/zinc"><span>{{ 'روی' | translate }}</span></a>
         </li>
         <li>
-          <a class="dropdown-item" routerLink="/products/scrap">ضایعات</a>
+          <a class="dropdown-item" routerLink="/products/scrap"><span>{{ 'ضایعات' | translate }}</span></a>
         </li>
       </ul>
     </li>
@@ -66,24 +66,24 @@
         class="nav-link"
         routerLink="/weight-calculation"
         routerLinkActive="active"
-        title="محاسبه وزن"
+        [title]="'محاسبه وزن مقاطع فلزی' | translate"
       >
         <i class="bi bi-calculator nav-icon"></i>
-        <span class="menu-label">محاسبه وزن مقاطع فلزی</span>
+        <span class="menu-label">{{ 'محاسبه وزن مقاطع فلزی' | translate }}</span>
       </a>
     </li>
 
     <li>
-      <a class="nav-link" routerLink="/articles" routerLinkActive="active" title="مقالات">
+      <a class="nav-link" routerLink="/articles" routerLinkActive="active" [title]="'مقالات' | translate">
         <i class="bi bi-journal-richtext nav-icon"></i>
-        <span class="menu-label">مقالات</span>
+        <span class="menu-label">{{ 'مقالات' | translate }}</span>
       </a>
     </li>
 
     <li>
-      <a class="nav-link" routerLink="/about-us" routerLinkActive="active" title="درباره ما">
+      <a class="nav-link" routerLink="/about-us" routerLinkActive="active" [title]="'درباره ما' | translate">
         <i class="bi bi-info-circle nav-icon"></i>
-        <span class="menu-label">درباره ما</span>
+        <span class="menu-label">{{ 'درباره ما' | translate }}</span>
       </a>
     </li>
 
@@ -92,11 +92,45 @@
         class="nav-link"
         routerLink="/assist-with-us"
         routerLinkActive="active"
-        title="همکاری با ما"
+        [title]="'همکاری با ما' | translate"
       >
         <i class="bi bi-people nav-icon"></i>
-        <span class="menu-label">همکاری با ما</span>
+        <span class="menu-label">{{ 'همکاری با ما' | translate }}</span>
       </a>
     </li>
   </ul>
+
 </nav>
+
+<div class="language-switcher" [class.menu-open]="isLanguageMenuOpen" dir="rtl">
+    <button
+      type="button"
+      class="language-current"
+      (click)="toggleLanguageMenu()"
+      [attr.aria-expanded]="isLanguageMenuOpen"
+      aria-haspopup="listbox"
+      [attr.aria-label]="translations.selectedLanguage().name"
+    >
+      <img class="language-flag" [src]="translations.selectedLanguage().flag" alt="" aria-hidden="true" />
+      <bdi class="country-code" dir="ltr">{{ translations.selectedLanguage().countryCode }}</bdi>
+      <i class="bi bi-chevron-down language-chevron" aria-hidden="true"></i>
+    </button>
+    @if (isLanguageMenuOpen) {
+      <div class="language-options" role="listbox" [attr.aria-label]="'انتخاب زبان' | translate">
+        @for (language of translations.languageOptions; track language.code) {
+          <button
+            type="button"
+            class="language-option"
+            role="option"
+            [attr.aria-selected]="translations.locale() === language.code"
+            [attr.aria-label]="language.name"
+            (click)="setLanguage(language.code)"
+          >
+            <img class="language-flag" [src]="language.flag" alt="" aria-hidden="true" />
+            <bdi class="country-code" dir="ltr">{{ language.countryCode }}</bdi>
+            <span class="visually-hidden">{{ language.name }}</span>
+          </button>
+        }
+      </div>
+    }
+</div>

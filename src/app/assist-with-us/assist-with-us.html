@@ -2,19 +2,18 @@
 <div class="container mt-5">
   <div class="row cooperation-section">
     <div class="col-lg-6 col-md-12 col-sm-12 glass-container" style="margin: 0 auto 0 auto">
-      <h4 class="m-0 fw-bold gold-text text-center">همکاری با ما</h4>
+      <h4 class="m-0 fw-bold gold-text text-center">{{ 'همکاری با ما' | translate }}</h4>
       <p class="mt-3 text-center text-white small p-assist">
-        فرصت‌های همکاری در بازار فلزات؛ برای پیوستن به شبکه تأمین‌کنندگان و خریداران ما، اطلاعات خود
-        را ثبت کنید تا در کوتاه‌ترین زمان با شما تماس بگیریم.
+        {{ 'فرصت‌های همکاری در بازار فلزات؛ برای پیوستن به شبکه تأمین‌کنندگان و خریداران ما، اطلاعات خود را ثبت کنید تا در کوتاه‌ترین زمان با شما تماس بگیریم.' | translate }}
       </p>
       <form class="row" [formGroup]="form">
         <div class="d-flex justify-content-center">
           <label id="example-radio-group-label"></label>
           <mat-radio-group formControlName="userType">
             @for (user of users; track user.value) {
-              <mat-radio-button class="example-radio-button text-light" [value]="user.value">{{
-                user.label
-              }}</mat-radio-button>
+              <mat-radio-button class="example-radio-button text-light" [value]="user.value">
+                <span>{{ user.label | translate }}</span>
+              </mat-radio-button>
             }
           </mat-radio-group>
         </div>
@@ -28,7 +27,7 @@
           >
             <mat-label class="required-label">
               <span class="required-star">*</span>
-              <span style="margin-right: 4px; font-weight: bold">نام و نام خانوادگی</span>
+              <span style="margin-right: 4px; font-weight: bold">{{ 'نام و نام خانوادگی' | translate }}</span>
             </mat-label>
             <input matInput formControlName="fullName" />
           </mat-form-field>
@@ -44,7 +43,7 @@
           >
             <mat-label class="required-label">
               <span class="required-star">*</span>
-              <span style="margin-right: 2px; font-weight: bold">شماره تماس</span>
+              <span style="margin-right: 2px; font-weight: bold">{{ 'شماره تماس' | translate }}</span>
             </mat-label>
             <input matInput type="text" formControlName="mobile" />
           </mat-form-field>
@@ -52,21 +51,21 @@
         @if (showErrorName) {
           <div class="mt-3 mb-3">
             <div class="alert-box-error">
-              <span>⚠️ نام و نام‌خانوادگی را وارد کنید</span>
+              <span>{{ '⚠️ نام و نام‌خانوادگی را وارد کنید' | translate }}</span>
             </div>
           </div>
         }
         @if (showErrorMobile) {
           <div class="mt-3 mb-3">
             <div class="alert-box-error">
-              <span>⚠️ شماره تماس را وارد کنید</span>
+              <span>{{ '⚠️ شماره تماس را وارد کنید' | translate }}</span>
             </div>
           </div>
         }
       </form>
 
       <div class="d-flex justify-content-center">
-        <button class="btn btn-submit" (click)="submit()">ارسال اطلاعات</button>
+        <button class="btn btn-submit" (click)="submit()"><span>{{ 'ارسال اطلاعات' | translate }}</span></button>
       </div>
     </div>
   </div>

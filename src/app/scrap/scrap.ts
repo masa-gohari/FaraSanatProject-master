@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { PageBanner } from '../shared/page-banner/page-banner';
 import { CommonModule } from '@angular/common';
 import { Footer } from '../footer/footer';
+import { TranslatePipe } from '../shared/translate.pipe';
 
 export interface ScrapProduct {
   id: string;
@@ -13,7 +14,7 @@ export interface ScrapProduct {
 }
 @Component({
   selector: 'app-scrap',
-  imports: [PageBanner, CommonModule, Footer],
+  imports: [PageBanner, CommonModule, Footer, TranslatePipe],
   templateUrl: './scrap.html',
   styleUrl: './scrap.scss',
 })

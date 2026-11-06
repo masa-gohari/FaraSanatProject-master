@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { TranslatePipe } from '../translate.pipe';
 
 @Component({
   selector: 'app-page-banner',
-  imports: [RouterLink],
+  imports: [RouterLink, TranslatePipe],
   templateUrl: './page-banner.html',
   styleUrl: './page-banner.scss',
 })

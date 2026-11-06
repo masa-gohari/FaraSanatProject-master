@@ -9,17 +9,17 @@
         <div class="brand-box">
           <div class="brand-header d-flex align-items-center gap-3 mb-3">
             <div class="logo-wrapper">
-              <img src="img/farasanaat-logo.png" class="img-logo" alt="لوگو فرا صنعت ایران" />
+              <img src="img/farasanaat-logo.png" class="img-logo" [alt]="'فرا صنعت ایران' | translate" />
             </div>
             <div>
-              <h4 class="brand-title m-0">فرا صنعت ایران</h4>
-              <span class="brand-subtitle">تولیدکننده تخصصی مقاطع و قطعات برنجی و فلزی</span>
+              <h4 class="brand-title m-0">{{ 'فرا صنعت ایران' | translate }}</h4>
+              <span class="brand-subtitle">{{ 'تولیدکننده تخصصی مقاطع و قطعات برنجی و فلزی' | translate }}</span>
             </div>
           </div>
           <p class="brand-desc">
-            گروه صنعتی «فرا صنعت ایران» با هدف دستیابی به خودکفایی صنعتی کشور و با تکیه بر شعار «رضایت مشتری»، در زمینه
-            تولید انواع مقاطع و قطعات برنجی هندسی و غیرهندسی فعالیت می‌نماید. تامین‌کننده معتبر صنایع آب، برق، گاز و
-            پروژه‌های زیرساختی کشور با بالاترین استانداردهای کنترل کیفیت.
+            {{ 'گروه صنعتی «فرا صنعت ایران» با هدف دستیابی به خودکفایی صنعتی کشور و با تکیه بر شعار «رضایت مشتری»، در
+            زمینه تولید انواع مقاطع و قطعات برنجی هندسی و غیرهندسی فعالیت می‌نماید. تامین‌کننده معتبر صنایع آب، برق، گاز
+            و پروژه‌های زیرساختی کشور با بالاترین استانداردهای کنترل کیفیت.' | translate }}
           </p>
         </div>
       </div>
@@ -27,7 +27,7 @@
       <!-- ستون ۲: دسترسی سریع -->
       <div class="col-xl-2 col-lg-2 col-md-4 col-6">
         <h5 class="col-title">
-          <span>دسترسی سریع</span>
+          <span>{{ 'دسترسی سریع' | translate }}</span>
         </h5>
         <ul class="footer-links list-unstyled p-0 m-0">
           <li>
@@ -35,7 +35,7 @@
               <svg class="link-bullet" viewBox="0 0 16 16">
                 <path fill="currentColor" d="M9.5 3l-5 5 5 5V3z" />
               </svg>
-              صفحه اصلی
+              <span>{{ 'صفحه اصلی' | translate }}</span>
             </a>
           </li>
           <li>
@@ -43,7 +43,7 @@
               <svg class="link-bullet" viewBox="0 0 16 16">
                 <path fill="currentColor" d="M9.5 3l-5 5 5 5V3z" />
               </svg>
-              محاسبه‌گر وزن مقاطع
+              <span>{{ 'محاسبه‌گر وزن مقاطع' | translate }}</span>
             </a>
           </li>
           <li>
@@ -51,7 +51,7 @@
               <svg class="link-bullet" viewBox="0 0 16 16">
                 <path fill="currentColor" d="M9.5 3l-5 5 5 5V3z" />
               </svg>
-              مقالات
+              <span>{{ 'مقالات' | translate }}</span>
             </a>
           </li>
           <li>
@@ -59,7 +59,7 @@
               <svg class="link-bullet" viewBox="0 0 16 16">
                 <path fill="currentColor" d="M9.5 3l-5 5 5 5V3z" />
               </svg>
-              درباره ما
+              <span>{{ 'درباره ما' | translate }}</span>
             </a>
           </li>
         </ul>
@@ -68,7 +68,7 @@
       <!-- ستون ۳: تماس با ما -->
       <div class="col-xl-3 col-lg-3 col-md-4 col-6">
         <h5 class="col-title">
-          <span>اطلاعات تماس</span>
+          <span>{{ 'اطلاعات تماس' | translate }}</span>
         </h5>
         <div class="contact-items d-flex flex-column gap-3">
 
@@ -79,25 +79,25 @@
                 <circle cx="12" cy="9" r="2.5" />
               </svg>
             </div>
-            <p class="contact-text m-0">
-              <strong>کارخانه و دفتر :</strong><br>
-              کیلومتر ۲۰ جاده قدیم کرج، شهر قدس، بلوار امامزاده، گلبرگ جنوبی، روبروی آتش‌نشانی، گلچین یکم، دوازده‌متری
-              دوم، پلاک ۴۷
+            <p class="contact-text m-0" [style.text-align]="translations.direction() === 'rtl' ? 'right' : 'left'">
+              <strong>{{ 'کارخانه و دفتر :' | translate }}</strong><br>
+              {{ 'کیلومتر ۲۰ جاده قدیم کرج، شهر قدس، بلوار امامزاده، گلبرگ جنوبی، روبروی آتش‌نشانی، گلچین یکم،
+              دوازده‌متری دوم، پلاک ۴۷' | translate }}
             </p>
           </div>
 
-          <div class="contact-item d-flex align-items-center gap-2">
+          <div class="contact-item d-flex align-items-start gap-2">
             <div class="contact-icon">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path
-                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 12.84 12.84 0 0 0 2.81.7 2 2 0 0 1 1.72 2v3a2 2 0 0 1-2 2.18z" />
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                  d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
               </svg>
             </div>
 
-            <p class="contact-text m-0">
-              <strong>تلفکس :</strong><br>
-              ۰۲۱-۷۶۲۶۳۰۲۰
+            <p class="contact-text m-0" [style.text-align]="translations.direction() === 'rtl' ? 'right' : 'left'">
+              <strong>{{ 'تلفکس :' | translate }}</strong><br>
+              <bdi class="contact-phone" dir="ltr">{{ '۰۲۱-۷۶۲۶۳۰۲۰' | translate }}</bdi>
             </p>
           </div>
 
@@ -107,7 +107,7 @@
       <!-- ستون ۴: موقعیت روی نقشه -->
       <div class="col-xl-3 col-lg-3 col-md-4 col-12">
         <h5 class="col-title">
-          <span>موقعیت کارخانه</span>
+          <span>{{ 'موقعیت کارخانه' | translate }}</span>
         </h5>
         <div class="map-card-wrapper">
           <div id="map" class="footer-map"></div>
@@ -121,7 +121,8 @@
       <div
         class="footer-bottom mt-4 pt-3 border-top border-secondary border-opacity-25 d-flex flex-wrap justify-content-between align-items-center gap-2">
         <p class="copyright m-0">
-          تمامی حقوق مادی و معنوی این وب‌سایت متعلق به <strong>گروه صنعتی فرا صنعت ایران</strong> است.
+          {{ 'تمامی حقوق مادی و معنوی این وب‌سایت متعلق به' | translate }} <strong>{{ 'گروه صنعتی فراصنعت ایران' |
+            translate }}</strong> {{ 'است.' | translate }}
         </p>
         <div class="bottom-tags">
         </div>

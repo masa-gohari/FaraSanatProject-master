@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { PageBanner } from '../shared/page-banner/page-banner';
 import { Footer } from '../footer/footer';
+import { TranslatePipe } from '../shared/translate.pipe';
 
 export interface ZincProduct {
   id: string;
@@ -15,7 +16,7 @@ export interface ZincProduct {
 @Component({
   selector: 'zinc',
   standalone: true,
-  imports: [CommonModule, PageBanner ,Footer],
+  imports: [CommonModule, PageBanner, Footer, TranslatePipe],
   templateUrl: './zinc.html',
   styleUrls: ['./zinc.scss']
 })

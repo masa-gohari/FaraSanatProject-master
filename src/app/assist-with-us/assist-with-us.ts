@@ -7,15 +7,18 @@ import { MatRadioModule } from '@angular/material/radio';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ContactMessage } from '../model/contact.model';
 import { ContactService } from '../services/contact.service';
+import { TranslatePipe } from '../shared/translate.pipe';
+import { TranslationService } from '../services/translation.service';
 
 @Component({
   selector: 'app-assist-with-us',
-  imports: [PageBanner, MatSnackBarModule, MatFormFieldModule, MatInputModule, MatRadioModule, ReactiveFormsModule, FormsModule],
+  imports: [PageBanner, MatSnackBarModule, MatFormFieldModule, MatInputModule, MatRadioModule, ReactiveFormsModule, FormsModule, TranslatePipe],
   templateUrl: './assist-with-us.html',
   styleUrl: './assist-with-us.scss',
 })
 export class AssistWithUs {
   private contactService = inject(ContactService);
+  private translations = inject(TranslationService);
   form!: FormGroup;
   contactModel!: ContactMessage;
   users = [
@@ -61,7 +64,7 @@ export class AssistWithUs {
     }
 
     if (userType !== 'seller' && userType !== 'buyer') {
-      this.snackBar.open('نوع کاربری را انتخاب نمایید.', '', {
+      this.snackBar.open(this.translations.translate('نوع کاربری را انتخاب نمایید.'), '', {
         duration: 3000,
         horizontalPosition: 'left',
         verticalPosition: 'bottom',

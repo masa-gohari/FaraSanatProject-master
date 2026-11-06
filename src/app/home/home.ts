@@ -1,16 +1,18 @@
 import { routes } from './../app.routes';
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { TgjuIndicator, TgjuService } from '../services/tgju.service';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { ProductService } from '../services/product.service';
 import { Footer } from '../footer/footer';
 import { AssistWithUs } from '../assist-with-us/assist-with-us';
+import { TranslatePipe } from '../shared/translate.pipe';
+import { TranslationService } from '../services/translation.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterLink, Footer, AssistWithUs],
+  imports: [CommonModule, RouterLink, Footer, AssistWithUs, TranslatePipe],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
@@ -19,7 +21,12 @@ export class Home implements OnInit {
   private tgjuService = inject(TgjuService);
   private productService = inject(ProductService);
   private router = inject(Router);
+  private translations = inject(TranslationService);
   products = this.productService.products;
+  localizedProducts = computed(() => this.products().map(product => ({
+    ...product,
+    displayName: this.translations.translateHomeProduct(product.id, product.nameFa),
+  })));
   indicators = signal<TgjuIndicator[]>([]);
   isExpanded = signal<boolean>(false);
   linkUrl = 'https://www.tgju.org/';

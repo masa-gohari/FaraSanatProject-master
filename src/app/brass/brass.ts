@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { PageBanner } from '../shared/page-banner/page-banner';
 import { CommonModule } from '@angular/common';
 import { Footer } from '../footer/footer';
+import { TranslatePipe } from '../shared/translate.pipe';
 export interface ProductItem {
   id: string;
   title: string;
@@ -14,7 +15,7 @@ export interface ProductItem {
 @Component({
   selector: 'app-brass',
   standalone: true,
-  imports: [PageBanner, CommonModule,Footer],
+  imports: [PageBanner, CommonModule, Footer, TranslatePipe],
   templateUrl: './brass.html',
   styleUrl: './brass.scss',
 })
