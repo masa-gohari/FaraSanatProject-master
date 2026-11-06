@@ -54,9 +54,14 @@ export class Home implements OnInit {
   }
 
   downloadCatalog() {
+    const basePath = window.location.hostname.endsWith('github.io')
+      ? '/FaraSanatProject-master/'
+      : '/';
+
     const link = document.createElement('a');
-    link.href = '/pdf/FaraSanat.pdf';
+    link.href = `${basePath}pdf/FaraSanat.pdf`;
     link.download = 'FaraSanat.pdf';
+
     document.body.appendChild(link);
     link.click();
     link.remove();

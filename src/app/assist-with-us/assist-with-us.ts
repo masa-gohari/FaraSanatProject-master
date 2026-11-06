@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { PageBanner } from '../shared/page-banner/page-banner';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -17,6 +17,8 @@ import { Footer } from '../footer/footer';
   styleUrl: './assist-with-us.scss',
 })
 export class AssistWithUs {
+  @Input() showFooter = true;
+
   private contactService = inject(ContactService);
   private translations = inject(TranslationService);
   form!: FormGroup;

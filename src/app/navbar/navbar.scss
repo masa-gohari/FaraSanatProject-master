@@ -163,7 +163,7 @@
 }
 
 .language-switcher {
-  position: fixed;
+  position: absolute !important;
   top: 24px;
   left: 190px;
   direction: rtl;

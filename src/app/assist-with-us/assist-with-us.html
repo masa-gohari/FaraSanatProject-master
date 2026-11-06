@@ -70,6 +70,8 @@
     </div>
   </div>
 </div>
-<div class="mt-5">
-  <app-footer></app-footer>
-</div>
+@if (showFooter) {
+  <div class="mt-5">
+    <app-footer></app-footer>
+  </div>
+}
